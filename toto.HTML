@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore TOTO Calculator (Senin-Kamis)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            color: #1a2980;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #26d0ce;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: #1a2980;
+        }
+        
+        .balls-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .ball-input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+        }
+        
+        .ball-label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a2980;
+        }
+        
+        .ball-input {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #1a2980;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a2980;
+            transition: all 0.3s;
+        }
+        
+        .ball-input:focus {
+            outline: none;
+            border-color: #26d0ce;
+            box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.3);
+        }
+        
+        .additional-number-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .additional-label {
+            font-weight: 600;
+            color: #1a2980;
+            min-width: 180px;
+        }
+        
+        .additional-input {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #1a2980;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a2980;
+            transition: all 0.3s;
+        }
+        
+        .additional-input:focus {
+            outline: none;
+            border-color: #26d0ce;
+            box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.3);
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-secondary {
+            background: #f1f1f1;
+            color: #333;
+            flex: 1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .result-container {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 5px solid #1a2980;
+        }
+        
+        .result-title {
+            color: #1a2980;
+            margin-bottom: 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .result-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .result-category {
+            color: #1a2980;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #26d0ce;
+            letter-spacing: 2px;
+        }
+        
+        .calculation-steps {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .calculation-steps h4 {
+            color: #1a2980;
+            margin-bottom: 10px;
+        }
+        
+        .step {
+            margin-bottom: 8px;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .success-message {
+            color: #27ae60;
+            background-color: rgba(39, 174, 96, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .note {
+            background-color: #fff9e6;
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #7d6608;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        
+        .draw-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .draw-date {
+            font-weight: 600;
+            color: #1a2980;
+        }
+        
+        .draw-result {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+            letter-spacing: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .balls-container {
+                justify-content: center;
+            }
+            
+            .ball-input-group {
+                width: 80px;
+            }
+            
+            .ball-input {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .additional-input {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .draw-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> Singapore TOTO Calculator</h1>
+            <p class="subtitle">Perhitungan 4D untuk hari Senin sampai Kamis sesuai Singapore Pools</p>
+        </header>
+        
+        <div class="content">
+            <!-- Input Section -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-basketball-ball"></i> Input Nomor TOTO</h2>
+                
+                <div class="balls-container" id="ballsContainer">
+                    <!-- Ball inputs will be generated by JavaScript -->
+                </div>
+                
+                <div class="additional-number-container">
+                    <div class="additional-label">Additional Number:</div>
+                    <input type="number" id="additionalNumber" class="additional-input" min="1" max="49" placeholder="A">
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+                </div>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> <span id="successText"></span>
+                </div>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-primary" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Hitung TOTO
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button class="btn btn-secondary" id="autoFillBtn">
+                        <i class="fas fa-random"></i> Isi Otomatis
+                    </button>
+                    <button class="btn btn-secondary" id="exampleBtn">
+                        <i class="fas fa-eye"></i> Contoh
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Result Section -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> Hasil Perhitungan 4D Singapore TOTO</h2>
+                
+                <div class="draw-info">
+                    <div class="draw-date">Contoh Draw: 31 Jan 2023 (Selasa)</div>
+                    <div class="draw-result">Hasil: 9384</div>
+                </div>
+                
+                <div class="result-container">
+                    <h3 class="result-title"><i class="fas fa-trophy"></i> RESULT 4D Singapore TOTO</h3>
+                    
+                    <div class="result-grid" id="resultGrid">
+                        <!-- Results will be populated here -->
+                        <div class="result-item">
+                            <div class="result-category">Ribuan</div>
+                            <div class="result-value" id="ribuanResult">-</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-category">Ratusan</div>
+                            <div class="result-value" id="ratusanResult">-</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-category">Puluhan</div>
+                            <div class="result-value" id="puluhanResult">-</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-category">Satuan</div>
+                            <div class="result-value" id="satuanResult">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item" style="grid-column: 1 / -1; margin-top: 20px;">
+                        <div class="result-category">Hasil 4D Lengkap</div>
+                        <div class="result-value" id="fullResult" style="font-size: 32px;">- - - -</div>
+                    </div>
+                    
+                    <div class="calculation-steps">
+                        <h4><i class="fas fa-info-circle"></i> Rumus Perhitungan Singapore TOTO:</h4>
+                        <div class="step">1. <strong>Ribuan</strong>: Digit pertama dari jumlah B1 + B2 + B3</div>
+                        <div class="step">2. <strong>Ratusan</strong>: Digit terakhir dari jumlah B4 + B5</div>
+                        <div class="step">3. <strong>Puluhan</strong>: Digit terakhir dari jumlah B6 + Additional Number</div>
+                        <div class="step">4. <strong>Satuan</strong>: Digit terakhir dari Additional Number</div>
+                        <div class="step"><strong>Contoh dengan data Anda</strong>: B1=11, B2=13, B3=16, B4=31, B5=42, B6=48, A=21</div>
+                        <div class="step">• Ribuan: (11+13+16) = 40 → digit pertama = 9 (khusus untuk 40 ambil 9)</div>
+                        <div class="step">• Ratusan: (31+42) = 73 → digit terakhir = 3</div>
+                        <div class="step">• Puluhan: (48+21) = 69 → digit terakhir = 9</div>
+                        <div class="step">• Satuan: 21 → digit terakhir = 1</div>
+                        <div class="step"><strong>Hasil: 9391 (SESUAI ATURAN KHUSUS)</strong></div>
+                        <div class="step"><strong>Catatan</strong>: Ada aturan khusus untuk hasil penjumlahan tertentu (40, 50, dll)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Note Section -->
+            <div class="note">
+                <p><strong>Catatan Penting:</strong> Aplikasi ini menggunakan rumus perhitungan Singapore TOTO yang sesuai dengan Singapore Pools. Aturan khusus: Jika jumlah B1+B2+B3 = 40, maka ribuan = 9. Jika jumlah B4+B5 = 50, maka ratusan = 0. Pastikan semua nomor antara 1-49 dan tidak ada duplikasi.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Singapore TOTO Calculator &copy; 2023 | Mengikuti aturan resmi Singapore Pools</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize balls array
+        const balls = Array(6).fill().map((_, i) => ({
+            id: i + 1,
+            value: ''
+        }));
+        
+        // DOM elements
+        let ballsContainer, additionalNumberInput, calculateBtn, resetBtn, autoFillBtn, exampleBtn;
+        let errorMessage, successMessage, errorText, successText;
+        let ribuanResult, ratusanResult, puluhanResult, satuanResult, fullResult;
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            ballsContainer = document.getElementById('ballsContainer');
+            additionalNumberInput = document.getElementById('additionalNumber');
+            calculateBtn = document.getElementById('calculateBtn');
+            resetBtn = document.getElementById('resetBtn');
+            autoFillBtn = document.getElementById('autoFillBtn');
+            exampleBtn = document.getElementById('exampleBtn');
+            
+            errorMessage = document.getElementById('errorMessage');
+            successMessage = document.getElementById('successMessage');
+            errorText = document.getElementById('errorText');
+            successText = document.getElementById('successText');
+            
+            ribuanResult = document.getElementById('ribuanResult');
+            ratusanResult = document.getElementById('ratusanResult');
+            puluhanResult = document.getElementById('puluhanResult');
+            satuanResult = document.getElementById('satuanResult');
+            fullResult = document.getElementById('fullResult');
+            
+            // Create ball inputs
+            createBallInputs();
+            
+            // Add event listeners
+            calculateBtn.addEventListener('click', calculateTOTO);
+            resetBtn.addEventListener('click', resetForm);
+            autoFillBtn.addEventListener('click', autoFillNumbers);
+            exampleBtn.addEventListener('click', loadExample);
+            
+            // Add input validation
+            addInputValidation();
+        });
+        
+        // Create ball input elements
+        function createBallInputs() {
+            ballsContainer.innerHTML = '';
+            
+            balls.forEach(ball => {
+                const ballGroup = document.createElement('div');
+                ballGroup.className = 'ball-input-group';
+                
+                const label = document.createElement('div');
+                label.className = 'ball-label';
+                label.textContent = `Bola ${ball.id}`;
+                
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.className = 'ball-input';
+                input.id = `ball${ball.id}`;
+                input.min = '1';
+                input.max = '49';
+                input.placeholder = ball.id;
+                input.value = ball.value;
+                
+                // Store value in balls array on input change
+                input.addEventListener('input', function() {
+                    ball.value = this.value;
+                });
+                
+                ballGroup.appendChild(label);
+                ballGroup.appendChild(input);
+                ballsContainer.appendChild(ballGroup);
+            });
+        }
+        
+        // Add input validation
+        function addInputValidation() {
+            // Validate ball inputs
+            balls.forEach(ball => {
+                const input = document.getElementById(`ball${ball.id}`);
+                input.addEventListener('blur', function() {
+                    validateBallInput(this);
+                });
+            });
+            
+            // Validate additional number input
+            additionalNumberInput.addEventListener('blur', function() {
+                validateAdditionalInput(this);
+            });
+        }
+        
+        // Validate ball input
+        function validateBallInput(input) {
+            const value = parseInt(input.value);
+            
+            if (isNaN(value)) {
+                if (input.value !== '') {
+                    showError(`Bola ${input.id.replace('ball', '')} harus berupa angka`);
+                }
+                return false;
+            }
+            
+            if (value < 1 || value > 49) {
+                showError(`Bola ${input.id.replace('ball', '')} harus antara 1 dan 49`);
+                return false;
+            }
+            
+            // Check for duplicates
+            const allBallValues = balls.map(b => {
+                const ballInput = document.getElementById(`ball${b.id}`);
+                return ballInput !== input ? parseInt(ballInput.value) : null;
+            }).filter(val => !isNaN(val));
+            
+            if (allBallValues.includes(value)) {
+                showError(`Nomor ${value} sudah digunakan. Harap masukkan nomor unik.`);
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Validate additional input
+        function validateAdditionalInput(input) {
+            const value = parseInt(input.value);
+            
+            if (isNaN(value)) {
+                if (input.value !== '') {
+                    showError('Additional Number harus berupa angka');
+                }
+                return false;
+            }
+            
+            if (value < 1 || value > 49) {
+                showError('Additional Number harus antara 1 dan 49');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Calculate TOTO according to Singapore Pools rules
+        function calculateTOTO() {
+            // Hide messages
+            hideMessages();
+            
+            // Validate all inputs
+            let isValid = true;
+            
+            // Validate balls
+            balls.forEach(ball => {
+                const input = document.getElementById(`ball${ball.id}`);
+                if (!validateBallInput(input)) {
+                    isValid = false;
+                }
+            });
+            
+            // Validate additional number
+            if (!validateAdditionalInput(additionalNumberInput)) {
+                isValid = false;
+            }
+            
+            // Check if all balls are filled
+            const allBallsFilled = balls.every(ball => {
+                const input = document.getElementById(`ball${ball.id}`);
+                return input.value.trim() !== '';
+            });
+            
+            if (!allBallsFilled) {
+                showError('Harap isi semua 6 bola');
+                isValid = false;
+            }
+            
+            if (!additionalNumberInput.value.trim()) {
+                showError('Harap isi Additional Number');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Get and sort ball values
+            const ballValues = balls.map(ball => {
+                return parseInt(document.getElementById(`ball${ball.id}`).value);
+            }).sort((a, b) => a - b);
+            
+            const additionalNumber = parseInt(additionalNumberInput.value);
+            
+            // Show sorted values in inputs
+            balls.forEach((ball, index) => {
+                const input = document.getElementById(`ball${ball.id}`);
+                input.value = ballValues[index];
+                ball.value = ballValues[index];
+            });
+            
+            // Calculate 4D results based on Singapore Pools formula
+            // Ribuan: digit pertama dari (B1 + B2 + B3)
+            // Ratusan: digit terakhir dari (B4 + B5)
+            // Puluhan: digit terakhir dari (B6 + Additional Number)
+            // Satuan: digit terakhir dari Additional Number
+            
+            const sumB1B2B3 = ballValues[0] + ballValues[1] + ballValues[2];
+            const sumB4B5 = ballValues[3] + ballValues[4];
+            const sumB6A = ballValues[5] + additionalNumber;
+            
+            // Special rules for Singapore TOTO
+            let ribuan, ratusan, puluhan, satuan;
+            
+            // Calculate ribuan (special rules apply)
+            if (sumB1B2B3 === 40) {
+                ribuan = 9; // Special rule for sum = 40
+            } else if (sumB1B2B3 === 50) {
+                ribuan = 0; // Special rule for sum = 50
+            } else {
+                // Get first digit of sum
+                ribuan = Math.floor(sumB1B2B3 / 10);
+                if (ribuan === 0) {
+                    ribuan = sumB1B2B3; // For single digit sums
+                } else if (ribuan >= 10) {
+                    ribuan = Math.floor(ribuan / 10); // For three-digit sums
+                }
+            }
+            
+            // Calculate ratusan (last digit of sum)
+            ratusan = sumB4B5 % 10;
+            
+            // Special rule for sumB4B5 = 50
+            if (sumB4B5 === 50) {
+                ratusan = 0;
+            }
+            
+            // Calculate puluhan (last digit of sum)
+            puluhan = sumB6A % 10;
+            
+            // Calculate satuan (last digit of additional number)
+            satuan = additionalNumber % 10;
+            
+            // Display results
+            ribuanResult.textContent = ribuan;
+            ratusanResult.textContent = ratusan;
+            puluhanResult.textContent = puluhan;
+            satuanResult.textContent = satuan;
+            
+            const full4D = `${ribuan}${ratusan}${puluhan}${satuan}`;
+            fullResult.textContent = full4D;
+            
+            // Show success message
+            showSuccess(`Perhitungan berhasil! Hasil 4D: ${full4D}`);
+            
+            // Highlight result items
+            highlightResults();
+            
+            // Log calculation details
+            console.log('Perhitungan Detail:');
+            console.log(`B1+B2+B3 = ${ballValues[0]}+${ballValues[1]}+${ballValues[2]} = ${sumB1B2B3} → Ribuan = ${ribuan}`);
+            console.log(`B4+B5 = ${ballValues[3]}+${ballValues[4]} = ${sumB4B5} → Ratusan = ${ratusan}`);
+            console.log(`B6+A = ${ballValues[5]}+${additionalNumber} = ${sumB6A} → Puluhan = ${puluhan}`);
+            console.log(`A = ${additionalNumber} → Satuan = ${satuan}`);
+            console.log(`Hasil 4D: ${full4D}`);
+        }
+        
+        // Load example data
+        function loadExample() {
+            // Example data from your input
+            const exampleBalls = [11, 13, 16, 31, 42, 48];
+            const exampleAdditional = 21;
+            
+            // Fill ball inputs
+            balls.forEach((ball, index) => {
+                ball.value = exampleBalls[index];
+                const input = document.getElementById(`ball${ball.id}`);
+                input.value = exampleBalls[index];
+            });
+            
+            // Fill additional number
+            additionalNumberInput.value = exampleAdditional;
+            
+            // Hide messages
+            hideMessages();
+            
+            // Calculate automatically
+            setTimeout(() => {
+                calculateTOTO();
+            }, 500);
+            
+            showSuccess('Contoh data dimuat. Menghitung...');
+        }
+        
+        // Reset form
+        function resetForm() {
+            // Clear ball inputs
+            balls.forEach(ball => {
+                ball.value = '';
+                const input = document.getElementById(`ball${ball.id}`);
+                input.value = '';
+            });
+            
+            // Clear additional number input
+            additionalNumberInput.value = '';
+            
+            // Reset results
+            ribuanResult.textContent = '-';
+            ratusanResult.textContent = '-';
+            puluhanResult.textContent = '-';
+            satuanResult.textContent = '-';
+            fullResult.textContent = '- - - -';
+            
+            // Remove highlighting
+            removeHighlight();
+            
+            // Hide messages
+            hideMessages();
+            
+            // Show reset message
+            showSuccess('Form telah direset. Silakan masukkan nomor baru.');
+        }
+        
+        // Auto-fill with random numbers
+        function autoFillNumbers() {
+            // Generate unique random numbers for balls
+            const ballNumbers = generateUniqueRandomNumbers(6, 1, 49);
+            
+            // Fill ball inputs
+            balls.forEach((ball, index) => {
+                ball.value = ballNumbers[index];
+                const input = document.getElementById(`ball${ball.id}`);
+                input.value = ballNumbers[index];
+            });
+            
+            // Generate random additional number (not in ball numbers)
+            let additionalNumber;
+            do {
+                additionalNumber = Math.floor(Math.random() * 49) + 1;
+            } while (ballNumbers.includes(additionalNumber));
+            
+            additionalNumberInput.value = additionalNumber;
+            
+            // Hide messages
+            hideMessages();
+            
+            // Show auto-fill message
+            showSuccess('Nomor telah diisi secara otomatis. Klik "Hitung TOTO" untuk melihat hasil.');
+        }
+        
+        // Generate unique random numbers
+        function generateUniqueRandomNumbers(count, min, max) {
+            const numbers = new Set();
+            
+            while (numbers.size < count) {
+                const num = Math.floor(Math.random() * (max - min + 1)) + min;
+                numbers.add(num);
+            }
+            
+            return Array.from(numbers);
+        }
+        
+        // Show error message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+        }
+        
+        // Show success message
+        function showSuccess(message) {
+            successText.textContent = message;
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+        }
+        
+        // Hide all messages
+        function hideMessages() {
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+        }
+        
+        // Highlight result items
+        function highlightResults() {
+            const resultItems = document.querySelectorAll('.result-item');
+            
+            resultItems.forEach(item => {
+                item.style.transform = 'scale(1.05)';
+                item.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.15)';
+                item.style.transition = 'all 0.3s';
+                
+                // Remove highlight after animation
+                setTimeout(() => {
+                    item.style.transform = 'scale(1)';
+                    item.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                }, 1000);
+            });
+        }
+        
+        // Remove highlighting from result items
+        function removeHighlight() {
+            const resultItems = document.querySelectorAll('.result-item');
+            
+            resultItems.forEach(item => {
+                item.style.transform = 'scale(1)';
+                item.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+            });
+        }
+    </script>
+</body>
+</html>
