@@ -1,13 +1,13 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 LUPEK STORE - Rokok Premium Indonesia 🔥</title>
+    <title>LUPEK STORE - Rokok Premium Indonesia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* RESET & BASE */
         * {
             margin: 0;
             padding: 0;
@@ -15,654 +15,430 @@
         }
         
         :root {
-            --gold: #FFD700;
-            --dark-gold: #D4AF37;
-            --light-gold: #FFF8DC;
-            --black: #0A0A0A;
-            --dark-gray: #1A1A1A;
-            --medium-gray: #2A2A2A;
-            --red: #C41E3A;
-            --light-red: #FF3333;
+            --black: #0a0a0a;
+            --dark: #111111;
+            --gray: #2a2a2a;
+            --light: #f5f5f5;
+            --gold: #d4af37;
+            --gold-light: #f7ef8a;
+            --red: #c41e3a;
+            --green: #25d366;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--black);
-            color: #f5f5f5;
+            background: var(--black);
+            color: var(--light);
+            line-height: 1.6;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 25%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 25%),
-                linear-gradient(45deg, rgba(10,10,10,1) 0%, rgba(20,20,20,1) 100%);
         }
         
-        /* Animasi Latar Belakang Api Premium */
-        .fire-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            opacity: 0.08;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 100, 0, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 50, 0, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
-            animation: firePulse 12s infinite alternate;
-        }
-        
-        @keyframes firePulse {
-            0% { opacity: 0.05; filter: blur(0px); }
-            50% { opacity: 0.12; filter: blur(1px); }
-            100% { opacity: 0.08; filter: blur(0px); }
-        }
-        
-        /* Container Utama */
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 25px;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
         
-        /* Header dan Navigasi */
-        header {
-            background: rgba(15, 15, 15, 0.98);
-            border-bottom: 3px solid var(--dark-gold);
-            padding: 20px 0;
+        /* HEADER */
+        .header {
+            background: var(--dark);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.15);
-            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         
         .logo-icon {
+            font-size: 2.2rem;
             color: var(--gold);
-            font-size: 3rem;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-            animation: logoGlow 4s infinite alternate;
-        }
-        
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); transform: scale(1); }
-            100% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); transform: scale(1.05); }
         }
         
         .logo-text {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #FFD700, #FFF8DC, #FFD700);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-            letter-spacing: 1px;
+            -webkit-text-fill-color: transparent;
         }
         
-        .tagline {
-            font-size: 1rem;
-            color: var(--gold);
-            font-style: italic;
-            margin-top: 5px;
-            letter-spacing: 0.5px;
+        .logo-tagline {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 2px;
         }
         
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            text-align: right;
         }
         
         .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green), #128C7E);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         
         .phone-number {
-            margin-top: 10px;
             color: var(--gold);
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 5px;
         }
         
-        /* Hero Section */
+        /* HERO SECTION */
         .hero {
-            padding: 100px 0 70px;
+            padding: 100px 0 60px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
         }
         
         .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: 4rem;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #FFD700, #FFF8DC, #FFD700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            letter-spacing: 2px;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--gold);
             line-height: 1.2;
         }
         
         .hero-subtitle {
-            font-size: 1.4rem;
-            color: #ddd;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            line-height: 1.7;
-            font-weight: 300;
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
         
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
-            border: 2px solid var(--dark-gold);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 800px;
-            margin: 30px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.05) 50%, transparent 70%);
-            animation: shine 3s infinite linear;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .highlight-text {
-            font-size: 1.3rem;
-            color: var(--gold);
-            font-weight: 600;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Produk Section */
-        .products {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--gold);
-            position: relative;
+        .promo-badge {
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-            padding-bottom: 15px;
+            background: linear-gradient(135deg, var(--red), #ff3333);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 20px 0;
+            border-left: 4px solid var(--gold);
+        }
+        
+        /* PRODUCTS SECTION */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin: 60px 0 40px;
+            color: var(--gold);
+            position: relative;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            width: 80%;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 3px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            bottom: 0;
-            left: 10%;
+            background: var(--gold);
         }
         
-        .product-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
         }
         
         .product-card {
-            background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
-            border-radius: 18px;
-            padding: 30px;
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 25px;
             text-align: center;
-            transition: all 0.5s ease;
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
         }
         
         .product-card:hover {
-            transform: translateY(-15px) scale(1.03);
             border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
-        }
-        
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--gold), #FFD700, var(--gold));
-        }
-        
-        .product-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.1), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .product-card:hover::after {
-            opacity: 1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
         }
         
         .product-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+            margin-bottom: 15px;
         }
         
         .product-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-        
-        .product-desc {
-            color: #bbb;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         
         .product-price {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--gold);
-            font-weight: 800;
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-            letter-spacing: 1px;
+            margin: 15px 0 5px;
         }
         
         .product-unit {
             color: #aaa;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
         }
         
-        /* Info Pembayaran */
-        .payment-info {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(30, 30, 30, 0.95));
-            border-top: 3px solid var(--dark-gold);
-            border-bottom: 3px solid var(--dark-gold);
-            padding: 70px 0;
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
+        /* PAYMENT SECTION */
+        .payment-section {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.05), rgba(212, 175, 55, 0.05));
+            padding: 50px 0;
+            margin: 40px 0;
         }
         
-        .payment-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://photoku.io/images/2026/01/15/money.png') center/contain repeat;
-            opacity: 0.03;
-            z-index: 0;
+        .payment-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
         
-        .payment-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .payment-method {
+        .payment-card {
+            background: var(--dark);
+            padding: 30px;
+            border-radius: 12px;
             text-align: center;
-            padding: 35px;
-            border-radius: 15px;
-            background: linear-gradient(145deg, rgba(50, 50, 50, 0.9), rgba(40, 40, 40, 0.9));
-            flex: 1;
-            min-width: 280px;
-            max-width: 380px;
-            transition: all 0.5s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
+            border: 2px solid;
         }
         
-        .payment-method:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+        .payment-card.disabled {
+            border-color: var(--red);
+            opacity: 0.8;
+        }
+        
+        .payment-card.enabled {
+            border-color: var(--green);
         }
         
         .payment-icon {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
         
-        .payment-not-allowed {
-            background: linear-gradient(145deg, rgba(100, 30, 30, 0.9), rgba(80, 20, 20, 0.9));
-            border-color: rgba(255, 50, 50, 0.4);
+        .payment-card.disabled .payment-icon {
+            color: var(--red);
         }
         
-        .payment-not-allowed .payment-icon {
-            color: #FF4D4D;
-        }
-        
-        .payment-allowed {
-            background: linear-gradient(145deg, rgba(30, 80, 30, 0.9), rgba(20, 60, 20, 0.9));
-            border-color: rgba(50, 255, 50, 0.4);
-        }
-        
-        .payment-allowed .payment-icon {
-            color: #25D366;
+        .payment-card.enabled .payment-icon {
+            color: var(--green);
         }
         
         .payment-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-bottom: 15px;
-            color: #fff;
-            font-weight: 700;
         }
         
-        .payment-desc {
-            color: #ddd;
-            font-size: 1.1rem;
-            line-height: 1.6;
+        /* WARNING SECTION */
+        .warning-box {
+            background: rgba(196, 30, 58, 0.1);
+            border: 2px solid var(--red);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin: 40px 0;
         }
         
-        /* Call to Action */
+        .warning-title {
+            color: var(--red);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* CTA SECTION */
         .cta-section {
             text-align: center;
-            padding: 90px 0;
-            position: relative;
-            overflow: hidden;
+            padding: 60px 0;
         }
         
         .cta-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
             color: var(--gold);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            letter-spacing: 1.5px;
+            margin-bottom: 20px;
         }
         
         .cta-subtitle {
-            font-size: 1.5rem;
-            color: #ddd;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
-            font-weight: 300;
+            color: #ccc;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
         
-        .cta-fire {
-            font-size: 4rem;
-            color: var(--light-red);
-            margin-bottom: 30px;
-            animation: fireBlink 2s infinite alternate;
-            filter: drop-shadow(0 0 10px rgba(255, 50, 0, 0.7));
-        }
-        
-        @keyframes fireBlink {
-            0% { opacity: 0.7; transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 50, 0, 0.7)); }
-            100% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(255, 50, 0, 1)); }
-        }
-        
-        .highlight {
-            color: var(--light-red);
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(255, 50, 0, 0.7);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--light-red), transparent);
-            animation: linePulse 2s infinite;
-        }
-        
-        @keyframes linePulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        .urgency-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--light-red), #C41E3A);
+        .whatsapp-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, var(--green), #128C7E);
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
             font-size: 1.2rem;
-            margin: 30px 0;
-            animation: pulse 1.5s infinite;
-            box-shadow: 0 5px 15px rgba(255, 50, 0, 0.4);
+            font-weight: 600;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: all 0.3s ease;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .whatsapp-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
         }
         
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(15, 15, 15, 0.98));
-            border-top: 2px solid rgba(212, 175, 55, 0.4);
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
             padding: 40px 0;
             text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
             margin-top: 60px;
         }
         
         .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: var(--gold);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
         
-        .footer-note {
+        .footer-text {
             color: #aaa;
-            font-size: 1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-size: 0.95rem;
         }
         
-        .footer-warning {
-            color: #FF9900;
+        .warning-text {
+            color: #ff9900;
             font-style: italic;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            max-width: 700px;
-            margin: 15px auto 0;
-        }
-        
-        .store-name {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 0.85rem;
             margin-top: 20px;
         }
         
-        /* Responsiveness */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .cta-title {
-                font-size: 2.8rem;
-            }
-        }
-        
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 25px;
+                gap: 15px;
+                text-align: center;
             }
             
             .contact-info {
-                align-items: center;
-            }
-            
-            .logo-text {
-                font-size: 1.8rem;
+                text-align: center;
             }
             
             .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            }
-            
-            .cta-title {
                 font-size: 2.2rem;
             }
             
-            .payment-content {
-                flex-direction: column;
-                align-items: center;
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-cta {
+                padding: 15px 30px;
+                font-size: 1.1rem;
             }
         }
         
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2rem;
-            }
-            
-            .product-card {
-                padding: 25px;
-            }
-            
-            .cta-title {
                 font-size: 1.8rem;
             }
             
-            .whatsapp-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+            .hero {
+                padding: 80px 0 40px;
+            }
+            
+            .product-card {
+                padding: 20px;
             }
         }
-    </style>
-    
-    <!-- Script Animasi Hujan Imlek -->
-    <style>
-        /* Animasi Snowflakes Imlek */
-        @keyframes snowflakes-fall {
-            0% { top: -10%; transform: translateX(0) rotate(0deg); }
-            100% { top: 110%; transform: translateX(100px) rotate(360deg); }
+        
+        /* SIMPLE ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
         }
         
-        @keyframes snowflakes-shake {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            50% { transform: translateX(80px) rotate(180deg); }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .imlek-snowflake {
-            position: fixed;
-            top: -10%;
-            z-index: 9998;
-            user-select: none;
-            cursor: pointer;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-            pointer-events: auto;
-            animation-name: snowflakes-fall, snowflakes-shake;
-            animation-timing-function: linear, ease-in-out;
-            animation-iteration-count: infinite, infinite;
-            animation-play-state: running, running;
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
         
-        .imlek-snowflake:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 15px gold) brightness(1.2);
-            transform: scale(1.3) !important;
-            transition: all 0.3s ease;
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        
+        /* SIMPLE DIVIDER */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 40px auto;
+            width: 80%;
+            max-width: 400px;
         }
     </style>
 </head>
 <body>
-    <!-- Latar Belakang Api -->
-    <div class="fire-bg"></div>
-    
-    <!-- Header -->
-    <header>
+    <!-- HEADER -->
+    <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -671,9 +447,10 @@
                     </div>
                     <div>
                         <div class="logo-text">LUPEK STORE</div>
-                        <div class="tagline">Rokok Premium Indonesia - Pembuatan Terbaru</div>
+                        <div class="logo-tagline">Rokok Premium Indonesia</div>
                     </div>
                 </div>
+                
                 <div class="contact-info">
                     <a href="https://wa.me/6282267630646" class="whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
@@ -686,1177 +463,253 @@
         </div>
     </header>
     
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">🔥 READY BUKAN PO – ROKOK INDO PEMBUATAN TERBARU 🔥</h1>
-            <p class="hero-subtitle">Stock Terbatas, Cita Rasa Berkualitas, Harga Murah. Hanya di LUPEK STORE Anda bisa mendapatkan rokok premium dengan kualitas terbaik dan harga terjangkau.</p>
+            <h1 class="hero-title fade-in">
+                READY BUKAN PO - ROKOK PREMIUM
+            </h1>
+            <p class="hero-subtitle fade-in delay-1">
+                Stock Terbatas • Cita Rasa Berkualitas • Harga Murah<br>
+                Pembuatan Terbaru dengan Kualitas Terbaik
+            </p>
             
-            <div class="highlight-box">
-                <p class="highlight-text">🔥 Mau rokok tapi lagi ga ada uang?<br>👉 Hanya di LUPEK STORE bisa bayar pas gaji / uang makan!</p>
+            <div class="promo-badge fade-in delay-2">
+                <i class="fas fa-money-bill-wave"></i> BAYAR PAS GAJIAN / UANG MAKAN
             </div>
+            
+            <p class="hero-subtitle fade-in delay-3">
+                Hanya di LUPEK STORE! Order sekarang, bayar nanti saat gajian.
+            </p>
         </div>
     </section>
     
-    <!-- Produk Section -->
-    <section class="products">
-        <div class="container">
-            <h2 class="section-title">Produk Rokok Premium</h2>
-            <div class="product-grid">
-                <!-- Produk 1 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-smoking"></i>
-                    </div>
-                    <h3 class="product-name">Sampoerna Mild 16</h3>
-                    <p class="product-desc">Rasa mild dengan kualitas terbaik dari PT HM Sampoerna</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 2 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <h3 class="product-name">Sampoerna Mild Menthol</h3>
-                    <p class="product-desc">Mild dengan sensasi menthol menyegarkan khas Indonesia</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 3 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="product-name">Surya Gudang Garam 16</h3>
-                    <p class="product-desc">Klasik dengan cita rasa khas Indonesia dari Gudang Garam</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 4 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="product-name">Marlboro Black Filter 20</h3>
-                    <p class="product-desc">Rasa kuat dengan filter premium, produk internasional</p>
-                    <div class="product-price">1,250฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 5 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3 class="product-name">Marlboro Merah</h3>
-                    <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kekuatan</p>
-                    <div class="product-price">1,400฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 6 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-bold"></i>
-                    </div>
-                    <h3 class="product-name">LA Bold 20</h3>
-                    <p class="product-desc">Rasa bold untuk pengalaman maksimal, harga ekonomis</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 7 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="product-name">LA Ice Mangoboost</h3>
-                    <p class="product-desc">Kombinasi es dan rasa mangga yang menyegarkan</p>
-                    <div class="product-price">1,100฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 8 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-snowflake"></i>
-                    </div>
-                    <h3 class="product-name">LA Ice Purpleboost</h3>
-                    <p class="product-desc">Sensasi es dengan rasa buah ungu yang unik dan segar</p>
-                    <div class="product-price">1,100฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- DIVIDER -->
+    <div class="divider"></div>
     
-    <!-- Info Pembayaran -->
-    <section class="payment-info">
-        <div class="container">
-            <h2 class="section-title">Sistem Pembayaran Fleksibel</h2>
-            <div class="payment-content">
-                <div class="payment-method payment-not-allowed">
-                    <div class="payment-icon">
-                        <i class="fas fa-times-circle"></i>
-                    </div>
-                    <h3 class="payment-title">Bayar Langsung ❌</h3>
-                    <p class="payment-desc">Tidak tersedia untuk metode pembayaran ini. Kami lebih mengutamakan kemudahan bagi pelanggan setia LUPEK STORE.</p>
+    <!-- PRODUCTS SECTION -->
+    <div class="container">
+        <h2 class="section-title fade-in">DAFTAR PRODUK</h2>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card fade-in">
+                <div class="product-icon">
+                    <i class="fas fa-smoking"></i>
                 </div>
-                
-                <div class="payment-method payment-allowed">
-                    <div class="payment-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3 class="payment-title">Bayar Pas Gajian ✅</h3>
-                    <p class="payment-desc">Bayar saat gajian atau saat uang makan datang. Kami percaya dengan sistem kepercayaan untuk kenyamanan Anda. Hanya di LUPEK STORE!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-fire">🔥</div>
-            <h2 class="cta-title">BURUAN ORDER SEKARANG!</h2>
-            <p class="cta-subtitle">Stock terbatas! Pesan sebanyak-banyaknya sebelum kehabisan. <span class="highlight">Buat paru-paru Anda menyala dengan pengalaman merokok terbaik!</span></p>
-            
-            <div class="urgency-badge">
-                ⚠️ NOTE: Buruan order sebanyak-banyaknya, sampe paru-parunya menyala 🔥🔥
+                <h3 class="product-name">Sampoerna Mild 16</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Rasa mild dengan kualitas terbaik</p>
+                <div class="product-price">1,200฿</div>
+                <div class="product-unit">/ Slop</div>
             </div>
             
-            <a href="https://wa.me/6282267630646" class="whatsapp-btn" style="font-size: 1.3rem; padding: 18px 40px; margin-top: 30px;" target="_blank">
-                <i class="fab fa-whatsapp"></i> 📲 PM WA: 0822-6763-0646
-            </a>
+            <!-- Product 2 -->
+            <div class="product-card fade-in delay-1">
+                <div class="product-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3 class="product-name">Sampoerna Mild Menthol</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Sensasi menthol yang menyegarkan</p>
+                <div class="product-price">1,200฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
             
-            <p class="footer-warning" style="margin-top: 40px; font-size: 1.1rem;">Hanya untuk konsumen dewasa. Konsumsi dengan bijak. Merokok dapat membahayakan kesehatan.</p>
+            <!-- Product 3 -->
+            <div class="product-card fade-in delay-2">
+                <div class="product-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="product-name">Surya Gudang Garam 16</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Klasik dengan cita rasa khas Indonesia</p>
+                <div class="product-price">1,200฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card fade-in delay-3">
+                <div class="product-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="product-name">Marlboro Black Filter 20</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Rasa kuat dengan filter premium</p>
+                <div class="product-price">1,250฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card fade-in">
+                <div class="product-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="product-name">Marlboro Merah</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Klasik dunia dengan rasa penuh karakter</p>
+                <div class="product-price">1,400฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card fade-in delay-1">
+                <div class="product-icon">
+                    <i class="fas fa-bold"></i>
+                </div>
+                <h3 class="product-name">LA Bold 20</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Rasa bold untuk pengalaman maksimal</p>
+                <div class="product-price">1,200฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card fade-in delay-2">
+                <div class="product-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="product-name">LA Ice Mangoboost</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Kombinasi es dan rasa mangga</p>
+                <div class="product-price">1,100฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card fade-in delay-3">
+                <div class="product-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3 class="product-name">LA Ice Purpleboost</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Sensasi es dengan rasa buah ungu</p>
+                <div class="product-price">1,100฿</div>
+                <div class="product-unit">/ Slop</div>
+            </div>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">LUPEK STORE</div>
-            <p class="footer-note">Website ini merupakan katalog produk rokok premium Indonesia. Harga dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Stock terbatas dan pembuatan terbaru.</p>
-            <div class="store-name">🔥 LUPEK STORE - Rokok Premium Indonesia 🔥</div>
-            <p class="footer-warning">PERHATIAN: Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan dan janin.</p>
-        </div>
-    </footer>
-    
-    <!-- Script Animasi Hujan Imlek -->
-    <script>
-    (function() {
-        // Gambar-gambar Imlek
-        const images = [
-            { src: 'https://photoku.io/images/2026/01/15/kuda.png', alt: 'Kuda', sizes: [50, 45] },
-            { src: 'https://photoku.io/images/2026/01/15/ingot.png', alt: 'Ingot Emas', sizes: [40, 35] },
-            { src: 'https://photoku.io/images/2026/01/15/angpao.png', alt: 'Angpao', sizes: [40, 35] },
-            { src: 'https://photoku.io/images/2026/01/15/money.png', alt: 'Uang', sizes: [40, 35] },
-            { src: 'https://photoku.io/images/2026/01/15/orange.png', alt: 'Jeruk', sizes: [50, 45] },
-            { src: 'https://photoku.io/images/2026/01/15/lampionn.png', alt: 'Lampion', sizes: [40, 35] },
-            { src: 'https://photoku.io/images/2026/01/15/kipass.png', alt: 'Kipas', sizes: [50, 45] }
-        ];
-        
-        // Buat 14 elemen snowflake (7 gambar x 2 ukuran)
-        function createSnowflakes() {
-            for (let i = 0; i < images.length * 2; i++) {
-                const imgIndex = i % images.length;
-                const sizeIndex = Math.floor(i / images.length);
-                const image = images[imgIndex];
-                
-                const snowflake = document.createElement('div');
-                snowflake.className = 'imlek-snowflake';
-                
-                const img = document.createElement('img');
-                img.src = image.src;
-                img.alt = image.alt;
-                img.height = image.sizes[sizeIndex];
-                img.width = image.sizes[sizeIndex];
-                
-                snowflake.appendChild(img);
-                document.body.appendChild(snowflake);
-                
-                // Set posisi dan animasi yang unik untuk setiap elemen
-                const left = (i * 7) % 95; // Distribusi horizontal
-                const durationFall = 12 + Math.random() * 12; // 12-24 detik
-                const durationShake = 3 + Math.random() * 4; // 3-7 detik
-                const delay = Math.random() * 15; // Delay 0-15 detik
-                
-                snowflake.style.left = left + '%';
-                snowflake.style.animationDuration = `${durationFall}s, ${durationShake}s`;
-                snowflake.style.animationDelay = `${delay}s, ${Math.random() * 5}s`;
-                
-                // Efek klik
-                snowflake.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    this.style.animationPlayState = 'paused';
-                    this.style.filter = 'drop-shadow(0 0 20px gold) brightness(1.8)';
-                    this.style.transform = 'scale(1.8)';
-                    
-                    setTimeout(() => {
-                        this.style.animationPlayState = 'running';
-                        this.style.filter = 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))';
-                        this.style.transform = 'scale(1)';
-                    }, 1000);
-                });
-            }
-        }
-        
-        // Jalankan saat halaman selesai load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', createSnowflakes);
-        } else {
-            createSnowflakes();
-        }
-    })();
-    </script>
-    
-    <!-- Fireworks Animation -->
-    <script>
-    // Fireworks Animation untuk efek mewah
-    (function() {
-        // Load Fireworks library
-        const fireScript = document.createElement('script');
-        fireScript.src = 'https://cdn.jsdelivr.net/npm/fireworks-js/dist/index.umd.min.js';
-        fireScript.onload = function() {
-            // Create container untuk fireworks
-            const fireContainer = document.createElement('div');
-            fireContainer.id = 'topwd-celebration';
-            fireContainer.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                z-index: 9997;
-                pointer-events: none;
-                overflow: hidden;
-                opacity: 0.7;
-            `;
-            document.body.appendChild(fireContainer);
-            
-            // Start fireworks dengan pengaturan khusus
-            if (window.Fireworks) {
-                const fireworks = new Fireworks.default(fireContainer, {
-                    opacity: 0.6,
-                    particles: 75,
-                    explosion: 7,
-                    hue: { min: 30, max: 60 }, // Warna emas/oranye
-                    brightness: { min: 60, max: 90 },
-                    acceleration: 1.1,
-                    friction: 0.95,
-                    gravity: 1.2,
-                    traceLength: 4,
-                    lineWidth: { explosion: { min: 1, max: 3 }, trace: { min: 0.5, max: 1 } },
-                    lineStyle: 'round',
-                    delay: { min: 10, max: 20 }
-                });
-                
-                // Mulai fireworks setelah delay
-                setTimeout(() => {
-                    fireworks.start();
-                    
-                    // Set interval untuk restart fireworks setiap 30 detik
-                    setInterval(() => {
-                        fireworks.pause();
-                        setTimeout(() => {
-                            fireworks.start();
-                        }, 1000);
-                    }, 30000);
-                }, 2000);
-                
-                // Tambahkan fireworks saat klik tombol WhatsApp
-                document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        // Trigger fireworks lebih banyak
-                        for(let i = 0; i < 5; i++) {
-                            setTimeout(() => {
-                                fireworks.explode(
-                                    Math.random() * window.innerWidth,
-                                    Math.random() * window.innerHeight / 2
-                                );
-                            }, i * 200);
-                        }
-                    });
-                });
-            }
-        };
-        document.head.appendChild(fireScript);
-        
-        // Tambahkan efek partikel emas saat hover produk
-        document.addEventListener('DOMContentLoaded', function() {
-            const productCards = document.querySelectorAll('.product-card');
-            
-            productCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    // Buat partikel emas
-                    for(let i = 0; i < 8; i++) {
-                        setTimeout(() => {
-                            createGoldParticle(this);
-                        }, i * 50);
-                    }
-                });
-            });
-            
-            function createGoldParticle(element) {
-                const rect = element.getBoundingClientRect();
-                const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: fixed;
-                    width: 6px;
-                    height: 6px;
-                    background: radial-gradient(circle, #FFD700, #D4AF37);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    box-shadow: 0 0 10px #FFD700;
-                    left: ${rect.left + Math.random() * rect.width}px;
-                    top: ${rect.top + Math.random() * rect.height}px;
-                `;
-                
-                document.body.appendChild(particle);
-                
-                // Animasi partikel
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 2 + Math.random() * 3;
-                const vx = Math.cos(angle) * speed;
-                const vy = Math.sin(angle) * speed - 3;
-                
-                let opacity = 1;
-                const animate = () => {
-                    opacity -= 0.02;
-                    particle.style.opacity = opacity;
-                    particle.style.left = parseFloat(particle.style.left) + vx + 'px';
-                    particle.style.top = parseFloat(particle.style.top) + vy + 'px';
-                    
-                    if (opacity > 0) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        document.body.removeChild(particle);
-                    }
-                };
-                
-                animate();
-            }
-        });
-    })();
-    </script>
-    
-    <!-- Tambahan efek suara dan interaksi -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Efek suara klik (opsional)
-        const clickSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEAQB8AAEAfAAABAAgAZGF0YQ');
-        
-        // Efek hover pada semua elemen interaktif
-        const interactiveElements = document.querySelectorAll('a, button, .product-card, .payment-method');
-        
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', function() {
-                this.style.transform = this.style.transform || 'scale(1)';
-            });
-            
-            el.addEventListener('click', function() {
-                // Efek visual klik
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-        
-        // Efek scroll animasi
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Terapkan pada semua kartu produk
-        document.querySelectorAll('.product-card, .payment-method, .highlight-box').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-        
-        // Auto-typing effect untuk tagline
-        const tagline = document.querySelector('.tagline');
-        const originalText = tagline.textContent;
-        tagline.textContent = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                tagline.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        // Mulai typing effect setelah 1 detik
-        setTimeout(typeWriter, 1000);
-    });
-    </script>
-</body>
-=======
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rokok Premium Indonesia - Kualitas Terbaik, Harga Terjangkau</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(120, 80, 0, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(120, 80, 0, 0.05) 0%, transparent 20%);
-        }
-        
-        /* Animasi Latar Belakang Api */
-        .fire-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            opacity: 0.15;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 100, 0, 0.2) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(255, 50, 0, 0.2) 0%, transparent 30%);
-            animation: firePulse 8s infinite alternate;
-        }
-        
-        @keyframes firePulse {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.2; }
-        }
-        
-        /* Container Utama */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Header dan Navigasi */
-        header {
-            background: rgba(20, 20, 20, 0.95);
-            border-bottom: 2px solid #d4af37;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-icon {
-            color: #d4af37;
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
-            animation: logoGlow 3s infinite alternate;
-        }
-        
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5)); }
-            100% { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8)); }
-        }
-        
-        .logo-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #d4af37, #f7ef8a, #d4af37);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            color: #d4af37;
-            font-style: italic;
-            margin-top: 5px;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        
-        .whatsapp-btn {
-            background: linear-gradient(to right, #25D366, #128C7E);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
-        }
-        
-        .phone-number {
-            margin-top: 8px;
-            color: #d4af37;
-            font-size: 0.9rem;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #d4af37, #f7ef8a, #d4af37);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        /* Elemen Imlek */
-        .lunar-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .lantern {
-            position: absolute;
-            color: #d4af37;
-            font-size: 2rem;
-            opacity: 0.7;
-            animation: float 6s infinite ease-in-out;
-        }
-        
-        .lantern:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        
-        .lantern:nth-child(2) {
-            top: 20%;
-            right: 8%;
-            animation-delay: 2s;
-        }
-        
-        .lantern:nth-child(3) {
-            bottom: 30%;
-            left: 10%;
-            animation-delay: 4s;
-        }
-        
-        .lantern:nth-child(4) {
-            bottom: 20%;
-            right: 15%;
-            animation-delay: 1s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        
-        /* Produk Section */
-        .products {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #d4af37;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #d4af37, transparent);
-            bottom: -10px;
-            left: 20%;
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: rgba(30, 30, 30, 0.9);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: #d4af37;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-        }
-        
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #d4af37, #f7ef8a, #d4af37);
-        }
-        
-        .product-icon {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-        
-        .product-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #f5f5f5;
-        }
-        
-        .product-desc {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        
-        .product-price {
-            font-size: 1.8rem;
-            color: #d4af37;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
-        }
-        
-        .product-unit {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        /* Info Pembayaran */
-        .payment-info {
-            background: rgba(20, 20, 20, 0.95);
-            border-top: 2px solid #d4af37;
-            border-bottom: 2px solid #d4af37;
-            padding: 50px 0;
-            margin: 40px 0;
-        }
-        
-        .payment-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .payment-method {
-            text-align: center;
-            padding: 25px;
-            border-radius: 10px;
-            background: rgba(40, 40, 40, 0.8);
-            flex: 1;
-            min-width: 250px;
-            max-width: 350px;
-            transition: all 0.3s ease;
-        }
-        
-        .payment-method:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .payment-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .payment-not-allowed .payment-icon {
-            color: #ff4d4d;
-        }
-        
-        .payment-allowed .payment-icon {
-            color: #25D366;
-        }
-        
-        .payment-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #f5f5f5;
-        }
-        
-        .payment-desc {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-        
-        /* Call to Action */
-        .cta-section {
-            text-align: center;
-            padding: 70px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: #d4af37;
-        }
-        
-        .cta-subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        .cta-fire {
-            font-size: 3rem;
-            color: #ff6600;
-            margin-bottom: 20px;
-            animation: fireBlink 1.5s infinite alternate;
-        }
-        
-        @keyframes fireBlink {
-            0% { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.1); text-shadow: 0 0 15px #ff6600; }
-        }
-        
-        .highlight {
-            color: #ff6600;
-            font-weight: 700;
-            text-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(10, 10, 10, 0.98);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 30px 0;
-            text-align: center;
-            margin-top: 50px;
-        }
-        
-        .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-        
-        .footer-note {
-            color: #aaa;
-            font-size: 0.9rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-        
-        .footer-warning {
-            color: #ff9900;
-            font-style: italic;
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-        
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .contact-info {
-                align-items: center;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .cta-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .product-card {
-                padding: 20px;
-            }
-            
-            .cta-title {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Latar Belakang Api -->
-    <div class="fire-bg"></div>
-    
-    <!-- Elemen Imlek -->
-    <div class="lunar-elements">
-        <div class="lantern">🏮</div>
-        <div class="lantern">🏮</div>
-        <div class="lantern">🏮</div>
-        <div class="lantern">🏮</div>
     </div>
     
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div>
-                        <div class="logo-text">PREMIUM ROKOK INDONESIA</div>
-                        <div class="tagline">Cita Rasa Berkualitas, Harga Terjangkau</div>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <a href="https://wa.me/6282267630646" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                    </a>
-                    <div class="phone-number">
-                        <i class="fas fa-phone-alt"></i> +62 822-6763-0646
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- DIVIDER -->
+    <div class="divider"></div>
     
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- PAYMENT SECTION -->
+    <section class="payment-section">
         <div class="container">
-            <h1 class="hero-title">🔥 ROKOK PREMIUM INDONESIA 🔥</h1>
-            <p class="hero-subtitle">Produksi terbaru dengan kualitas terbaik dan harga terjangkau. Stock terbatas, dapatkan sekarang sebelum kehabisan!</p>
-        </div>
-    </section>
-    
-    <!-- Produk Section -->
-    <section class="products">
-        <div class="container">
-            <h2 class="section-title">Daftar Produk Premium</h2>
-            <div class="product-grid">
-                <!-- Produk 1 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-smoking"></i>
-                    </div>
-                    <h3 class="product-name">Sampoerna Mild 16</h3>
-                    <p class="product-desc">Rasa mild dengan kualitas terbaik</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 2 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <h3 class="product-name">Sampoerna Mild Menthol</h3>
-                    <p class="product-desc">Mild dengan sensasi menthol menyegarkan</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 3 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="product-name">Surya Gudang Garam 16</h3>
-                    <p class="product-desc">Klasik dengan cita rasa khas Indonesia</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 4 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="product-name">Marlboro Black Filter 20</h3>
-                    <p class="product-desc">Rasa kuat dengan filter premium</p>
-                    <div class="product-price">1,250฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 5 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3 class="product-name">Marlboro Merah</h3>
-                    <p class="product-desc">Klasik dengan rasa penuh karakter</p>
-                    <div class="product-price">1,400฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 6 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-bold"></i>
-                    </div>
-                    <h3 class="product-name">LA Bold 20</h3>
-                    <p class="product-desc">Rasa bold untuk pengalaman maksimal</p>
-                    <div class="product-price">1,200฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 7 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="product-name">LA Ice Mangoboost</h3>
-                    <p class="product-desc">Kombinasi es dan rasa mangga yang menyegarkan</p>
-                    <div class="product-price">1,100฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-                
-                <!-- Produk 8 -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fas fa-snowflake"></i>
-                    </div>
-                    <h3 class="product-name">LA Ice Purpleboost</h3>
-                    <p class="product-desc">Sensasi es dengan rasa buah ungu yang unik</p>
-                    <div class="product-price">1,100฿</div>
-                    <div class="product-unit">/ Slop</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Info Pembayaran -->
-    <section class="payment-info">
-        <div class="container">
-            <h2 class="section-title">Sistem Pembayaran</h2>
-            <div class="payment-content">
-                <div class="payment-method payment-not-allowed">
+            <h2 class="section-title fade-in">SISTEM PEMBAYARAN</h2>
+            
+            <div class="payment-cards">
+                <div class="payment-card disabled fade-in">
                     <div class="payment-icon">
                         <i class="fas fa-times-circle"></i>
                     </div>
                     <h3 class="payment-title">Bayar Langsung</h3>
-                    <p class="payment-desc">Tidak tersedia untuk metode pembayaran ini. Kami menawarkan kemudahan pembayaran dengan sistem yang lebih fleksibel.</p>
+                    <p style="color: #ccc;">Tidak tersedia untuk metode ini</p>
                 </div>
                 
-                <div class="payment-method payment-allowed">
+                <div class="payment-card enabled fade-in delay-1">
                     <div class="payment-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
-                    <h3 class="payment-title">Bayar Nanti</h3>
-                    <p class="payment-desc">Bayar saat gajian atau saat uang makan datang. Kami percaya dengan sistem kepercayaan untuk kenyamanan Anda.</p>
+                    <h3 class="payment-title">Bayar Pas Gajian</h3>
+                    <p style="color: #ccc;">Order sekarang, bayar nanti saat gajian</p>
+                    <p style="color: var(--gold); margin-top: 15px; font-weight: 600;">
+                        <i class="fas fa-star"></i> Hanya di LUPEK STORE!
+                    </p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Call to Action -->
+    <!-- WARNING SECTION -->
+    <div class="container">
+        <div class="warning-box fade-in">
+            <h3 class="warning-title">
+                <i class="fas fa-exclamation-triangle"></i> PERHATIAN!
+            </h3>
+            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
+                Buruan order sebanyak-banyaknya!
+            </p>
+            <p style="color: var(--red); font-weight: 600; font-size: 1.2rem;">
+                SAMPAI PARU-PARUNYA MENYALA! 🔥🔥
+            </p>
+        </div>
+    </div>
+    
+    <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-fire">🔥</div>
-            <h2 class="cta-title">BURUAN ORDER SEKARANG!</h2>
-            <p class="cta-subtitle">Stock terbatas! Pesan sebanyak mungkin sebelum kehabisan. <span class="highlight">Buat paru-paru Anda menyala dengan pengalaman merokok terbaik!</span></p>
+            <h2 class="cta-title fade-in">SEGERA ORDER!</h2>
+            <p class="cta-subtitle fade-in delay-1">
+                Stock terbatas! Jangan sampai kehabisan produk favorit Anda.
+            </p>
             
-            <a href="https://wa.me/6282267630646" class="whatsapp-btn" style="font-size: 1.2rem; padding: 15px 35px; margin-top: 20px;" target="_blank">
-                <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+            <a href="https://wa.me/6282267630646" class="whatsapp-cta fade-in delay-2" target="_blank">
+                <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
             </a>
             
-            <p class="footer-warning" style="margin-top: 30px;">Hanya untuk konsumen dewasa. Konsumsi dengan bijak.</p>
+            <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-3">
+                📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong>
+            </p>
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer>
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-logo">PREMIUM ROKOK INDONESIA</div>
-            <p class="footer-note">Website ini merupakan katalog produk rokok premium Indonesia. Harga dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. Stock terbatas.</p>
-            <p class="footer-warning">Perhatian: Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan dan janin.</p>
+            <div class="footer-logo">LUPEK STORE</div>
+            <p class="footer-text">
+                Rokok Premium Indonesia - Pembuatan Terbaru<br>
+                Harga dapat berubah tanpa pemberitahuan. Stock terbatas.
+            </p>
+            <p class="warning-text">
+                PERHATIAN: Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan dan janin.
+            </p>
         </div>
     </footer>
     
+    <!-- SIMPLE JAVASCRIPT -->
     <script>
-        // Efek tambahan untuk interaktivitas
+        // Simple fade-in animation on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Animasi untuk kartu produk saat scroll
+            // Add hover effect to product cards
             const productCards = document.querySelectorAll('.product-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
             productCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-            
-            // Efek hover untuk elemen dengan kelas highlight
-            const highlights = document.querySelectorAll('.highlight');
-            highlights.forEach(highlight => {
-                highlight.addEventListener('mouseenter', function() {
-                    this.style.textShadow = '0 0 10px #ff6600';
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
                 });
                 
-                highlight.addEventListener('mouseleave', function() {
-                    this.style.textShadow = '0 0 5px rgba(255, 102, 0, 0.5)';
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
                 });
             });
             
-            // Tambahkan efek partikel api pada klik tombol WhatsApp
-            const whatsappBtns = document.querySelectorAll('.whatsapp-btn');
-            whatsappBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    // Membuat efek partikel api sederhana
-                    createFireParticles(e.clientX, e.clientY);
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
             
-            function createFireParticles(x, y) {
-                for (let i = 0; i < 5; i++) {
-                    const particle = document.createElement('div');
-                    particle.innerHTML = '🔥';
-                    particle.style.position = 'fixed';
-                    particle.style.left = (x - 10) + 'px';
-                    particle.style.top = (y - 10) + 'px';
-                    particle.style.fontSize = '1rem';
-                    particle.style.zIndex = '1000';
-                    particle.style.pointerEvents = 'none';
-                    document.body.appendChild(particle);
-                    
-                    // Animasi partikel
-                    const angle = Math.random() * Math.PI * 2;
-                    const speed = 2 + Math.random() * 3;
-                    const vx = Math.cos(angle) * speed;
-                    const vy = Math.sin(angle) * speed;
-                    
-                    let opacity = 1;
-                    const animateParticle = () => {
-                        opacity -= 0.03;
-                        particle.style.opacity = opacity;
-                        particle.style.left = parseFloat(particle.style.left) + vx + 'px';
-                        particle.style.top = parseFloat(particle.style.top) + vy + 'px';
-                        
-                        if (opacity > 0) {
-                            requestAnimationFrame(animateParticle);
-                        } else {
-                            document.body.removeChild(particle);
-                        }
-                    };
-                    
-                    animateParticle();
-                }
-            }
+            // WhatsApp button click effect
+            const waButtons = document.querySelectorAll('.whatsapp-btn, .whatsapp-cta');
+            waButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+        
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
->>>>>>> 485e5479989e9609de2944b1b51f6d213ffc9de0
 </html>
