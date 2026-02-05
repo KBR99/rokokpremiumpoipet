@@ -23,6 +23,7 @@
             --gold-light: #f7ef8a;
             --red: #c41e3a;
             --green: #25d366;
+            --blue: #2962ff;
         }
         
         body {
@@ -210,7 +211,7 @@
             font-size: 0.9rem;
         }
         
-        /* PAYMENT SECTION */
+        /* PAYMENT SECTION - UPDATED */
         .payment-section {
             background: linear-gradient(135deg, rgba(37, 211, 102, 0.05), rgba(212, 175, 55, 0.05));
             padding: 50px 0;
@@ -232,12 +233,11 @@
             border: 2px solid;
         }
         
-        .payment-card.disabled {
-            border-color: var(--red);
-            opacity: 0.8;
+        .payment-card.enabled {
+            border-color: var(--blue);
         }
         
-        .payment-card.enabled {
+        .payment-card.enabled.special {
             border-color: var(--green);
         }
         
@@ -246,11 +246,11 @@
             margin-bottom: 20px;
         }
         
-        .payment-card.disabled .payment-icon {
-            color: var(--red);
+        .payment-card.enabled .payment-icon {
+            color: var(--blue);
         }
         
-        .payment-card.enabled .payment-icon {
+        .payment-card.enabled.special .payment-icon {
             color: var(--green);
         }
         
@@ -258,6 +258,23 @@
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 15px;
+        }
+        
+        .bank-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .bank-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         /* WARNING SECTION */
@@ -372,6 +389,15 @@
             
             .payment-cards {
                 grid-template-columns: 1fr;
+            }
+            
+            .bank-list {
+                gap: 10px;
+            }
+            
+            .bank-item {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
             
             .whatsapp-cta {
@@ -585,31 +611,52 @@
     <!-- DIVIDER -->
     <div class="divider"></div>
     
-    <!-- PAYMENT SECTION -->
+    <!-- PAYMENT SECTION - UPDATED -->
     <section class="payment-section">
         <div class="container">
             <h2 class="section-title fade-in">SISTEM PEMBAYARAN</h2>
             
             <div class="payment-cards">
-                <div class="payment-card disabled fade-in">
+                <div class="payment-card enabled fade-in">
                     <div class="payment-icon">
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fas fa-university"></i>
                     </div>
-                    <h3 class="payment-title">Bayar Langsung</h3>
-                    <p style="color: #ccc;">Tidak tersedia untuk metode ini</p>
+                    <h3 class="payment-title">Bayar Langsung (Transfer Bank)</h3>
+                    <p style="color: #ccc; margin-bottom: 15px;">Kami menerima pembayaran dari semua bank</p>
+                    
+                    <div class="bank-list">
+                        <div class="bank-item">BCA</div>
+                        <div class="bank-item">Mandiri</div>
+                        <div class="bank-item">BRI</div>
+                        <div class="bank-item">BNI</div>
+                        <div class="bank-item">CIMB</div>
+                        <div class="bank-item">Danamon</div>
+                        <div class="bank-item">Bank Lainnya</div>
+                    </div>
+                    
+                    <p style="color: var(--gold); margin-top: 20px; font-weight: 600;">
+                        <i class="fas fa-check-circle"></i> Semua Bank Diterima!
+                    </p>
                 </div>
                 
-                <div class="payment-card enabled fade-in delay-1">
+                <div class="payment-card enabled special fade-in delay-1">
                     <div class="payment-icon">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
                     <h3 class="payment-title">Bayar Pas Gajian</h3>
-                    <p style="color: #ccc;">Order sekarang, bayar nanti saat gajian</p>
-                    <p style="color: var(--gold); margin-top: 15px; font-weight: 600;">
+                    <p style="color: #ccc; margin-bottom: 15px;">Order sekarang, bayar nanti saat gajian</p>
+                    <p style="color: var(--green); margin-top: 15px; font-weight: 600;">
                         <i class="fas fa-star"></i> Hanya di LUPEK STORE!
+                    </p>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
+                        <i class="fas fa-info-circle"></i> Untuk pelanggan terpercaya
                     </p>
                 </div>
             </div>
+            
+            <p style="text-align: center; color: var(--gold-light); margin-top: 30px; font-size: 1.1rem;" class="fade-in delay-2">
+                <i class="fas fa-credit-card"></i> Pilih metode pembayaran yang paling nyaman untuk Anda!
+            </p>
         </div>
     </section>
     
@@ -643,6 +690,9 @@
             <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-3">
                 📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong>
             </p>
+            <p style="color: var(--blue); margin-top: 10px; font-size: 1rem;" class="fade-in delay-3">
+                <i class="fas fa-university"></i> Transfer Bank? Chat kami untuk detail rekening!
+            </p>
         </div>
     </section>
     
@@ -653,6 +703,9 @@
             <p class="footer-text">
                 Rokok Premium Indonesia - Pembuatan Terbaru<br>
                 Harga dapat berubah tanpa pemberitahuan. Stock terbatas.
+            </p>
+            <p style="color: var(--blue); margin: 15px 0;">
+                <i class="fas fa-credit-card"></i> Menerima pembayaran dari semua bank
             </p>
             <p class="warning-text">
                 PERHATIAN: Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan dan janin.
