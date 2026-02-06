@@ -27,6 +27,35 @@
             --purple: #9c27b0;
         }
         
+        :root {
+            --telegram: #0088cc;  /* Tambahkan ini di variabel colors */
+        }
+
+        /* Tambahkan style untuk telegram button */
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--telegram), #006699);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
+            margin-top: 10px;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+        }
+
+        .telegram-btn i {
+            font-size: 1.2rem;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--black);
@@ -1087,10 +1116,16 @@
                 </nav>
                 
                 <div class="contact-info">
-                    <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                    </a>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok" 
+                        class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://t.me/Yeyesh" 
+                        class="telegram-btn" target="_blank" style="background: linear-gradient(135deg, var(--telegram), #006699);">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                    </div>
                     <div class="phone-number">
                         <i class="fas fa-phone-alt"></i> 0822-6763-0646
                     </div>
@@ -1584,6 +1619,10 @@
                class="whatsapp-cta fade-in delay-2" target="_blank">
                 <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
             </a>
+            <!-- TAMBAHKAN SETELAH WHATSAPP CTA -->
+            <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-left: 15px;">
+                <i class="fab fa-telegram"></i> CHAT VIA TELEGRAM
+            </a>
             
             <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-3">
                 📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong> atau <strong style="color: var(--gold);">0821-6079-4833</strong>
@@ -1611,12 +1650,16 @@
                         </div>
                     </div>
                     
+                    <!-- GANTI KODE INI DI FOOTER -->
                     <div class="contact-item">
                         <h3 class="contact-title">Kontak Lainnya</h3>
                         <div class="contact-detail">
-                            <i class="fab fa-telegram" style="color: var(--blue);"></i>
-                            <span>0821-6079-4833</span>
+                            <i class="fab fa-telegram" style="color: var(--telegram);"></i>
+                            <span>Telegram: @Yeyesh</span>
                         </div>
+                        <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-top: 15px; display: inline-block;">
+                            <i class="fab fa-telegram"></i> Chat via Telegram
+                        </a>
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt" style="color: var(--gold);"></i>
                             <span>Poipet City</span>
