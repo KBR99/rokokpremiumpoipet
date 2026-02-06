@@ -25,35 +25,8 @@
             --green: #25d366;
             --blue: #2962ff;
             --purple: #9c27b0;
-        }
-        
-        :root {
-            --telegram: #0088cc;  /* Tambahkan ini di variabel colors */
-        }
-
-        /* Tambahkan style untuk telegram button */
-        .telegram-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--telegram), #006699);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
-            margin-top: 10px;
-        }
-
-        .telegram-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
-        }
-
-        .telegram-btn i {
-            font-size: 1.2rem;
+            --telegram: #0088cc;
+            --orange: #ff9800;
         }
         
         body {
@@ -124,19 +97,31 @@
         }
         
         .banner-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--gold);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
         
         .banner-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: white;
             max-width: 800px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            font-weight: 400;
+        }
+        
+        .banner-tagline {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            max-width: 700px;
+            margin-top: 10px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            font-weight: 300;
         }
         
         .slider-controls {
@@ -218,18 +203,26 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-decoration: none;
         }
         
         .logo-icon {
-            font-size: 2.2rem;
-            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--black);
             animation: glow 2s ease-in-out infinite alternate;
         }
         
         .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 600;
+            font-weight: 700;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -253,6 +246,7 @@
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
+            font-size: 1rem;
         }
         
         .nav-menu a:hover {
@@ -281,6 +275,11 @@
             gap: 8px;
         }
         
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
@@ -298,6 +297,25 @@
         .whatsapp-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--telegram), #006699);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
+        }
+        
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
         }
         
         .phone-number {
@@ -851,11 +869,11 @@
             }
             
             .banner-title {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .banner-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
             }
             
             .hero-title {
@@ -870,6 +888,16 @@
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 25px;
             }
+            
+            .contact-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .whatsapp-btn, .telegram-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -879,10 +907,14 @@
             }
             
             .banner-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .banner-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .banner-tagline {
                 font-size: 1rem;
             }
             
@@ -906,6 +938,7 @@
             .contact-info {
                 align-items: center;
                 text-align: center;
+                width: 100%;
             }
             
             .hero-title {
@@ -956,10 +989,14 @@
             }
             
             .banner-title {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .banner-subtitle {
+                font-size: 1rem;
+            }
+            
+            .banner-tagline {
                 font-size: 0.9rem;
             }
             
@@ -990,6 +1027,11 @@
             .whatsapp-cta {
                 padding: 16px 30px;
                 font-size: 1rem;
+            }
+            
+            .telegram-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
         }
         
@@ -1092,6 +1134,57 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
         }
+        
+        /* PRODUCT BADGE */
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .contact-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-icon.whatsapp {
+            background: var(--green);
+            color: white;
+        }
+        
+        .contact-icon.telegram {
+            background: var(--telegram);
+            color: white;
+        }
+        
+        .contact-icon.phone {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .contact-icon:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body>
@@ -1099,30 +1192,31 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <a href="#home" class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-fire"></i>
+                        <i class="fas fa-store"></i>
                     </div>
                     <div>
                         <div class="logo-text">LUPEK STORE</div>
-                        <div class="logo-tagline">Rokok Premium Indonesia</div>
+                        <div class="logo-tagline">Premium Rokok Indonesia</div>
                     </div>
-                </div>
+                </a>
                 
                 <nav class="nav-menu">
                     <a href="#home">Home</a>
                     <a href="#produk">Produk</a>
+                    <a href="#keunggulan">Keunggulan</a>
                     <a href="#kontak">Kontak</a>
                 </nav>
                 
                 <div class="contact-info">
-                    <div style="display: flex; gap: 10px;">
-                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok" 
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
                         class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
                         <a href="https://t.me/Yeyesh" 
-                        class="telegram-btn" target="_blank" style="background: linear-gradient(135deg, var(--telegram), #006699);">
+                        class="telegram-btn" target="_blank">
                             <i class="fab fa-telegram"></i> Telegram
                         </a>
                     </div>
@@ -1137,18 +1231,18 @@
     <!-- BANNER SLIDER -->
     <div class="banner-slider" id="bannerSlider">
         <div class="banner-slide active">
-            <img src="https://i.postimg.cc/K8FBbSjY/GAS.png" alt="Banner LUPEK STORE" class="banner-image">
+            <img src="https://i.postimg.cc/K8FBbSjY/GAS.png" alt="LUPEK STORE Banner" class="banner-image">
             <div class="banner-overlay">
-                <h1 class="banner-title">LUPEK STORE</h1>
-                <p class="banner-subtitle">Rokok Premium Original • Ready Stock • Pengiriman Cepat</p>
+                <h1 class="banner-title"> </h1>
+                <p class="banner-subtitle"> </p>
+                <p class="banner-tagline"> </p>
             </div>
         </div>
         
-        <!-- Tambahkan slide lain jika diperlukan -->
         <div class="banner-slide">
             <div style="background: linear-gradient(135deg, #0a0a0a, #2a2a2a); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                 <div style="text-align: center; padding: 20px;">
-                    <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 20px;">13 PRODUK PREMIUM</h1>
+                    <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 20px;">13 JENIS PRODUK</h1>
                     <p style="color: white; font-size: 1.5rem; margin-bottom: 30px;">Sampoerna • Marlboro • LA • Lucky Strike • Esse</p>
                     <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600;">
                         <i class="fab fa-whatsapp"></i> Order Sekarang
@@ -1161,9 +1255,9 @@
             <div style="background: linear-gradient(135deg, #111111, #333333); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                 <div style="text-align: center; padding: 20px;">
                     <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 20px;">BAYAR PAS GAJIAN</h1>
-                    <p style="color: white; font-size: 1.5rem; margin-bottom: 30px;">Order sekarang, bayar nanti saat gajian</p>
+                    <p style="color: white; font-size: 1.5rem; margin-bottom: 30px;">Fleksibel, aman, dan terpercaya</p>
                     <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600;">
-                        <i class="fas fa-bolt"></i> Promo Terbatas
+                        <i class="fas fa-bolt"></i> Sistem Pembayaran Fleksibel
                     </div>
                 </div>
             </div>
@@ -1187,11 +1281,11 @@
     <section id="home" class="hero">
         <div class="container">
             <h1 class="hero-title fade-in">
-                ROKOK PREMIUM • ORIGINAL • READY STOCK
+                TEMPAT TERPERCAYA UNTUK ROKOK PREMIUM
             </h1>
             <p class="hero-subtitle fade-in delay-1">
-                Nikmati pengalaman merokok premium dengan produk original berkualitas tinggi.<br>
-                Stock terbatas, jangan sampai kehabisan!
+                Kami menyediakan berbagai jenis rokok premium dengan kualitas terbaik.<br>
+                Semua produk original, siap kirim ke seluruh Poipet City.
             </p>
             
             <div class="promo-badge fade-in delay-2">
@@ -1199,7 +1293,7 @@
             </div>
             
             <p class="hero-subtitle fade-in delay-3">
-                Hanya di LUPEK STORE! Order sekarang, bayar nanti saat gajian.
+                Nikmati kemudahan pembayaran yang fleksibel hanya di LUPEK STORE!
             </p>
         </div>
     </section>
@@ -1207,11 +1301,15 @@
     <!-- PRODUCTS SECTION -->
     <section id="produk" class="products-section">
         <div class="container">
-            <h2 class="section-title fade-in">PRODUK PREMIUM KAMI</h2>
+            <h2 class="section-title fade-in">PRODUK KAMI</h2>
+            <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">
+                Semua produk 100% original dengan kualitas terbaik
+            </p>
             
             <div class="products-grid">
                 <!-- Product 1 - Sampoerna Mild 16 -->
                 <div class="product-card fade-in">
+                    <div class="product-badge">HOT</div>
                     <div class="product-image-container">
                         <div class="product-image-wrapper">
                             <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/111/MTA-159499191/sampoerna_rokok-sampoerna-mild_full01.jpg" 
@@ -1234,6 +1332,7 @@
                 
                 <!-- Product 2 - Sampoerna Mild Menthol -->
                 <div class="product-card fade-in delay-1">
+                    <div class="product-badge">NEW</div>
                     <div class="product-image-container">
                         <div class="product-image-wrapper">
                             <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//97/MTA-59674000/sampoerna_sampoerna_mild_menthol_16_full02_uz7y83m6.jpg" 
@@ -1278,6 +1377,7 @@
                 
                 <!-- Product 4 - Marlboro Merah -->
                 <div class="product-card fade-in delay-3">
+                    <div class="product-badge">POPULAR</div>
                     <div class="product-image-container">
                         <div class="product-image-wrapper">
                             <img src="https://miro.medium.com/v2/resize:fit:1400/1*FQ2qwoaNXdubTAVp4do6ag.png" 
@@ -1497,40 +1597,48 @@
                 </div>
             </div>
             
-            <p style="text-align: center; color: var(--gold); margin-top: 30px; font-size: 1.1rem;">
-                <i class="fas fa-boxes"></i> Total 13 Produk Premium Siap Kirim!
-            </p>
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 15px;">
+                    <i class="fas fa-boxes"></i> Total 13 Produk Premium Siap Kirim!
+                </p>
+                <p style="color: #aaa; font-size: 0.95rem;">
+                    Semua harga dalam satuan Baht Thailand. Harga dapat berubah sewaktu-waktu.
+                </p>
+            </div>
         </div>
     </section>
     
     <!-- USP SECTION -->
-    <section class="usp-section">
+    <section id="keunggulan" class="usp-section">
         <div class="container">
             <h2 class="section-title fade-in">KEUNGGULAN LUPEK STORE</h2>
+            <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">
+                Mengapa harus memilih LUPEK STORE?
+            </p>
             
             <div class="usp-grid">
                 <div class="usp-card fade-in">
                     <div class="usp-icon">
                         <i class="fas fa-certificate"></i>
                     </div>
-                    <h3 class="usp-title">Produk Original</h3>
-                    <p class="usp-desc">Semua produk 100% original dengan kualitas premium terbaik.</p>
+                    <h3 class="usp-title">Produk 100% Original</h3>
+                    <p class="usp-desc">Kami hanya menjual produk rokok premium original dengan kualitas terbaik dan garansi keaslian.</p>
                 </div>
                 
                 <div class="usp-card fade-in delay-1">
                     <div class="usp-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="usp-title">Respon Cepat</h3>
-                    <p class="usp-desc">Customer service siap melayani 24 jam dengan respon super cepat.</p>
+                    <h3 class="usp-title">Respon Cepat 24/7</h3>
+                    <p class="usp-desc">Customer service kami siap melayani kapan saja dengan respon yang cepat dan ramah.</p>
                 </div>
                 
                 <div class="usp-card fade-in delay-2">
                     <div class="usp-icon">
                         <i class="fas fa-box"></i>
                     </div>
-                    <h3 class="usp-title">Packing Aman</h3>
-                    <p class="usp-desc">Packing rapi dan aman untuk menjaga kualitas produk sampai ke tangan Anda.</p>
+                    <h3 class="usp-title">Packing Aman & Rapi</h3>
+                    <p class="usp-desc">Produk dikemas dengan aman dan rapi untuk menjaga kualitas sampai ke tangan Anda.</p>
                 </div>
                 
                 <div class="usp-card fade-in delay-3">
@@ -1538,7 +1646,7 @@
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <h3 class="usp-title">Pengiriman Cepat</h3>
-                    <p class="usp-desc">Proses pengiriman cepat ke seluruh area Poipet City.</p>
+                    <p class="usp-desc">Proses pengiriman cepat ke seluruh area Poipet City dan sekitarnya.</p>
                 </div>
             </div>
         </div>
@@ -1548,13 +1656,16 @@
     <section class="payment-section">
         <div class="container">
             <h2 class="section-title fade-in">SISTEM PEMBAYARAN</h2>
+            <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">
+                Fleksibel dan aman untuk kenyamanan Anda
+            </p>
             
             <div class="payment-cards">
                 <div class="payment-card enabled fade-in">
                     <div class="payment-icon">
                         <i class="fas fa-university"></i>
                     </div>
-                    <h3 class="payment-title">Bayar Langsung (Transfer Bank)</h3>
+                    <h3 class="payment-title">Transfer Bank</h3>
                     <p style="color: #ccc; margin-bottom: 15px;">Kami menerima pembayaran dari semua bank</p>
                     
                     <div class="bank-list">
@@ -1577,12 +1688,12 @@
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <h3 class="payment-title">Bayar Pas Gajian</h3>
-                    <p style="color: #ccc; margin-bottom: 15px;">Order sekarang, bayar nanti saat gajian</p>
+                    <p style="color: #ccc; margin-bottom: 15px;">Order sekarang, bayar nanti saat gajian atau uang makan</p>
                     <p style="color: var(--green); margin-top: 15px; font-weight: 600;">
                         <i class="fas fa-star"></i> Hanya di LUPEK STORE!
                     </p>
                     <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
-                        <i class="fas fa-info-circle"></i> Untuk pelanggan terpercaya
+                        <i class="fas fa-info-circle"></i> Untuk pelanggan terpercaya dengan syarat dan ketentuan
                     </p>
                 </div>
             </div>
@@ -1597,10 +1708,13 @@
                     <i class="fas fa-exclamation-triangle"></i> PERINGATAN KESEHATAN
                 </h3>
                 <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
-                    MEROKOK DAPAT MEMBAHAYAKAN KESEHATAN ANDA
+                    MEROKOK DAPAT MEMBAHAYAKAN KESEHATAN ANDA DAN ORANG DI SEKITAR ANDA
                 </p>
                 <p style="color: var(--red); font-weight: 600; font-size: 1.2rem;">
                     Hanya untuk usia 21 tahun ke atas
+                </p>
+                <p style="color: #ccc; font-size: 0.9rem; margin-top: 10px;">
+                    Rokok mengandung lebih dari 4.000 bahan kimia berbahaya termasuk nikotin, tar, dan karbon monoksida.
                 </p>
             </div>
         </div>
@@ -1609,24 +1723,41 @@
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title fade-in">ORDER SEKARANG!</h2>
+            <h2 class="cta-title fade-in">SIAP MEMESAN?</h2>
             <p class="cta-subtitle fade-in delay-1">
-                Stock terbatas! Jangan sampai kehabisan produk premium favorit Anda.
-                Hubungi kami sekarang untuk pemesanan.
+                Jangan sampai kehabisan produk premium favorit Anda.<br>
+                Hubungi kami sekarang untuk pemesanan atau informasi lebih lanjut.
             </p>
             
-            <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
-               class="whatsapp-cta fade-in delay-2" target="_blank">
-                <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
-            </a>
-            <!-- TAMBAHKAN SETELAH WHATSAPP CTA -->
-            <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-left: 15px;">
-                <i class="fab fa-telegram"></i> CHAT VIA TELEGRAM
-            </a>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 30px 0;">
+                <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
+                   class="whatsapp-cta fade-in delay-2" target="_blank">
+                    <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
+                </a>
+                
+                <a href="https://t.me/Yeyesh" class="telegram-btn fade-in delay-3" target="_blank" 
+                   style="padding: 20px 35px; font-size: 1.1rem;">
+                    <i class="fab fa-telegram"></i> CHAT VIA TELEGRAM
+                </a>
+            </div>
             
-            <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-3">
-                📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong> atau <strong style="color: var(--gold);">0821-6079-4833</strong>
+            <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-4">
+                <i class="fas fa-phone"></i> Hubungi: 
+                <strong style="color: var(--gold);">0822-6763-0646</strong> atau 
+                <strong style="color: var(--gold);">0821-6079-4833</strong>
             </p>
+            
+            <div class="contact-icons fade-in delay-5">
+                <a href="https://wa.me/6282267630646" class="contact-icon whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/Yeyesh" class="contact-icon telegram" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="tel:082267630646" class="contact-icon phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
         </div>
     </section>
     
@@ -1635,53 +1766,61 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">LUPEK STORE</div>
-                <p class="footer-tagline">Rokok Premium Indonesia - Poipet City</p>
+                <p class="footer-tagline">Premium Rokok Indonesia - Poipet City</p>
                 
                 <div class="contact-grid">
                     <div class="contact-item">
                         <h3 class="contact-title">Kontak Utama</h3>
                         <div class="contact-detail">
                             <i class="fab fa-whatsapp" style="color: var(--green);"></i>
-                            <span>0822-6763-0646</span>
+                            <span>WhatsApp: 0822-6763-0646</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fab fa-whatsapp" style="color: var(--green);"></i>
-                            <span>0821-6079-4833</span>
+                            <span>WhatsApp: 0821-6079-4833</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt" style="color: var(--gold);"></i>
+                            <span>Telepon: 0822-6763-0646</span>
                         </div>
                     </div>
                     
-                    <!-- GANTI KODE INI DI FOOTER -->
                     <div class="contact-item">
                         <h3 class="contact-title">Kontak Lainnya</h3>
                         <div class="contact-detail">
                             <i class="fab fa-telegram" style="color: var(--telegram);"></i>
                             <span>Telegram: @Yeyesh</span>
                         </div>
-                        <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-top: 15px; display: inline-block;">
+                        <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-top: 15px; display: inline-block; width: 100%; text-align: center;">
                             <i class="fab fa-telegram"></i> Chat via Telegram
                         </a>
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt" style="color: var(--gold);"></i>
-                            <span>Poipet City</span>
-                        </div>
                     </div>
                     
                     <div class="contact-item">
-                        <h3 class="contact-title">Informasi</h3>
+                        <h3 class="contact-title">Lokasi & Pengiriman</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt" style="color: var(--gold);"></i>
+                            <span>Poipet City, Kamboja</span>
+                        </div>
                         <div class="contact-detail">
                             <i class="fas fa-shipping-fast" style="color: var(--purple);"></i>
                             <span>Pengiriman Cepat</span>
                         </div>
                         <div class="contact-detail">
-                            <i class="fas fa-box" style="color: var(--gold);"></i>
-                            <span>Packing Aman</span>
+                            <i class="fas fa-clock" style="color: var(--green);"></i>
+                            <span>Buka 24 Jam</span>
                         </div>
                     </div>
                 </div>
                 
                 <p class="footer-warning fade-in">
                     <i class="fas fa-exclamation-circle"></i> PERINGATAN: Hanya untuk usia 21 tahun ke atas. 
-                    Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan serta janin.
+                    Merokok dapat menyebabkan kanker, serangan jantung, impotensi, gangguan kehamilan dan janin, 
+                    serta penyakit pernapasan kronis. Berhenti merokok sekarang juga akan mengurangi risiko terhadap kesehatan.
+                </p>
+                
+                <p style="color: #666; font-size: 0.8rem; margin-top: 30px;">
+                    &copy; 2023 LUPEK STORE. All rights reserved. | Premium Rokok Indonesia
                 </p>
             </div>
         </div>
