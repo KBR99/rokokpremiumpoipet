@@ -33,6 +33,7 @@
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .container {
@@ -41,14 +42,140 @@
             padding: 0 20px;
         }
         
+        section {
+            padding: 60px 0;
+        }
+        
+        /* BANNER SLIDER */
+        .banner-slider {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-slide.active {
+            opacity: 1;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+        
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .banner-title {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            font-weight: 700;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.5rem;
+            color: white;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+        
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+        }
+        
+        .slider-nav:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .slider-prev {
+            left: 20px;
+        }
+        
+        .slider-next {
+            right: 20px;
+        }
+        
         /* HEADER */
         .header {
-            background: var(--dark);
-            position: sticky;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
-            z-index: 100;
-            border-bottom: 2px solid var(--gold);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
         }
         
         .header-content {
@@ -67,6 +194,7 @@
         .logo-icon {
             font-size: 2.2rem;
             color: var(--gold);
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
         .logo-text {
@@ -76,6 +204,7 @@
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
         }
         
         .logo-tagline {
@@ -84,8 +213,43 @@
             margin-top: 2px;
         }
         
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
         .contact-info {
-            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
         }
         
         .whatsapp-btn {
@@ -99,26 +263,30 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
         
         .phone-number {
             color: var(--gold);
             font-size: 0.9rem;
-            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         /* HERO SECTION */
         .hero {
-            padding: 100px 0 60px;
+            padding: 80px 0 60px;
             text-align: center;
             background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .hero::before {
@@ -128,57 +296,62 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.05), transparent 70%),
+                        radial-gradient(circle at 70% 30%, rgba(196, 30, 58, 0.03), transparent 60%);
             pointer-events: none;
         }
         
         .hero-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--gold);
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.4);
         }
         
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ccc;
             max-width: 700px;
             margin: 0 auto 30px;
+            font-weight: 300;
         }
         
         .promo-badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--red), #ff3333);
             color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 15px 30px;
+            border-radius: 10px;
             font-weight: 600;
             margin: 20px 0;
             border-left: 4px solid var(--gold);
             animation: pulse 2s infinite;
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.3);
         }
         
         /* PRODUCTS SECTION */
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 600;
-            margin: 60px 0 40px;
+            margin: 0 0 50px;
             color: var(--gold);
             position: relative;
+            display: inline-block;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 3px;
-            background: var(--gold);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 3px;
         }
         
         .products-grid {
@@ -196,7 +369,7 @@
             border: 2px solid rgba(212, 175, 55, 0.2);
             transition: all 0.4s ease;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -237,7 +410,7 @@
             object-fit: contain;
             transition: transform 0.7s ease;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             opacity: 1;
         }
         
@@ -287,14 +460,81 @@
             margin-top: 5px;
         }
         
+        .product-order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green), #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .product-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* USP SECTION */
+        .usp-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(10, 10, 10, 0.95));
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .usp-card {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .usp-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+        
+        .usp-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .usp-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .usp-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
         /* PAYMENT SECTION */
         .payment-section {
-            background: linear-gradient(135deg, rgba(37, 211, 102, 0.05), rgba(212, 175, 55, 0.05));
-            padding: 50px 0;
-            margin: 40px 0;
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.03), rgba(212, 175, 55, 0.03));
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
         }
         
         .payment-section::before {
@@ -424,9 +664,10 @@
         /* CTA SECTION */
         .cta-section {
             text-align: center;
-            padding: 60px 0;
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
         }
         
         .cta-section::before {
@@ -441,17 +682,18 @@
         }
         
         .cta-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--gold);
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.4);
         }
         
         .cta-subtitle {
             color: #ccc;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 30px;
+            font-weight: 300;
         }
         
         .whatsapp-cta {
@@ -460,9 +702,9 @@
             gap: 15px;
             background: linear-gradient(135deg, var(--green), #128C7E);
             color: white;
-            padding: 18px 40px;
+            padding: 20px 45px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             text-decoration: none;
             margin: 20px 0;
@@ -470,6 +712,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
         }
         
         .whatsapp-cta::before {
@@ -489,19 +732,17 @@
         }
         
         .whatsapp-cta:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5);
         }
         
         /* FOOTER */
         .footer {
             background: var(--dark);
-            padding: 40px 0;
+            padding: 60px 0 30px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
-            margin-top: 60px;
             position: relative;
-            border-radius: 20px 20px 0 0;
         }
         
         .footer::before {
@@ -514,37 +755,78 @@
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
         
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .footer-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--gold);
             margin-bottom: 15px;
+            font-weight: 600;
         }
         
-        .footer-text {
+        .footer-tagline {
             color: #aaa;
-            max-width: 600px;
-            margin: 0 auto 20px;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            font-style: italic;
         }
         
-        .warning-text {
-            color: #ff9900;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .contact-item {
+            background: rgba(42, 42, 42, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .contact-title {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .contact-detail {
+            color: #ccc;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+        
+        .footer-warning {
+            color: var(--red);
+            font-size: 0.9rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(196, 30, 58, 0.3);
             font-style: italic;
-            font-size: 0.85rem;
-            margin-top: 20px;
         }
         
         /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+        @media (max-width: 992px) {
+            .banner-slider {
+                height: 350px;
             }
             
-            .contact-info {
-                text-align: center;
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1.2rem;
             }
             
             .hero-title {
@@ -552,44 +834,116 @@
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 25px;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .banner-slider {
+                height: 300px;
+                margin-top: 70px;
+            }
+            
+            .banner-title {
+                font-size: 2rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+            
+            .slider-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-info {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-subtitle {
+                font-size: 1rem;
+            }
+            
+            .whatsapp-cta {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+            }
             
             .payment-cards {
                 grid-template-columns: 1fr;
             }
             
-            .bank-list {
-                gap: 10px;
+            .usp-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .bank-item {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .whatsapp-cta {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
             }
         }
         
         @media (max-width: 480px) {
+            .banner-slider {
+                height: 250px;
+                margin-top: 60px;
+            }
+            
+            .banner-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.9rem;
+            }
+            
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .hero {
-                padding: 80px 0 40px;
+                padding: 60px 0 40px;
             }
             
-            .product-content {
-                padding: 20px 15px;
+            .section-title {
+                font-size: 1.6rem;
             }
             
             .products-grid {
@@ -598,6 +952,15 @@
             
             .product-image-container {
                 height: 200px;
+            }
+            
+            .product-content {
+                padding: 20px 15px;
+            }
+            
+            .whatsapp-cta {
+                padding: 16px 30px;
+                font-size: 1rem;
             }
         }
         
@@ -627,18 +990,6 @@
             100% {
                 transform: scale(1);
                 box-shadow: 0 0 0 0 rgba(196, 30, 58, 0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-10px) rotate(1deg);
-            }
-            66% {
-                transform: translateY(-5px) rotate(-1deg);
             }
         }
         
@@ -677,28 +1028,40 @@
             border-radius: 10px;
         }
         
-        /* SIMPLE DIVIDER */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 40px auto;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 10px;
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
         
-        /* PRODUCT ANIMATIONS */
-        .product-card:nth-child(odd) {
-            animation: glow 3s ease-in-out infinite;
+        /* BACK TO TOP BUTTON */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gold);
+            color: var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
         
-        .product-card:nth-child(even) {
-            animation: glow 3s ease-in-out 1.5s infinite;
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
         
-        /* FLOATING ANIMATION FOR SPECIAL ITEMS */
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
         }
     </style>
 </head>
@@ -717,9 +1080,16 @@
                     </div>
                 </div>
                 
+                <nav class="nav-menu">
+                    <a href="#home">Home</a>
+                    <a href="#produk">Produk</a>
+                    <a href="#kontak">Kontak</a>
+                </nav>
+                
                 <div class="contact-info">
-                    <a href="https://wa.me/6282267630646" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok" 
+                       class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Order via WhatsApp
                     </a>
                     <div class="phone-number">
                         <i class="fas fa-phone-alt"></i> 0822-6763-0646
@@ -729,19 +1099,68 @@
         </div>
     </header>
     
+    <!-- BANNER SLIDER -->
+    <div class="banner-slider" id="bannerSlider">
+        <div class="banner-slide active">
+            <img src="https://i.postimg.cc/K8FBbSjY/GAS.png" alt="Banner LUPEK STORE" class="banner-image">
+            <div class="banner-overlay">
+                <h1 class="banner-title">LUPEK STORE</h1>
+                <p class="banner-subtitle">Rokok Premium Original • Ready Stock • Pengiriman Cepat</p>
+            </div>
+        </div>
+        
+        <!-- Tambahkan slide lain jika diperlukan -->
+        <div class="banner-slide">
+            <div style="background: linear-gradient(135deg, #0a0a0a, #2a2a2a); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; padding: 20px;">
+                    <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 20px;">13 PRODUK PREMIUM</h1>
+                    <p style="color: white; font-size: 1.5rem; margin-bottom: 30px;">Sampoerna • Marlboro • LA • Lucky Strike • Esse</p>
+                    <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--green); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600;">
+                        <i class="fab fa-whatsapp"></i> Order Sekarang
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="banner-slide">
+            <div style="background: linear-gradient(135deg, #111111, #333333); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; padding: 20px;">
+                    <h1 style="color: var(--gold); font-size: 3rem; margin-bottom: 20px;">BAYAR PAS GAJIAN</h1>
+                    <p style="color: white; font-size: 1.5rem; margin-bottom: 30px;">Order sekarang, bayar nanti saat gajian</p>
+                    <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--red); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 600;">
+                        <i class="fas fa-bolt"></i> Promo Terbatas
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-nav slider-prev" id="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slider-nav slider-next" id="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="slider-controls" id="sliderDots">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+    
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <h1 class="hero-title fade-in">
-                READY BUKAN PO - ROKOK PREMIUM
+                ROKOK PREMIUM • ORIGINAL • READY STOCK
             </h1>
             <p class="hero-subtitle fade-in delay-1">
-                Stock Terbatas • Cita Rasa Berkualitas • Harga Murah<br>
-                Pembuatan Terbaru dengan Kualitas Terbaik
+                Nikmati pengalaman merokok premium dengan produk original berkualitas tinggi.<br>
+                Stock terbatas, jangan sampai kehabisan!
             </p>
             
             <div class="promo-badge fade-in delay-2">
-                <i class="fas fa-money-bill-wave"></i> BAYAR PAS GAJIAN / UANG MAKAN
+                <i class="fas fa-bolt"></i> BAYAR PAS GAJIAN / UANG MAKAN
             </div>
             
             <p class="hero-subtitle fade-in delay-3">
@@ -750,252 +1169,345 @@
         </div>
     </section>
     
-    <!-- DIVIDER -->
-    <div class="divider"></div>
-    
     <!-- PRODUCTS SECTION -->
-    <div class="container">
-        <h2 class="section-title fade-in">DAFTAR PRODUK PREMIUM</h2>
-        
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card fade-in">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/111/MTA-159499191/sampoerna_rokok-sampoerna-mild_full01.jpg" 
-                             alt="Sampoerna Mild 16" class="product-image">
+    <section id="produk" class="products-section">
+        <div class="container">
+            <h2 class="section-title fade-in">PRODUK PREMIUM KAMI</h2>
+            
+            <div class="products-grid">
+                <!-- Product 1 - Sampoerna Mild 16 -->
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/111/MTA-159499191/sampoerna_rokok-sampoerna-mild_full01.jpg" 
+                                 alt="Sampoerna Mild 16" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Sampoerna Mild 16</h3>
+                        <p class="product-desc">Rasa mild dengan kualitas terbaik dari Sampoerna</p>
+                        <div>
+                            <div class="product-price">1,200฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Mild%2016" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
                     </div>
                 </div>
-                <div class="product-content">
-                    <h3 class="product-name">Sampoerna Mild 16</h3>
-                    <p class="product-desc">Rasa mild dengan kualitas terbaik dari Sampoerna</p>
-                    <div>
-                        <div class="product-price">1,200฿</div>
-                        <div class="product-unit">/ Slop</div>
+                
+                <!-- Product 2 - Sampoerna Mild Menthol -->
+                <div class="product-card fade-in delay-1">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//97/MTA-59674000/sampoerna_sampoerna_mild_menthol_16_full02_uz7y83m6.jpg" 
+                                 alt="Sampoerna Mild Menthol" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Sampoerna Mild Menthol</h3>
+                        <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas premium</p>
+                        <div>
+                            <div class="product-price">1,200฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Mild%20Menthol" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 - Sampoerna Evolution -->
+                <div class="product-card fade-in delay-2">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-50171870/sampoerna_sampoerna_avolution_merah_rokok_-20_batang-_10_pcs-_slop-_full03_fgxz7h19.jpeg" 
+                                 alt="Sampoerna Evolution" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Sampoerna Evolution</h3>
+                        <p class="product-desc">Evolusi rasa dengan teknologi terkini dari Sampoerna</p>
+                        <div>
+                            <div class="product-price">1,300฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Evolution" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 - Marlboro Merah -->
+                <div class="product-card fade-in delay-3">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://miro.medium.com/v2/resize:fit:1400/1*FQ2qwoaNXdubTAVp4do6ag.png" 
+                                 alt="Marlboro Merah" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Marlboro Merah</h3>
+                        <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kualitas internasional</p>
+                        <div>
+                            <div class="product-price">1,400฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Marlboro%20Merah" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 5 - LA Ice Purpleboost -->
+                <div class="product-card fade-in delay-4">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2025/7/8991906102009LAIcePurpleBoostRokok_412669b4-a7d1-4e50-9f23-540de61515c9_900x900.png" 
+                                 alt="LA Ice Purpleboost" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">LA Ice Purpleboost</h3>
+                        <p class="product-desc">Sensasi es dengan rasa buah ungu yang menyegarkan</p>
+                        <div>
+                            <div class="product-price">1,100฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20LA%20Ice%20Purpleboost" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 6 - LA Ice Manggoboost -->
+                <div class="product-card fade-in delay-5">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/megaswalayan/products/30194e45-68e6-478e-960d-7eeff38b86aa.jpg" 
+                                 alt="LA Ice Manggoboost" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">LA Ice Manggoboost</h3>
+                        <p class="product-desc">Kombinasi es dan rasa mangga yang unik dan menyegarkan</p>
+                        <div>
+                            <div class="product-price">1,100฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20LA%20Ice%20Manggoboost" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 7 - Surya Gudang Garam 16 -->
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2025/10/8998989110167GudangGaramSuryaBoxFilterRokokBatang16stick_62be00f7-06fe-43d9-bc93-26e90d9c62ad_900x900.png" 
+                                 alt="Surya Gudang Garam 16" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Surya Gudang Garam 16</h3>
+                        <p class="product-desc">Klasik dengan cita rasa khas Indonesia dari Gudang Garam</p>
+                        <div>
+                            <div class="product-price">1,200฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Surya%20Gudang%20Garam%2016" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 8 - Lucky Strike -->
+                <div class="product-card fade-in delay-1">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://ik.imagekit.io/dcjlghyytp1/c42be686934bd7042ab6f8c9f0025043?tr=f-auto,w-360" 
+                                 alt="Lucky Strike" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Lucky Strike</h3>
+                        <p class="product-desc">Rasa klasik dengan kualitas internasional yang konsisten</p>
+                        <div>
+                            <div class="product-price">1,300฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Lucky%20Strike" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 9 - Lucky Strike Menthol -->
+                <div class="product-card fade-in delay-2">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2023/12/LuckyStrikeCoolSwitchBoxFilter20S_bffebc30-eb54-4515-b7c3-604cf8268a78_900x900.png" 
+                                 alt="Lucky Strike Menthol" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Lucky Strike Menthol</h3>
+                        <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas Lucky Strike</p>
+                        <div>
+                            <div class="product-price">1,300฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Lucky%20Strike%20Menthol" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 10 - Magnum Black Filter -->
+                <div class="product-card fade-in delay-3">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2024/2/DjiSamSoeSuperPremiumMagnumBlackBoxFilter12stick_2cc3d252-3d57-463e-8773-ae30b2194980_900x900.png" 
+                                 alt="Magnum Black Filter" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Magnum Black Filter</h3>
+                        <p class="product-desc">Kelas premium dengan filter hitam dan rasa yang khas</p>
+                        <div>
+                            <div class="product-price">1,400฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Magnum%20Black%20Filter" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 11 - Esse Double Change -->
+                <div class="product-card fade-in delay-4">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2024/6/Essechangedouble20stc_bf12e676-4c89-4bf3-b10a-c1767b821887_900x900.jpg" 
+                                 alt="Esse Double Change" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Esse Double Change</h3>
+                        <p class="product-desc">Dua rasa dalam satu dengan pengalaman yang unik</p>
+                        <div>
+                            <div class="product-price">1,150฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Double%20Change" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 12 - Esse Berry Pop -->
+                <div class="product-card fade-in delay-5">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2025/11/8997032821302EsseBerryPopRokok_5066a2ff-6b0d-4c8e-9326-67261d11238a_900x900.png" 
+                                 alt="Esse Berry Pop" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Esse Berry Pop</h3>
+                        <p class="product-desc">Rasa berry yang segar dengan sensasi pop yang unik</p>
+                        <div>
+                            <div class="product-price">1,150฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Berry%20Pop" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 13 - Esse Punch Pop -->
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://image.astronauts.cloud/product-images/2025/12/8999168211330EssePunchPopFilterRokokBatang16Sticks_fb9b1f01-74f7-48a1-affd-ef5e612b35ab_900x900.png" 
+                                 alt="Esse Punch Pop" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Esse Punch Pop</h3>
+                        <p class="product-desc">Sensasi punch yang kuat dengan rasa yang menyegarkan</p>
+                        <div>
+                            <div class="product-price">1,150฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Punch%20Pop" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Product 2 -->
-            <div class="product-card fade-in delay-1">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//97/MTA-59674000/sampoerna_sampoerna_mild_menthol_16_full02_uz7y83m6.jpg" 
-                             alt="Sampoerna Mild Menthol" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Sampoerna Mild Menthol</h3>
-                    <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas premium</p>
-                    <div>
-                        <div class="product-price">1,200฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
+            <p style="text-align: center; color: var(--gold); margin-top: 30px; font-size: 1.1rem;">
+                <i class="fas fa-boxes"></i> Total 13 Produk Premium Siap Kirim!
+            </p>
+        </div>
+    </section>
+    
+    <!-- USP SECTION -->
+    <section class="usp-section">
+        <div class="container">
+            <h2 class="section-title fade-in">KEUNGGULAN LUPEK STORE</h2>
             
-            <!-- Product 3 -->
-            <div class="product-card fade-in delay-2">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-50171870/sampoerna_sampoerna_avolution_merah_rokok_-20_batang-_10_pcs-_slop-_full03_fgxz7h19.jpeg" 
-                             alt="Sampoerna Evolution" class="product-image">
+            <div class="usp-grid">
+                <div class="usp-card fade-in">
+                    <div class="usp-icon">
+                        <i class="fas fa-certificate"></i>
                     </div>
+                    <h3 class="usp-title">Produk Original</h3>
+                    <p class="usp-desc">Semua produk 100% original dengan kualitas premium terbaik.</p>
                 </div>
-                <div class="product-content">
-                    <h3 class="product-name">Sampoerna Evolution</h3>
-                    <p class="product-desc">Evolusi rasa dengan teknologi terkini dari Sampoerna</p>
-                    <div>
-                        <div class="product-price">1,300฿</div>
-                        <div class="product-unit">/ Slop</div>
+                
+                <div class="usp-card fade-in delay-1">
+                    <div class="usp-icon">
+                        <i class="fas fa-bolt"></i>
                     </div>
+                    <h3 class="usp-title">Respon Cepat</h3>
+                    <p class="usp-desc">Customer service siap melayani 24 jam dengan respon super cepat.</p>
                 </div>
-            </div>
-            
-            <!-- Product 4 -->
-            <div class="product-card fade-in delay-3">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*FQ2qwoaNXdubTAVp4do6ag.png" 
-                             alt="Marlboro Merah" class="product-image floating">
+                
+                <div class="usp-card fade-in delay-2">
+                    <div class="usp-icon">
+                        <i class="fas fa-box"></i>
                     </div>
+                    <h3 class="usp-title">Packing Aman</h3>
+                    <p class="usp-desc">Packing rapi dan aman untuk menjaga kualitas produk sampai ke tangan Anda.</p>
                 </div>
-                <div class="product-content">
-                    <h3 class="product-name">Marlboro Merah</h3>
-                    <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kualitas internasional</p>
-                    <div>
-                        <div class="product-price">1,400฿</div>
-                        <div class="product-unit">/ Slop</div>
+                
+                <div class="usp-card fade-in delay-3">
+                    <div class="usp-icon">
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Product 5 -->
-            <div class="product-card fade-in delay-4">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2025/7/8991906102009LAIcePurpleBoostRokok_412669b4-a7d1-4e50-9f23-540de61515c9_900x900.png" 
-                             alt="LA Ice Purpleboost" class="product-image floating">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">LA Ice Purpleboost</h3>
-                    <p class="product-desc">Sensasi es dengan rasa buah ungu yang menyegarkan</p>
-                    <div>
-                        <div class="product-price">1,100฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 6 -->
-            <div class="product-card fade-in delay-5">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/megaswalayan/products/30194e45-68e6-478e-960d-7eeff38b86aa.jpg" 
-                             alt="LA Ice Manggoboost" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">LA Ice Manggoboost</h3>
-                    <p class="product-desc">Kombinasi es dan rasa mangga yang unik dan menyegarkan</p>
-                    <div>
-                        <div class="product-price">1,100฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 7 -->
-            <div class="product-card fade-in">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2025/10/8998989110167GudangGaramSuryaBoxFilterRokokBatang16stick_62be00f7-06fe-43d9-bc93-26e90d9c62ad_900x900.png" 
-                             alt="Surya Gudang Garam 16" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Surya Gudang Garam 16</h3>
-                    <p class="product-desc">Klasik dengan cita rasa khas Indonesia dari Gudang Garam</p>
-                    <div>
-                        <div class="product-price">1,200฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 8 -->
-            <div class="product-card fade-in delay-1">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://ik.imagekit.io/dcjlghyytp1/c42be686934bd7042ab6f8c9f0025043?tr=f-auto,w-360" 
-                             alt="Lucky Strike" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Lucky Strike</h3>
-                    <p class="product-desc">Rasa klasik dengan kualitas internasional yang konsisten</p>
-                    <div>
-                        <div class="product-price">1,300฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 9 -->
-            <div class="product-card fade-in delay-2">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2023/12/LuckyStrikeCoolSwitchBoxFilter20S_bffebc30-eb54-4515-b7c3-604cf8268a78_900x900.png" 
-                             alt="Lucky Strike Menthol" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Lucky Strike Menthol</h3>
-                    <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas Lucky Strike</p>
-                    <div>
-                        <div class="product-price">1,300฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 10 -->
-            <div class="product-card fade-in delay-3">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2024/2/DjiSamSoeSuperPremiumMagnumBlackBoxFilter12stick_2cc3d252-3d57-463e-8773-ae30b2194980_900x900.png" 
-                             alt="Magnum Black Filter" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Magnum Black Filter</h3>
-                    <p class="product-desc">Kelas premium dengan filter hitam dan rasa yang khas</p>
-                    <div>
-                        <div class="product-price">1,400฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 11 -->
-            <div class="product-card fade-in delay-4">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2024/6/Essechangedouble20stc_bf12e676-4c89-4bf3-b10a-c1767b821887_900x900.jpg" 
-                             alt="Esse Double Change" class="product-image floating">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Esse Double Change</h3>
-                    <p class="product-desc">Dua rasa dalam satu dengan pengalaman yang unik</p>
-                    <div>
-                        <div class="product-price">1,150฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 12 -->
-            <div class="product-card fade-in delay-5">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2025/11/8997032821302EsseBerryPopRokok_5066a2ff-6b0d-4c8e-9326-67261d11238a_900x900.png" 
-                             alt="Esse Berry Pop" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Esse Berry Pop</h3>
-                    <p class="product-desc">Rasa berry yang segar dengan sensasi pop yang unik</p>
-                    <div>
-                        <div class="product-price">1,150฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 13 -->
-            <div class="product-card fade-in">
-                <div class="product-image-container">
-                    <div class="product-image-wrapper">
-                        <img src="https://image.astronauts.cloud/product-images/2025/12/8999168211330EssePunchPopFilterRokokBatang16Sticks_fb9b1f01-74f7-48a1-affd-ef5e612b35ab_900x900.png" 
-                             alt="Esse Punch Pop" class="product-image">
-                    </div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-name">Esse Punch Pop</h3>
-                    <p class="product-desc">Sensasi punch yang kuat dengan rasa yang menyegarkan</p>
-                    <div>
-                        <div class="product-price">1,150฿</div>
-                        <div class="product-unit">/ Slop</div>
-                    </div>
+                    <h3 class="usp-title">Pengiriman Cepat</h3>
+                    <p class="usp-desc">Proses pengiriman cepat ke seluruh area Poipet City.</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- DIVIDER -->
-    <div class="divider"></div>
+    </section>
     
     <!-- PAYMENT SECTION -->
     <section class="payment-section">
@@ -1039,71 +1551,169 @@
                     </p>
                 </div>
             </div>
-            
-            <p style="text-align: center; color: var(--gold-light); margin-top: 30px; font-size: 1.1rem;" class="fade-in delay-2">
-                <i class="fas fa-credit-card"></i> Pilih metode pembayaran yang paling nyaman untuk Anda!
-            </p>
         </div>
     </section>
     
     <!-- WARNING SECTION -->
-    <div class="container">
-        <div class="warning-box fade-in">
-            <h3 class="warning-title">
-                <i class="fas fa-exclamation-triangle"></i> PERHATIAN!
-            </h3>
-            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
-                Buruan order sebanyak-banyaknya!
-            </p>
-            <p style="color: var(--red); font-weight: 600; font-size: 1.2rem;">
-                SAMPAI PARU-PARUNYA MENYALA! 🔥🔥
-            </p>
+    <section>
+        <div class="container">
+            <div class="warning-box fade-in">
+                <h3 class="warning-title">
+                    <i class="fas fa-exclamation-triangle"></i> PERINGATAN KESEHATAN
+                </h3>
+                <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
+                    MEROKOK DAPAT MEMBAHAYAKAN KESEHATAN ANDA
+                </p>
+                <p style="color: var(--red); font-weight: 600; font-size: 1.2rem;">
+                    Hanya untuk usia 21 tahun ke atas
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
     
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title fade-in">SEGERA ORDER!</h2>
+            <h2 class="cta-title fade-in">ORDER SEKARANG!</h2>
             <p class="cta-subtitle fade-in delay-1">
-                Stock terbatas! Jangan sampai kehabisan produk favorit Anda.
+                Stock terbatas! Jangan sampai kehabisan produk premium favorit Anda.
+                Hubungi kami sekarang untuk pemesanan.
             </p>
             
-            <a href="https://wa.me/6282267630646" class="whatsapp-cta fade-in delay-2" target="_blank">
+            <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
+               class="whatsapp-cta fade-in delay-2" target="_blank">
                 <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
             </a>
             
             <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-3">
-                📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong>
-            </p>
-            <p style="color: var(--blue); margin-top: 10px; font-size: 1rem;" class="fade-in delay-3">
-                <i class="fas fa-university"></i> Transfer Bank? Chat kami untuk detail rekening!
+                📲 Hubungi: <strong style="color: var(--gold);">0822-6763-0646</strong> atau <strong style="color: var(--gold);">0821-6079-4833</strong>
             </p>
         </div>
     </section>
     
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer id="kontak" class="footer">
         <div class="container">
-            <div class="footer-logo">LUPEK STORE</div>
-            <p class="footer-text">
-                Rokok Premium Indonesia - Pembuatan Terbaru<br>
-                Harga dapat berubah tanpa pemberitahuan. Stock terbatas.
-            </p>
-            <p style="color: var(--blue); margin: 15px 0;">
-                <i class="fas fa-credit-card"></i> Menerima pembayaran dari semua bank
-            </p>
-            <p class="warning-text">
-                PERHATIAN: Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan dan janin.
-            </p>
+            <div class="footer-content">
+                <div class="footer-logo">LUPEK STORE</div>
+                <p class="footer-tagline">Rokok Premium Indonesia - Poipet City</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3 class="contact-title">Kontak Utama</h3>
+                        <div class="contact-detail">
+                            <i class="fab fa-whatsapp" style="color: var(--green);"></i>
+                            <span>0822-6763-0646</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-whatsapp" style="color: var(--green);"></i>
+                            <span>0821-6079-4833</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3 class="contact-title">Kontak Lainnya</h3>
+                        <div class="contact-detail">
+                            <i class="fab fa-telegram" style="color: var(--blue);"></i>
+                            <span>0821-6079-4833</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt" style="color: var(--gold);"></i>
+                            <span>Poipet City</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3 class="contact-title">Informasi</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-shipping-fast" style="color: var(--purple);"></i>
+                            <span>Pengiriman Cepat</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-box" style="color: var(--gold);"></i>
+                            <span>Packing Aman</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="footer-warning fade-in">
+                    <i class="fas fa-exclamation-circle"></i> PERINGATAN: Hanya untuk usia 21 tahun ke atas. 
+                    Merokok dapat menyebabkan kanker, serangan jantung, impotensi, dan gangguan kehamilan serta janin.
+                </p>
+            </div>
         </div>
     </footer>
     
-    <!-- SIMPLE JAVASCRIPT -->
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    
+    <!-- JAVASCRIPT -->
     <script>
-        // Simple initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effect to product cards
+            // Initialize animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // WhatsApp button with custom message
+            const waButtons = document.querySelectorAll('.whatsapp-btn, .whatsapp-cta, .product-order-btn');
+            waButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('href');
+                    window.open(url, '_blank');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#home') {
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            const targetElement = document.querySelector(targetId);
+                            if (targetElement) {
+                                window.scrollTo({
+                                    top: targetElement.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Product hover effects
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
@@ -1117,40 +1727,75 @@
                 });
             });
             
-            // WhatsApp button click effect
-            const waButtons = document.querySelectorAll('.whatsapp-btn, .whatsapp-cta');
-            waButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
+            // Banner Slider Functionality
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                // Reset all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Calculate new slide index
+                currentSlide = (n + slides.length) % slides.length;
+                
+                // Show new slide
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            // Add click events to buttons
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
                 });
             });
             
-            // Initialize animations
-            setTimeout(() => {
-                const fadeElements = document.querySelectorAll('.fade-in');
-                fadeElements.forEach((el, index) => {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-            }, 100);
+            // Auto slide every 5 seconds
+            setInterval(nextSlide, 5000);
+            
+            console.log('LUPEK STORE Website Loaded Successfully!');
+            console.log('Total Products:', productCards.length);
+            console.log('Banner Slider: Active with 3 slides');
         });
         
-        // Ensure images load
+        // Force images to load
         window.addEventListener('load', function() {
-            console.log('Semua gambar telah dimuat!');
-            console.log('Total produk: 13');
-            
-            // Force display of all products
-            const products = document.querySelectorAll('.product-card');
-            products.forEach(product => {
-                product.style.display = 'flex';
-                product.style.visibility = 'visible';
-                product.style.opacity = '1';
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.style.opacity = '1';
+                } else {
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    });
+                }
             });
+            
+            // Count and display total products
+            const productCount = document.querySelectorAll('.product-card').length;
+            console.log(`Total produk yang ditampilkan: ${productCount}`);
         });
     </script>
 </body>
