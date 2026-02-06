@@ -24,6 +24,7 @@
             --red: #c41e3a;
             --green: #25d366;
             --blue: #2962ff;
+            --purple: #9c27b0;
         }
         
         body {
@@ -116,6 +117,19 @@
             padding: 100px 0 60px;
             text-align: center;
             background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
+            pointer-events: none;
         }
         
         .hero-title {
@@ -124,6 +138,7 @@
             margin-bottom: 20px;
             color: var(--gold);
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
         
         .hero-subtitle {
@@ -142,6 +157,7 @@
             font-weight: 600;
             margin: 20px 0;
             border-left: 4px solid var(--gold);
+            animation: pulse 2s infinite;
         }
         
         /* PRODUCTS SECTION */
@@ -167,36 +183,90 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
         }
         
         .product-card {
             background: var(--dark);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 20px;
+            overflow: hidden;
             text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .product-card:hover {
             border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
         }
         
-        .product-icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
+        .product-image-container {
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(42, 42, 42, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 18px 18px 0 0;
+            padding: 20px;
+        }
+        
+        .product-image-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .product-image {
+            max-height: 180px;
+            max-width: 90%;
+            object-fit: contain;
+            transition: transform 0.7s ease;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.15) rotate(2deg);
+        }
+        
+        .product-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         .product-name {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            color: white;
+            line-height: 1.3;
+        }
+        
+        .product-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            min-height: 40px;
+            line-height: 1.4;
         }
         
         .product-price {
@@ -204,18 +274,38 @@
             font-weight: 700;
             color: var(--gold);
             margin: 15px 0 5px;
+            text-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            padding: 8px 15px;
+            border-radius: 12px;
+            display: inline-block;
         }
         
         .product-unit {
             color: #aaa;
             font-size: 0.9rem;
+            margin-top: 5px;
         }
         
-        /* PAYMENT SECTION - UPDATED */
+        /* PAYMENT SECTION */
         .payment-section {
             background: linear-gradient(135deg, rgba(37, 211, 102, 0.05), rgba(212, 175, 55, 0.05));
             padding: 50px 0;
             margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .payment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(37, 211, 102, 0.05), transparent 70%);
+            pointer-events: none;
         }
         
         .payment-cards {
@@ -228,17 +318,35 @@
         .payment-card {
             background: var(--dark);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 20px;
             text-align: center;
             border: 2px solid;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--blue), var(--green));
+            z-index: 2;
+        }
+        
+        .payment-card.enabled.special::before {
+            background: linear-gradient(90deg, var(--green), var(--gold));
         }
         
         .payment-card.enabled {
-            border-color: var(--blue);
+            border-color: rgba(41, 98, 255, 0.3);
         }
         
         .payment-card.enabled.special {
-            border-color: var(--green);
+            border-color: rgba(37, 211, 102, 0.3);
         }
         
         .payment-icon {
@@ -275,16 +383,35 @@
             font-size: 0.9rem;
             color: var(--gold-light);
             border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .bank-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
         }
         
         /* WARNING SECTION */
         .warning-box {
             background: rgba(196, 30, 58, 0.1);
             border: 2px solid var(--red);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
             margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .warning-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.2), transparent 70%);
+            pointer-events: none;
         }
         
         .warning-title {
@@ -298,12 +425,26 @@
         .cta-section {
             text-align: center;
             padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 80%, rgba(212, 175, 55, 0.1), transparent 70%);
+            pointer-events: none;
         }
         
         .cta-title {
             font-size: 2.2rem;
             color: var(--gold);
             margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
         
         .cta-subtitle {
@@ -326,11 +467,30 @@
             text-decoration: none;
             margin: 20px 0;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .whatsapp-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .whatsapp-cta:hover::before {
+            left: 100%;
         }
         
         .whatsapp-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
         }
         
         /* FOOTER */
@@ -340,6 +500,18 @@
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             margin-top: 60px;
+            position: relative;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
         
         .footer-logo {
@@ -384,7 +556,8 @@
             }
             
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
             }
             
             .payment-cards {
@@ -415,41 +588,93 @@
                 padding: 80px 0 40px;
             }
             
-            .product-card {
-                padding: 20px;
+            .product-content {
+                padding: 20px 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image-container {
+                height: 200px;
             }
         }
         
-        /* SIMPLE ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        @keyframes fadeIn {
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
         
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.7);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(196, 30, 58, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(196, 30, 58, 0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+            66% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
         
         /* CUSTOM SCROLLBAR */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         
         ::-webkit-scrollbar-track {
             background: var(--dark);
+            border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 4px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
         }
         
         /* SIMPLE DIVIDER */
@@ -459,6 +684,21 @@
             margin: 40px auto;
             width: 80%;
             max-width: 400px;
+            border-radius: 10px;
+        }
+        
+        /* PRODUCT ANIMATIONS */
+        .product-card:nth-child(odd) {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .product-card:nth-child(even) {
+            animation: glow 3s ease-in-out 1.5s infinite;
+        }
+        
+        /* FLOATING ANIMATION FOR SPECIAL ITEMS */
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -515,95 +755,241 @@
     
     <!-- PRODUCTS SECTION -->
     <div class="container">
-        <h2 class="section-title fade-in">DAFTAR PRODUK</h2>
+        <h2 class="section-title fade-in">DAFTAR PRODUK PREMIUM</h2>
         
         <div class="products-grid">
             <!-- Product 1 -->
             <div class="product-card fade-in">
-                <div class="product-icon">
-                    <i class="fas fa-smoking"></i>
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/111/MTA-159499191/sampoerna_rokok-sampoerna-mild_full01.jpg" 
+                             alt="Sampoerna Mild 16" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">Sampoerna Mild 16</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Rasa mild dengan kualitas terbaik</p>
-                <div class="product-price">1,200฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Sampoerna Mild 16</h3>
+                    <p class="product-desc">Rasa mild dengan kualitas terbaik dari Sampoerna</p>
+                    <div>
+                        <div class="product-price">1,200฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 2 -->
             <div class="product-card fade-in delay-1">
-                <div class="product-icon">
-                    <i class="fas fa-wind"></i>
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//97/MTA-59674000/sampoerna_sampoerna_mild_menthol_16_full02_uz7y83m6.jpg" 
+                             alt="Sampoerna Mild Menthol" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">Sampoerna Mild Menthol</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Sensasi menthol yang menyegarkan</p>
-                <div class="product-price">1,200฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Sampoerna Mild Menthol</h3>
+                    <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas premium</p>
+                    <div>
+                        <div class="product-price">1,200฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 3 -->
             <div class="product-card fade-in delay-2">
-                <div class="product-icon">
-                    <i class="fas fa-star"></i>
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-50171870/sampoerna_sampoerna_avolution_merah_rokok_-20_batang-_10_pcs-_slop-_full03_fgxz7h19.jpeg" 
+                             alt="Sampoerna Evolution" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">Surya Gudang Garam 16</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Klasik dengan cita rasa khas Indonesia</p>
-                <div class="product-price">1,200฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Sampoerna Evolution</h3>
+                    <p class="product-desc">Evolusi rasa dengan teknologi terkini dari Sampoerna</p>
+                    <div>
+                        <div class="product-price">1,300฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 4 -->
             <div class="product-card fade-in delay-3">
-                <div class="product-icon">
-                    <i class="fas fa-crown"></i>
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*FQ2qwoaNXdubTAVp4do6ag.png" 
+                             alt="Marlboro Merah" class="product-image floating">
+                    </div>
                 </div>
-                <h3 class="product-name">Marlboro Black Filter 20</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Rasa kuat dengan filter premium</p>
-                <div class="product-price">1,250฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Marlboro Merah</h3>
+                    <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kualitas internasional</p>
+                    <div>
+                        <div class="product-price">1,400฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 5 -->
-            <div class="product-card fade-in">
-                <div class="product-icon">
-                    <i class="fas fa-fire"></i>
+            <div class="product-card fade-in delay-4">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2025/7/8991906102009LAIcePurpleBoostRokok_412669b4-a7d1-4e50-9f23-540de61515c9_900x900.png" 
+                             alt="LA Ice Purpleboost" class="product-image floating">
+                    </div>
                 </div>
-                <h3 class="product-name">Marlboro Merah</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Klasik dunia dengan rasa penuh karakter</p>
-                <div class="product-price">1,400฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">LA Ice Purpleboost</h3>
+                    <p class="product-desc">Sensasi es dengan rasa buah ungu yang menyegarkan</p>
+                    <div>
+                        <div class="product-price">1,100฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 6 -->
-            <div class="product-card fade-in delay-1">
-                <div class="product-icon">
-                    <i class="fas fa-bold"></i>
+            <div class="product-card fade-in delay-5">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/megaswalayan/products/30194e45-68e6-478e-960d-7eeff38b86aa.jpg" 
+                             alt="LA Ice Manggoboost" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">LA Bold 20</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Rasa bold untuk pengalaman maksimal</p>
-                <div class="product-price">1,200฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">LA Ice Manggoboost</h3>
+                    <p class="product-desc">Kombinasi es dan rasa mangga yang unik dan menyegarkan</p>
+                    <div>
+                        <div class="product-price">1,100฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 7 -->
-            <div class="product-card fade-in delay-2">
-                <div class="product-icon">
-                    <i class="fas fa-leaf"></i>
+            <div class="product-card fade-in">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2025/10/8998989110167GudangGaramSuryaBoxFilterRokokBatang16stick_62be00f7-06fe-43d9-bc93-26e90d9c62ad_900x900.png" 
+                             alt="Surya Gudang Garam 16" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">LA Ice Mangoboost</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Kombinasi es dan rasa mangga</p>
-                <div class="product-price">1,100฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Surya Gudang Garam 16</h3>
+                    <p class="product-desc">Klasik dengan cita rasa khas Indonesia dari Gudang Garam</p>
+                    <div>
+                        <div class="product-price">1,200฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
             
             <!-- Product 8 -->
-            <div class="product-card fade-in delay-3">
-                <div class="product-icon">
-                    <i class="fas fa-snowflake"></i>
+            <div class="product-card fade-in delay-1">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://ik.imagekit.io/dcjlghyytp1/c42be686934bd7042ab6f8c9f0025043?tr=f-auto,w-360" 
+                             alt="Lucky Strike" class="product-image">
+                    </div>
                 </div>
-                <h3 class="product-name">LA Ice Purpleboost</h3>
-                <p style="color: #aaa; font-size: 0.9rem;">Sensasi es dengan rasa buah ungu</p>
-                <div class="product-price">1,100฿</div>
-                <div class="product-unit">/ Slop</div>
+                <div class="product-content">
+                    <h3 class="product-name">Lucky Strike</h3>
+                    <p class="product-desc">Rasa klasik dengan kualitas internasional yang konsisten</p>
+                    <div>
+                        <div class="product-price">1,300฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 9 -->
+            <div class="product-card fade-in delay-2">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2023/12/LuckyStrikeCoolSwitchBoxFilter20S_bffebc30-eb54-4515-b7c3-604cf8268a78_900x900.png" 
+                             alt="Lucky Strike Menthol" class="product-image">
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Lucky Strike Menthol</h3>
+                    <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas Lucky Strike</p>
+                    <div>
+                        <div class="product-price">1,300฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 10 -->
+            <div class="product-card fade-in delay-3">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2024/2/DjiSamSoeSuperPremiumMagnumBlackBoxFilter12stick_2cc3d252-3d57-463e-8773-ae30b2194980_900x900.png" 
+                             alt="Magnum Black Filter" class="product-image">
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Magnum Black Filter</h3>
+                    <p class="product-desc">Kelas premium dengan filter hitam dan rasa yang khas</p>
+                    <div>
+                        <div class="product-price">1,400฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 11 -->
+            <div class="product-card fade-in delay-4">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2024/6/Essechangedouble20stc_bf12e676-4c89-4bf3-b10a-c1767b821887_900x900.jpg" 
+                             alt="Esse Double Change" class="product-image floating">
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Esse Double Change</h3>
+                    <p class="product-desc">Dua rasa dalam satu dengan pengalaman yang unik</p>
+                    <div>
+                        <div class="product-price">1,150฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 12 -->
+            <div class="product-card fade-in delay-5">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2025/11/8997032821302EsseBerryPopRokok_5066a2ff-6b0d-4c8e-9326-67261d11238a_900x900.png" 
+                             alt="Esse Berry Pop" class="product-image">
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Esse Berry Pop</h3>
+                    <p class="product-desc">Rasa berry yang segar dengan sensasi pop yang unik</p>
+                    <div>
+                        <div class="product-price">1,150฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 13 -->
+            <div class="product-card fade-in">
+                <div class="product-image-container">
+                    <div class="product-image-wrapper">
+                        <img src="https://image.astronauts.cloud/product-images/2025/12/8999168211330EssePunchPopFilterRokokBatang16Sticks_fb9b1f01-74f7-48a1-affd-ef5e612b35ab_900x900.png" 
+                             alt="Esse Punch Pop" class="product-image">
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Esse Punch Pop</h3>
+                    <p class="product-desc">Sensasi punch yang kuat dengan rasa yang menyegarkan</p>
+                    <div>
+                        <div class="product-price">1,150฿</div>
+                        <div class="product-unit">/ Slop</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -611,7 +997,7 @@
     <!-- DIVIDER -->
     <div class="divider"></div>
     
-    <!-- PAYMENT SECTION - UPDATED -->
+    <!-- PAYMENT SECTION -->
     <section class="payment-section">
         <div class="container">
             <h2 class="section-title fade-in">SISTEM PEMBAYARAN</h2>
@@ -715,30 +1101,19 @@
     
     <!-- SIMPLE JAVASCRIPT -->
     <script>
-        // Simple fade-in animation on load
+        // Simple initialization
         document.addEventListener('DOMContentLoaded', function() {
             // Add hover effect to product cards
             const productCards = document.querySelectorAll('.product-card');
             productCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.zIndex = '100';
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if(target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.zIndex = '1';
                 });
             });
             
@@ -752,16 +1127,30 @@
                     }, 200);
                 });
             });
+            
+            // Initialize animations
+            setTimeout(() => {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                fadeElements.forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 100);
         });
         
-        // Add loading animation
+        // Ensure images load
         window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease';
+            console.log('Semua gambar telah dimuat!');
+            console.log('Total produk: 13');
             
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+            // Force display of all products
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                product.style.display = 'flex';
+                product.style.visibility = 'visible';
+                product.style.opacity = '1';
+            });
         });
     </script>
 </body>
