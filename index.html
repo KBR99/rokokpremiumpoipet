@@ -283,13 +283,14 @@
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px; /* GANTI 8px JADI 6px */
             background: linear-gradient(135deg, var(--green), #128C7E);
             color: white;
-            padding: 12px 25px;
+            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 600; /* INI BENAR, BUKAN font-weight: 0.85rem */
+            font-size: 0.8rem; /* TAMBAHKAN INI */
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
         }
@@ -302,13 +303,14 @@
         .telegram-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px; /* GANTI 8px JADI 6px */
             background: linear-gradient(135deg, var(--telegram), #006699);
             color: white;
-            padding: 12px 25px;
+            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 600; /* INI BENAR */
+            font-size: 0.8rem; /* TAMBAHKAN INI */
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
         }
@@ -321,18 +323,20 @@
         .request-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px; /* GANTI 10px JADI 6px */
             background: linear-gradient(135deg, var(--purple), #7b1fa2);
             color: white;
-            padding: 12px 25px;
+            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 600; /* INI BENAR */
+            font-size: 0.8rem; /* TAMBAHKAN INI */
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(156, 39, 176, 0.2);
         }
 
         .request-btn:hover {
+            
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
         }
@@ -957,7 +961,7 @@
         }
         
         /* RESPONSIVE DESIGN */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .banner-slider {
                 height: 350px;
             }
@@ -1356,9 +1360,9 @@
         <div class="banner-slide active">
             <img src="https://i.postimg.cc/K8FBbSjY/GAS.png" alt="LUPEK STORE Banner" class="banner-image">
             <div class="banner-overlay">
-                <h1 class="banner-title">LUPEK STORE</h1>
-                <p class="banner-subtitle">Premium Rokok Indonesia Terpercaya</p>
-                <p class="banner-tagline">13 Jenis Rokok Premium • Original 100% • Siap Kirim Poipet City</p>
+                <h1 class="banner-title"> </h1>
+                <p class="banner-subtitle"> </p>
+                <p class="banner-tagline"> </p>
             </div>
         </div>
         
