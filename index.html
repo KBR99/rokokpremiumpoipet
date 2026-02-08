@@ -317,6 +317,25 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
         }
+
+        .request-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--purple), #7b1fa2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.2);
+        }
+
+        .request-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+        }
         
         .phone-number {
             color: var(--gold);
@@ -528,6 +547,81 @@
         .product-order-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* REQUEST PO SECTION STYLES */
+        .request-section {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.05), rgba(10, 10, 10, 0.95));
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .request-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .request-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .request-instruction {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .steps-container {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .request-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
         }
         
         /* USP SECTION */
@@ -894,7 +988,7 @@
                 width: 100%;
             }
             
-            .whatsapp-btn, .telegram-btn {
+            .whatsapp-btn, .telegram-btn, .request-btn {
                 width: 100%;
                 justify-content: center;
             }
@@ -979,6 +1073,31 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
                 text-align: center;
+            }
+            
+            .request-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .request-instruction {
+                padding: 25px;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                align-self: center;
+            }
+            
+            .request-buttons {
+                flex-direction: column;
+            }
+            
+            .request-buttons a {
+                width: 100%;
             }
         }
         
@@ -1089,7 +1208,7 @@
             width: 10px;
         }
         
-        ::-webkit-scrollbar-track {
+        ::o-scrollbar-track {
             background: var(--dark);
             border-radius: 10px;
         }
@@ -1205,12 +1324,16 @@
                 <nav class="nav-menu">
                     <a href="#home">Home</a>
                     <a href="#produk">Produk</a>
+                    <a href="#request">Request PO</a>
                     <a href="#keunggulan">Keunggulan</a>
                     <a href="#kontak">Kontak</a>
                 </nav>
                 
                 <div class="contact-info">
                     <div class="contact-buttons">
+                        <a href="#request" class="request-btn">
+                            <i class="fas fa-cart-plus"></i> Request PO
+                        </a>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
                         class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp
@@ -1233,9 +1356,9 @@
         <div class="banner-slide active">
             <img src="https://i.postimg.cc/K8FBbSjY/GAS.png" alt="LUPEK STORE Banner" class="banner-image">
             <div class="banner-overlay">
-                <h1 class="banner-title"> </h1>
-                <p class="banner-subtitle"> </p>
-                <p class="banner-tagline"> </p>
+                <h1 class="banner-title">LUPEK STORE</h1>
+                <p class="banner-subtitle">Premium Rokok Indonesia Terpercaya</p>
+                <p class="banner-tagline">13 Jenis Rokok Premium • Original 100% • Siap Kirim Poipet City</p>
             </div>
         </div>
         
@@ -1320,7 +1443,7 @@
                         <h3 class="product-name">Sampoerna Mild 16</h3>
                         <p class="product-desc">Rasa mild dengan kualitas terbaik dari Sampoerna</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Mild%2016" 
@@ -1342,6 +1465,29 @@
                     <div class="product-content">
                         <h3 class="product-name">Sampoerna Mild Menthol</h3>
                         <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas premium</p>
+                        <div>
+                            <div class="product-price">1,100฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Mild%20Menthol" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 - Sampoerna Mild Menthol -->
+                <div class="product-card fade-in delay-1">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/megaswalayan/products/a77a849c-5a29-4aad-9623-119f3b71ff5f.jpg" 
+                                 alt="Sampoerna Mild Menthol" class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">LA Bold 20</h3>
+                        <p class="product-desc">Sensasi kualitas premium</p>
                         <div>
                             <div class="product-price">1,200฿</div>
                             <div class="product-unit">/ Slop</div>
@@ -1365,7 +1511,7 @@
                         <h3 class="product-name">Sampoerna Evolution</h3>
                         <p class="product-desc">Evolusi rasa dengan teknologi terkini dari Sampoerna</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,250฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Sampoerna%20Evolution" 
@@ -1386,6 +1532,29 @@
                     </div>
                     <div class="product-content">
                         <h3 class="product-name">Marlboro Merah</h3>
+                        <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kualitas internasional</p>
+                        <div>
+                            <div class="product-price">1,400฿</div>
+                            <div class="product-unit">/ Slop</div>
+                        </div>
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Marlboro%20Merah" 
+                           class="product-order-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </div>
+                </div>
+
+                 <!-- Product 4 - Marlboro Merah -->
+                <div class="product-card fade-in delay-3">
+                    <div class="product-badge">POPULAR</div>
+                    <div class="product-image-container">
+                        <div class="product-image-wrapper">
+                            <img src="https://arti-assets.sgp1.cdn.digitaloceanspaces.com/megaswalayan/products/670d7777-8020-4cdd-ad8d-4125cb00aafc.jpg" 
+                                 alt="Marlboro Black Filter 20 " class="product-image">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">Marlboro Black Filter 20 </h3>
                         <p class="product-desc">Klasik dunia dengan rasa penuh karakter dan kualitas internasional</p>
                         <div>
                             <div class="product-price">1,200฿</div>
@@ -1410,7 +1579,7 @@
                         <h3 class="product-name">LA Ice Purpleboost</h3>
                         <p class="product-desc">Sensasi es dengan rasa buah ungu yang menyegarkan</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20LA%20Ice%20Purpleboost" 
@@ -1432,7 +1601,7 @@
                         <h3 class="product-name">LA Ice Manggoboost</h3>
                         <p class="product-desc">Kombinasi es dan rasa mangga yang unik dan menyegarkan</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20LA%20Ice%20Manggoboost" 
@@ -1454,7 +1623,7 @@
                         <h3 class="product-name">Surya Gudang Garam 16</h3>
                         <p class="product-desc">Klasik dengan cita rasa khas Indonesia dari Gudang Garam</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Surya%20Gudang%20Garam%2016" 
@@ -1476,7 +1645,7 @@
                         <h3 class="product-name">Lucky Strike</h3>
                         <p class="product-desc">Rasa klasik dengan kualitas internasional yang konsisten</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">950฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Lucky%20Strike" 
@@ -1498,7 +1667,7 @@
                         <h3 class="product-name">Lucky Strike Menthol</h3>
                         <p class="product-desc">Sensasi menthol yang menyegarkan dengan kualitas Lucky Strike</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Lucky%20Strike%20Menthol" 
@@ -1520,7 +1689,7 @@
                         <h3 class="product-name">Magnum Black Filter</h3>
                         <p class="product-desc">Kelas premium dengan filter hitam dan rasa yang khas</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">900฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Magnum%20Black%20Filter" 
@@ -1542,7 +1711,7 @@
                         <h3 class="product-name">Esse Double Change</h3>
                         <p class="product-desc">Dua rasa dalam satu dengan pengalaman yang unik</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,250฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Double%20Change" 
@@ -1564,7 +1733,7 @@
                         <h3 class="product-name">Esse Berry Pop</h3>
                         <p class="product-desc">Rasa berry yang segar dengan sensasi pop yang unik</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Berry%20Pop" 
@@ -1586,7 +1755,7 @@
                         <h3 class="product-name">Esse Punch Pop</h3>
                         <p class="product-desc">Sensasi punch yang kuat dengan rasa yang menyegarkan</p>
                         <div>
-                            <div class="product-price">1,200฿</div>
+                            <div class="product-price">1,100฿</div>
                             <div class="product-unit">/ Slop</div>
                         </div>
                         <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20Esse%20Punch%20Pop" 
@@ -1604,6 +1773,106 @@
                 <p style="color: #aaa; font-size: 0.95rem;">
                     Semua harga dalam satuan Baht Thailand. Harga dapat berubah sewaktu-waktu.
                 </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- REQUEST PO SECTION -->
+    <section id="request" class="request-section">
+        <div class="container">
+            <h2 class="section-title fade-in">REQUEST PO KHUSUS</h2>
+            <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">
+                Cari rokok yang tidak ada di list? Kami bisa bantu carikan khusus untuk Anda!
+            </p>
+            
+            <div class="request-container">
+                <div class="request-info">
+                    <div class="usp-card fade-in">
+                        <div class="usp-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="usp-title">Cari Rokok Khusus</h3>
+                        <p class="usp-desc">Kami akan membantu mencari rokok merek apapun yang Anda inginkan</p>
+                    </div>
+                    
+                    <div class="usp-card fade-in delay-1">
+                        <div class="usp-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="usp-title">Pre-Order</h3>
+                        <p class="usp-desc">Pesan khusus dan kami akan sediakan sesuai permintaan Anda</p>
+                    </div>
+                    
+                    <div class="usp-card fade-in delay-2">
+                        <div class="usp-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="usp-title">Konsultasi Gratis</h3>
+                        <p class="usp-desc">Konsultasi kebutuhan rokok Anda langsung dengan kami</p>
+                    </div>
+                </div>
+                
+                <!-- INSTRUKSI REQUEST -->
+                <div class="request-instruction fade-in delay-3">
+                    <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;">
+                        <i class="fas fa-info-circle"></i> Cara Request PO
+                    </h3>
+                    
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Hubungi Kami</h4>
+                                <p>Klik tombol di bawah untuk langsung terhubung ke WhatsApp/Telegram</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Sebutkan Request</h4>
+                                <p>Beritahu kami merek rokok yang Anda cari (kapan saja, dari mana saja)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Konfirmasi Ketersediaan</h4>
+                                <p>Kami akan cek ketersediaan dan informasikan harga serta waktu pengiriman</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Proses PO</h4>
+                                <p>Jika deal, kami akan proses PO khusus untuk Anda</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- TOMBOL REQUEST LANGSUNG -->
+                    <div class="request-buttons">
+                        <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20request%20rokok%20khusus:%20[SEBUTKAN%20MEREK%20ROKOK%20YANG%20DICARI]" 
+                           class="whatsapp-cta" target="_blank" style="margin: 20px auto; display: inline-flex;">
+                            <i class="fab fa-whatsapp"></i> REQUEST VIA WHATSAPP
+                        </a>
+                        
+                        <a href="https://t.me/Yeyesh?text=Halo%20LUPEK%20STORE,%20saya%20mau%20request%20rokok%20khusus" 
+                           class="telegram-btn" target="_blank" style="margin: 20px auto; display: inline-flex;">
+                            <i class="fab fa-telegram"></i> REQUEST VIA TELEGRAM
+                        </a>
+                    </div>
+                    
+                    <div class="warning-box" style="margin-top: 30px; background: rgba(212, 175, 55, 0.1); border-color: var(--gold);">
+                        <p style="color: var(--gold-light); text-align: center;">
+                            <i class="fas fa-exclamation-circle"></i> 
+                            <strong>CATATAN:</strong> Request PO hanya melayani pembelian dalam jumlah besar/minimal 5 slop. 
+                            Waktu pengiriman menyesuaikan ketersediaan barang.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1786,13 +2055,17 @@
                     </div>
                     
                     <div class="contact-item">
-                        <h3 class="contact-title">Kontak Lainnya</h3>
+                        <h3 class="contact-title">Request PO</h3>
                         <div class="contact-detail">
-                            <i class="fab fa-telegram" style="color: var(--telegram);"></i>
-                            <span>Telegram: @Yeyesh</span>
+                            <i class="fas fa-cart-plus" style="color: var(--purple);"></i>
+                            <span>Request rokok khusus</span>
                         </div>
-                        <a href="https://t.me/Yeyesh" class="telegram-btn" target="_blank" style="margin-top: 15px; display: inline-block; width: 100%; text-align: center;">
-                            <i class="fab fa-telegram"></i> Chat via Telegram
+                        <div class="contact-detail">
+                            <i class="fas fa-search" style="color: var(--gold);"></i>
+                            <span>Cari merek apapun</span>
+                        </div>
+                        <a href="#request" class="request-btn" style="margin-top: 15px; display: block; text-align: center;">
+                            <i class="fas fa-cart-plus"></i> Request Sekarang
                         </a>
                     </div>
                     
@@ -1909,6 +2182,23 @@
                 });
             });
             
+            // Request PO button handler
+            const requestButtons = document.querySelectorAll('.request-btn');
+            requestButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#request') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector('#request');
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
             // Banner Slider Functionality
             const slides = document.querySelectorAll('.banner-slide');
             const dots = document.querySelectorAll('.slider-dot');
@@ -1960,6 +2250,7 @@
             console.log('LUPEK STORE Website Loaded Successfully!');
             console.log('Total Products:', productCards.length);
             console.log('Banner Slider: Active with 3 slides');
+            console.log('Request PO Feature: Enabled');
         });
         
         // Force images to load
