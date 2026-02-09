@@ -29,14 +29,74 @@
             --orange: #ff9800;
         }
         
+        /* =========== WALLPAPER BACKGROUND =========== */
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--black);
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            
+            /* LATAR BELAKANG GAMBAR */
+            background: 
+                /* Gradient overlay untuk kontras */
+                linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+                /* Gambar wallpaper */
+                url('https://i.postimg.cc/yYq3FXjS/illustration-anime-city.jpg');
+            
+            /* Properti background */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-blend-mode: darken;
+            position: relative;
         }
+
+        /* Overlay tambahan untuk konten lebih mudah dibaca */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(
+                    ellipse at 20% 20%,
+                    rgba(212, 175, 55, 0.15) 0%,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    ellipse at 80% 80%,
+                    rgba(196, 30, 58, 0.1) 0%,
+                    transparent 50%
+                );
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Semua konten di atas wallpaper */
+        .container, 
+        section, 
+        .header, 
+        .footer, 
+        .banner-slider,
+        .product-card,
+        .usp-card,
+        .payment-card,
+        .request-instruction,
+        .warning-box {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========== END WALLPAPER =========== */
         
         .container {
             max-width: 1200px;
@@ -283,14 +343,14 @@
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px; /* GANTI 8px JADI 6px */
+            gap: 6px;
             background: linear-gradient(135deg, var(--green), #128C7E);
             color: white;
-            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
+            padding: 6px 12px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600; /* INI BENAR, BUKAN font-weight: 0.85rem */
-            font-size: 0.8rem; /* TAMBAHKAN INI */
+            font-weight: 600;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
         }
@@ -303,14 +363,14 @@
         .telegram-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px; /* GANTI 8px JADI 6px */
+            gap: 6px;
             background: linear-gradient(135deg, var(--telegram), #006699);
             color: white;
-            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
+            padding: 6px 12px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600; /* INI BENAR */
-            font-size: 0.8rem; /* TAMBAHKAN INI */
+            font-weight: 600;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
         }
@@ -323,20 +383,19 @@
         .request-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px; /* GANTI 10px JADI 6px */
+            gap: 6px;
             background: linear-gradient(135deg, var(--purple), #7b1fa2);
             color: white;
-            padding: 6px 12px; /* GANTI 8px 16px JADI 6px 12px */
+            padding: 6px 12px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600; /* INI BENAR */
-            font-size: 0.8rem; /* TAMBAHKAN INI */
+            font-weight: 600;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(156, 39, 176, 0.2);
         }
 
         .request-btn:hover {
-            
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
         }
@@ -353,10 +412,11 @@
         .hero {
             padding: 80px 0 60px;
             text-align: center;
-            background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
+            background: rgba(17, 17, 17, 0.88);
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(5px);
         }
         
         .hero::before {
@@ -432,7 +492,7 @@
         }
         
         .product-card {
-            background: var(--dark);
+            background: transparent !important;
             border-radius: 20px;
             overflow: hidden;
             text-align: center;
@@ -443,18 +503,19 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            backdrop-filter: blur(10px);
         }
         
         .product-card:hover {
             border-color: var(--gold);
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
         .product-image-container {
             height: 220px;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(42, 42, 42, 0.9));
+            background: transparent !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -555,9 +616,10 @@
         
         /* REQUEST PO SECTION STYLES */
         .request-section {
-            background: linear-gradient(135deg, rgba(156, 39, 176, 0.05), rgba(10, 10, 10, 0.95));
+            background: rgba(17, 17, 17, 0.88);
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .request-container {
@@ -573,10 +635,11 @@
         }
 
         .request-instruction {
-            background: rgba(17, 17, 17, 0.8);
+            background: transparent !important;
             padding: 40px;
             border-radius: 20px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.3) !important;
+            backdrop-filter: blur(10px);
         }
 
         .steps-container {
@@ -630,9 +693,10 @@
         
         /* USP SECTION */
         .usp-section {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(10, 10, 10, 0.95));
+            background: rgba(17, 17, 17, 0.88);
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(5px);
         }
         
         .usp-grid {
@@ -643,12 +707,13 @@
         }
         
         .usp-card {
-            background: rgba(17, 17, 17, 0.8);
+            background: transparent !important;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.2) !important;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
         
         .usp-card:hover {
@@ -670,16 +735,21 @@
             color: white;
         }
         
-        .usp-desc {
-            color: #aaa;
-            font-size: 0.95rem;
+        .usp-desc,
+        .product-desc,
+        .step-content p,
+        .bank-item,
+        .contact-detail {
+            color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
         }
         
         /* PAYMENT SECTION */
         .payment-section {
-            background: linear-gradient(135deg, rgba(37, 211, 102, 0.03), rgba(212, 175, 55, 0.03));
+            background: rgba(17, 17, 17, 0.88);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(5px);
         }
         
         .payment-section::before {
@@ -701,14 +771,15 @@
         }
         
         .payment-card {
-            background: var(--dark);
+            background: transparent !important;
             padding: 30px;
             border-radius: 20px;
             text-align: center;
-            border: 2px solid;
+            border: 2px solid rgba(41, 98, 255, 0.3) !important;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            backdrop-filter: blur(10px);
         }
         
         .payment-card::before {
@@ -723,7 +794,7 @@
         }
         
         .payment-card.enabled.special::before {
-            background: linear-gradient(90deg, var(--green), var(--gold));
+            border-color: rgba(37, 211, 102, 0.3) !important;
         }
         
         .payment-card.enabled {
@@ -762,12 +833,12 @@
         }
         
         .bank-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent !important;
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
             color: var(--gold-light);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3) !important;
             transition: all 0.3s ease;
         }
         
@@ -778,7 +849,7 @@
         
         /* WARNING SECTION */
         .warning-box {
-            background: rgba(196, 30, 58, 0.1);
+            background: rgba(196, 30, 58, 0);
             border: 2px solid var(--red);
             border-radius: 20px;
             padding: 30px;
@@ -786,6 +857,7 @@
             margin: 40px 0;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .warning-box::before {
@@ -812,7 +884,8 @@
             padding: 80px 0;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(26,26,26,0.95));
+            background: rgba(17, 17, 17, 0.88);
+            backdrop-filter: blur(5px);
         }
         
         .cta-section::before {
@@ -883,11 +956,12 @@
         
         /* FOOTER */
         .footer {
-            background: var(--dark);
+            background: rgba(17, 17, 17, 0.95);
             padding: 60px 0 30px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             position: relative;
+            backdrop-filter: blur(10px);
         }
         
         .footer::before {
@@ -929,10 +1003,11 @@
         }
         
         .contact-item {
-            background: rgba(42, 42, 42, 0.5);
+            background: transparent !important;
             padding: 20px;
             border-radius: 15px;
-            border-left: 3px solid var(--gold);
+            border-left: 3px solid var(--gold) !important;
+            backdrop-filter: blur(5px);
         }
         
         .contact-title {
@@ -1308,14 +1383,15 @@
         .contact-icon:hover {
             transform: translateY(-5px);
         }
-            .request-buttons a {
-        width: 260px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        white-space: nowrap;
+        
+        .request-buttons a {
+            width: 260px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            white-space: nowrap;
         }
 
         .request-buttons i,
@@ -1324,6 +1400,54 @@
             height: 18px;
             font-size: 18px;
             flex-shrink: 0;
+        }
+        
+                /* BUAT SEMUA ELEMEN CARD DAN KOTAK BENAR-BENAR TRANSPARAN */
+        .request-instruction, 
+        .usp-card, 
+        .payment-card, 
+        .warning-box, 
+        .contact-item,
+        .product-card,
+        .bank-item {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: 2px solid rgba(212, 175, 55, 0.3) !important;
+            backdrop-filter: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Hapus juga pseudo-elements */
+        .request-instruction::before,
+        .warning-box::before,
+        .payment-card::before,
+        .payment-section::before,
+        .hero::before,
+        .cta-section::before {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* Untuk product card yang punya gradient background */
+        .product-image-container {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        /* Hapus semua gradient dan overlay */
+        .product-card {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: 2px solid rgba(212, 175, 55, 0.3) !important;
+        }
+
+        /* Hapus efek hover yang masih meninggalkan background */
+        .product-card:hover,
+        .usp-card:hover,
+        .payment-card:hover {
+            background: rgba(212, 175, 55, 0.05) !important;
+            border-color: var(--gold) !important;
         }
     </style>
 </head>
@@ -1547,7 +1671,7 @@
                     <div class="product-badge">POPULAR</div>
                     <div class="product-image-container">
                         <div class="product-image-wrapper">
-                            <img src="https://miro.medium.com/v2/resize:fit:1400/1*FQ2qwoaNXdubTAVp4do6ag.png" 
+                            <img src="https://image.astronauts.cloud/product-images/2025/7/76164217MarlboroAmecBlendRedLocalRokokBoxFilter_96db0599-d928-43d2-8fbd-e9206e0d4d3a_900x900.png" 
                                  alt="Marlboro Merah" class="product-image">
                         </div>
                     </div>
@@ -1990,67 +2114,6 @@
         </div>
     </section>
     
-    <!-- WARNING SECTION -->
-    <section>
-        <div class="container">
-            <div class="warning-box fade-in">
-                <h3 class="warning-title">
-                    <i class="fas fa-exclamation-triangle"></i> PERINGATAN KESEHATAN
-                </h3>
-                <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">
-                    MEROKOK DAPAT MEMBAHAYAKAN KESEHATAN ANDA DAN ORANG DI SEKITAR ANDA
-                </p>
-                <p style="color: var(--red); font-weight: 600; font-size: 1.2rem;">
-                    Hanya untuk usia 21 tahun ke atas
-                </p>
-                <p style="color: #ccc; font-size: 0.9rem; margin-top: 10px;">
-                    Rokok mengandung lebih dari 4.000 bahan kimia berbahaya termasuk nikotin, tar, dan karbon monoksida.
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title fade-in">SIAP MEMESAN?</h2>
-            <p class="cta-subtitle fade-in delay-1">
-                Jangan sampai kehabisan produk premium favorit Anda.<br>
-                Hubungi kami sekarang untuk pemesanan atau informasi lebih lanjut.
-            </p>
-            
-            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 30px 0;">
-                <a href="https://wa.me/6282267630646?text=Halo%20LUPEK%20STORE,%20saya%20mau%20order%20rokok%20premium" 
-                   class="whatsapp-cta fade-in delay-2" target="_blank">
-                    <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP
-                </a>
-                
-                <a href="https://t.me/Yeyesh" class="telegram-btn fade-in delay-3" target="_blank" 
-                   style="padding: 20px 35px; font-size: 1.1rem;">
-                    <i class="fab fa-telegram"></i> CHAT VIA TELEGRAM
-                </a>
-            </div>
-            
-            <p style="color: #aaa; margin-top: 20px; font-size: 1.1rem;" class="fade-in delay-4">
-                <i class="fas fa-phone"></i> Hubungi: 
-                <strong style="color: var(--gold);">0822-6763-0646</strong> atau 
-                <strong style="color: var(--gold);">0821-6079-4833</strong>
-            </p>
-            
-            <div class="contact-icons fade-in delay-5">
-                <a href="https://wa.me/6282267630646" class="contact-icon whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/Yeyesh" class="contact-icon telegram" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="tel:082267630646" class="contact-icon phone">
-                    <i class="fas fa-phone"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    
     <!-- FOOTER -->
     <footer id="kontak" class="footer">
         <div class="container">
@@ -2291,6 +2354,16 @@
             const productCount = document.querySelectorAll('.product-card').length;
             console.log(`Total produk yang ditampilkan: ${productCount}`);
         });
+                // Hapus semua background color dengan force
+        setTimeout(function() {
+            document.querySelectorAll('*').forEach(function(el) {
+                if (window.getComputedStyle(el).backgroundColor !== 'rgba(0, 0, 0, 0)' &&
+                    window.getComputedStyle(el).backgroundColor !== 'transparent') {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.background = 'transparent';
+                }
+            });
+        }, 1000);
     </script>
 </body>
 </html>
