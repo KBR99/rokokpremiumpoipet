@@ -1,1974 +1,1182 @@
 <p></p>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" /><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet" /><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-<!-- Script Animasi Hujan Imlek -->
-<script>
-(function() {
-    // CSS untuk animasi
-    const style = document.createElement('style');
-    style.textContent = `
-        /* Animasi Snowflakes */
-        @keyframes snowflakes-fall {
-            0% { top: -10%; transform: translateX(0) rotate(0deg); }
-            100% { top: 110%; transform: translateX(100px) rotate(360deg); }
-        }
-        
-        @keyframes snowflakes-shake {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            50% { transform: translateX(80px) rotate(180deg); }
-        }
-        
-        .imlek-snowflake {
-            position: fixed;
-            top: -10%;
-            z-index: 9999;
-            user-select: none;
-            cursor: pointer;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-            pointer-events: auto;
-            animation-name: snowflakes-fall, snowflakes-shake;
-            animation-timing-function: linear, ease-in-out;
-            animation-iteration-count: infinite, infinite;
-            animation-play-state: running, running;
-        }
-        
-        .imlek-snowflake:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 10px gold);
-            transform: scale(1.2);
-            transition: all 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Gambar-gambar Imlek
-    const images = [
-        { src: 'https://photoku.io/images/2026/01/15/kuda.png', alt: 'Kuda', sizes: [50, 45] },
-        { src: 'https://photoku.io/images/2026/01/15/ingot.png', alt: 'Ingot Emas', sizes: [40, 35] },
-        { src: 'https://photoku.io/images/2026/01/15/angpao.png', alt: 'Angpao', sizes: [40, 35] },
-        { src: 'https://photoku.io/images/2026/01/15/money.png', alt: 'Uang', sizes: [40, 35] },
-        { src: 'https://photoku.io/images/2026/01/15/orange.png', alt: 'Jeruk', sizes: [50, 45] },
-        { src: 'https://photoku.io/images/2026/01/15/lampionn.png', alt: 'Lampion', sizes: [40, 35] },
-        { src: 'https://photoku.io/images/2026/01/15/kipass.png', alt: 'Kipas', sizes: [50, 45] }
-    ];
-    
-    // Buat 14 elemen snowflake (7 gambar x 2 ukuran)
-    function createSnowflakes() {
-        for (let i = 0; i < images.length * 2; i++) {
-            const imgIndex = i % images.length;
-            const sizeIndex = Math.floor(i / images.length);
-            const image = images[imgIndex];
-            
-            const snowflake = document.createElement('div');
-            snowflake.className = 'imlek-snowflake';
-            
-            const img = document.createElement('img');
-            img.src = image.src;
-            img.alt = image.alt;
-            img.height = image.sizes[sizeIndex];
-            img.width = image.sizes[sizeIndex];
-            
-            snowflake.appendChild(img);
-            document.body.appendChild(snowflake);
-            
-            // Set posisi dan animasi yang unik untuk setiap elemen
-            const left = (i * 7) % 95; // Distribusi horizontal
-            const durationFall = 10 + Math.random() * 10; // 10-20 detik
-            const durationShake = 2 + Math.random() * 3; // 2-5 detik
-            const delay = Math.random() * 10; // Delay 0-10 detik
-            
-            snowflake.style.left = left + '%';
-            snowflake.style.animationDuration = `${durationFall}s, ${durationShake}s`;
-            snowflake.style.animationDelay = `${delay}s, ${Math.random() * 3}s`;
-            
-            // Efek klik
-            snowflake.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.style.animationPlayState = 'paused';
-                this.style.filter = 'drop-shadow(0 0 15px gold) brightness(1.5)';
-                this.style.transform = 'scale(1.5)';
-                
-                setTimeout(() => {
-                    this.style.animationPlayState = 'running';
-                    this.style.filter = 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))';
-                    this.style.transform = 'scale(1)';
-                }, 800);
-            });
-        }
-    }
-    
-    // Jalankan saat halaman selesai load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', createSnowflakes);
-    } else {
-        createSnowflakes();
-    }
-})();
-</script>
+<!-- Font Awesome 6 (free) --><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" /><!-- Google Font Inter modern --><link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&amp;display=swap" rel="stylesheet" />
 <style>
-        /* === VARIABLES & RESET === */
-        :root {
-            --primary: #0a8a3a;
-            --primary-dark: #06632a;
-            --primary-light: #13b355;
-            --secondary: #ffd700;
-            --secondary-dark: #cca300;
-            --dark: #011;
-            --dark-light: #022;
-            --darker: #000a05;
-            --light: #f8f9fa;
-            --gray: #aaa;
-            --gray-light: #e9ecef;
-            --success: #4cd964;
-            --danger: #ff4757;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --border-radius: 16px;
-            --border-radius-sm: 10px;
-            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
-            --gradient-gold: linear-gradient(90deg, var(--secondary-dark) 0%, var(--secondary) 50%, var(--secondary-dark) 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0b181f;
+            background-image: radial-gradient(circle at 0% 0%, rgba(0, 255, 200, 0.06) 0%, transparent 40%),
+                              radial-gradient(circle at 100% 100%, rgba(0, 230, 250, 0.06) 0%, transparent 40%);
+            min-height: 100vh;
+            color: #e0f2ec;
+            padding: 20px 16px;
+            position: relative;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        body {
-            background: var(--gradient-dark);
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* === BACKGROUND ELEMENTS === */
-        .background-elements {
+        /* dekorasi glow */
+        .glow-sphere {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bg-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(10, 138, 58, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
-        }
-
-        .floating-element {
-            position: absolute;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
-            background: var(--gradient-primary);
-            opacity: 0.05;
-            filter: blur(40px);
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 170, 0.15), transparent 75%);
+            filter: blur(65px);
+            z-index: -1;
+            pointer-events: none;
         }
+        .sphere1 { top: -120px; left: -80px; }
+        .sphere2 { bottom: -100px; right: -60px; background: radial-gradient(circle at 30% 30%, rgba(0, 210, 255, 0.15), transparent); }
 
-        .floating-element:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            bottom: 10%;
-            right: 5%;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            left: 80%;
-        }
-
-        /* === HEADER === */
-        .header-container {
-            max-width: 1200px;
+        /* container utama */
+        .modern-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .logo-container {
+        /* HEADER MEWAH */
+        .hero {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 2rem 1rem 2rem;
             position: relative;
         }
-
-        .logo-badge {
-            display: inline-block;
-            background: var(--gradient-primary);
-            padding: 15px 30px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 20px rgba(10, 138, 58, 0.3);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-badge::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite linear;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .logo h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            background: var(--gradient-gold);
+        .hero h1 {
+            font-size: clamp(2.2rem, 9vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(145deg, #baffdb, #6effcf, #2bffb8);
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
-            margin: 0;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
+            letter-spacing: -0.02em;
+            filter: drop-shadow(0 0 25px #00e6a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
         }
-
-        .logo p {
-            color: var(--gray-light);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            margin-top: 8px;
+        .hero h1 i {
+            background: rgba(0, 255, 170, 0.12);
+            padding: 12px;
+            border-radius: 60px;
+            font-size: 2.4rem;
+            color: #b2ffd9;
+            -webkit-text-fill-color: initial;
+            box-shadow: 0 0 25px #2affb050;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1.2rem auto 0;
+            color: #bcf5e2;
             font-weight: 300;
-        }
-
-        .logo-stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item i {
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-
-        .stat-item span {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* === RUNNING TEXT === */
-        .running-bar-container {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
-        }
-
-        .running-bar {
-            position: relative;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .running-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            animation: running-shine 3s infinite;
-        }
-
-        @keyframes running-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .marquee-container {
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .marquee {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            animation: scroll 25s linear infinite;
-            white-space: nowrap;
-            padding: 10px 0;
-        }
-
-        .marquee:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .marquee-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(10, 138, 58, 0.2);
-            padding: 8px 20px;
-            border-radius: 30px;
-            margin: 0 10px;
-            border: 1px solid rgba(10, 138, 58, 0.4);
-        }
-
-        .marquee-item i {
-            color: var(--secondary);
-        }
-
-        .marquee-item span {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* === FILTER & SORT === */
-        .controls-container {
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            padding: 0 20px;
-        }
-
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--gradient-primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(10, 138, 58, 0.3);
-        }
-
-        .sort-select {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            min-width: 180px;
-        }
-
-        .sort-select option {
-            background: var(--darker);
-            color: var(--light);
-        }
-
-        /* === CONTENT SECTION === */
-        .content {
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
-        }
-
-        .content-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .content-header h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 15px;
-            position: relative;
+            background: rgba(0, 30, 30, 0.4);
+            backdrop-filter: blur(6px);
+            padding: 0.8rem 2rem;
+            border-radius: 80px;
             display: inline-block;
+            border: 1px solid rgba(0, 255, 200, 0.15);
+        }
+        .hero-underline {
+            width: 160px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #3cffc0, #9effdb, #3cffc0, transparent);
+            margin: 1.2rem auto 0;
+            border-radius: 10px;
+            animation: flowLine 2.6s infinite ease-in-out;
+        }
+        @keyframes flowLine {
+            0% { width: 80px; opacity: 0.5; }
+            50% { width: 260px; opacity: 1; }
+            100% { width: 80px; opacity: 0.5; }
         }
 
-        .content-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-gold);
-            border-radius: 2px;
-        }
-
-        .content-header p {
-            color: var(--gray);
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            max-width: 800px;
-            margin: 20px auto 0;
-            line-height: 1.8;
-        }
-
-        .stats-overview {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: var(--border-radius-sm);
-            text-align: center;
-            min-width: 150px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .stat-card i {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        .stat-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 5px;
-        }
-
-        .stat-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* === ENTRIES === */
-        .entries-container {
+        /* GRID TOMBOL SUPER RESPONSIF */
+        .buttons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 2.8rem 0 3rem;
         }
 
-        .entry {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
+        .game-btn {
+            background: rgba(16, 38, 34, 0.75);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .entry:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-
-        .entry-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .entry-img-container {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .entry-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .entry:hover .entry-img {
-            transform: scale(1.05);
-        }
-
-        .img-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .entry-img-container:hover .img-overlay {
-            opacity: 1;
-        }
-
-        .zoom-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transform: scale(0.8);
-            transition: var(--transition);
-        }
-
-        .entry-img-container:hover .zoom-btn {
-            transform: scale(1);
-        }
-
-        .entry-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .winner-id {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--secondary);
-            background: rgba(255, 215, 0, 0.1);
-            padding: 5px 15px;
-            border-radius: 30px;
-            display: inline-block;
-        }
-
-        .game-type {
-            font-size: 0.85rem;
-            background: rgba(10, 138, 58, 0.2);
-            color: var(--primary-light);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-
-        .game-info {
-            font-size: 1rem;
-            color: var(--light);
-            margin-bottom: 10px;
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 180, 0.25);
+            border-radius: 40px;
+            padding: 1rem 0.2rem;
+            color: #d6ffec;
             font-weight: 500;
-        }
-
-        .win-amount {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--success);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .win-amount i {
-            font-size: 1.2rem;
-        }
-
-        .withdraw-info {
             font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.6;
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .withdraw-info b {
-            color: var(--secondary);
-        }
-
-        .entry-footer {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .entry-date {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .verified-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        /* === PAGINATION === */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            font-weight: 600;
+            gap: 0.5rem;
             cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+            box-shadow: 0 15px 20px -12px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid transparent;
+            line-height: 1.3;
         }
-
-        .page-btn:hover, .page-btn.active {
-            background: var(--gradient-primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
+        .game-btn i {
+            font-size: 1.8rem;
+            color: #63ffcf;
+            filter: drop-shadow(0 0 8px #00ffbf);
+            transition: transform 0.2s;
         }
-
-        .page-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .game-btn:hover {
+            background: #184b40;
+            border-color: #9effe0;
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 25px 25px -12px #00ffb180, 0 0 0 1px #9dffdc inset;
         }
-
-        .page-btn.disabled:hover {
-            transform: none;
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* === CTA SECTION === */
-        .cta-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .cta {
-            background: var(--gradient-primary);
-            border-radius: var(--border-radius);
-            padding: 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(10, 138, 58, 0.3);
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 20%);
-            animation: rotate 20s infinite linear;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta h3 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
+        .game-btn.active {
+            background: #0f5f4b;
+            border-bottom: 4px solid #b3ffd6;
+            box-shadow: 0 0 30px #00ffc8;
             color: white;
-            margin-bottom: 20px;
-            font-weight: 800;
         }
 
-        .cta p {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-btn.primary {
-            background: var(--secondary);
-            color: #000;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .cta-btn.primary:hover {
-            background: #ffed4e;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
-        }
-
-        .cta-btn.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-btn.secondary:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        /* === MODAL === */
-        .modal {
+        /* PANEL INFORMASI — KACA PREMIUM */
+        .info-panel {
+            background: rgba(12, 35, 32, 0.8);
+            backdrop-filter: blur(18px) saturate(200%);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            border-radius: 48px;
+            padding: 2.2rem 2rem;
+            margin: 2rem 0 2.5rem;
+            box-shadow: 0 35px 60px -15px black, 0 0 0 1px rgba(0, 255, 200, 0.1) inset;
+            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
+            color: #e6ffef;
+        }
+        .info-panel.active {
+            display: block;
+            animation: slideReveal 0.65s forwards;
+        }
+        @keyframes slideReveal {
+            0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* header panel */
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content-container {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 8px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 40px rgba(10, 138, 58, 0.7);
-            cursor: grab;
-            transition: transform 0.2s ease;
-            transform-origin: center center;
-        }
-
-        .modal-content:active {
-            cursor: grabbing;
-        }
-
-        .close-modal {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 10001;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .close-modal:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .zoom-controls {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
+            flex-wrap: wrap;
             gap: 15px;
-            z-index: 10001;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 25px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            border-bottom: 2px dashed rgba(0, 255, 170, 0.3);
+            padding-bottom: 1rem;
         }
-
-        .zoom-btn-modal {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(10, 138, 58, 0.5);
-            color: white;
-            border: 2px solid var(--primary);
-            font-size: 1.3rem;
+        .panel-header h2 {
+            font-size: 2rem;
+            font-weight: 650;
+            background: linear-gradient(145deg, #ffffff, #caffea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .panel-header h2 i {
+            background: #1c463b;
+            padding: 12px;
+            border-radius: 60px;
+            font-size: 1.8rem;
+            color: #abffe6;
+            -webkit-text-fill-color: currentColor;
+        }
+        .close-btn {
+            background: #1d3e36;
+            border: 1px solid #52ffc0;
+            color: #c0ffe6;
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.6rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: 0.3s;
         }
-
-        .zoom-btn-modal:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .zoom-info {
-            position: fixed;
-            bottom: 110px;
-            left: 50%;
-            transform: translateX(-50%);
+        .close-btn:hover {
+            background: #286b58;
+            transform: rotate(180deg) scale(1.1);
             color: white;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            z-index: 10001;
-            pointer-events: none;
-            text-align: center;
-            max-width: 90%;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-color: white;
         }
 
-        /* === FOOTER === */
-        .footer {
-            background: rgba(0, 10, 5, 0.8);
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-logo h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 15px;
-        }
-
-        .footer-logo p {
-            color: var(--gray);
+        /* konten panel */
+        .panel-content {
             line-height: 1.8;
+            font-size: 1.05rem;
         }
-
-        .footer-links h4, .footer-contact h4 {
-            color: var(--light);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
+        .panel-content h3 {
+            font-size: 1.8rem;
+            margin: 2.2rem 0 1rem;
+            color: #e6fff0;
+            border-left: 6px solid #11ffb5;
+            padding-left: 1.2rem;
         }
-
-        .footer-links h4::after, .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--gradient-gold);
+        .panel-content h4 {
+            font-size: 1.4rem;
+            margin: 1.8rem 0 0.8rem;
+            color: #d0ffe5;
         }
-
-        .footer-links ul {
-            list-style: none;
+        .panel-content p {
+            margin-bottom: 1.2rem;
         }
-
-        .footer-links li {
-            margin-bottom: 12px;
+        .panel-content ul, .panel-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.8rem;
         }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
+        .panel-content li {
+            margin-bottom: 0.6rem;
+        }
+        .panel-content strong {
+            color: #5affc7;
+            font-weight: 600;
+        }
+        .panel-content table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #10362e;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 1.8rem 0;
+            border: 1px solid #33cc9966;
+        }
+        .panel-content th {
+            background: #1b5848;
+            color: #efffef;
+            font-weight: 600;
+            padding: 14px 8px;
+        }
+        .panel-content td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #3aa07a40;
+        }
+        .panel-content a {
+            color: #c2ffe6;
+            text-decoration: underline wavy #2effb060;
+        }
+        .back-to-menu {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 2.8rem;
+            padding: 0.9rem 2.2rem;
+            background: #1d5848;
+            border: 1px solid #5affc0;
+            border-radius: 60px;
+            color: white;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px #0000004d;
+        }
+        .back-to-menu:hover {
+            background: #2e846b;
+            transform: translateX(10px);
+            border-color: white;
         }
 
-        .footer-links a:hover {
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-
-        .footer-contact p {
-            color: var(--gray);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-contact i {
-            color: var(--primary);
-            width: 20px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-icon:hover {
-            background: var(--gradient-primary);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
+        /* footer modern */
+        .footer-modern {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            font-size: 0.9rem;
+            margin-top: 4rem;
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid rgba(0, 255, 150, 0.2);
+            color: #bbe6d5;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
         }
 
-        /* === RESPONSIVE DESIGN === */
-        @media (max-width: 1200px) {
-            .entries-container {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
+        /* Hujan Imlek halus */
+        .imlek-snowflake {
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            pointer-events: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 0 12px #fffbbe) brightness(1.1);
+            animation: turun 16s linear infinite, goyang 5s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        @keyframes turun {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 110%; transform: translateX(50px) rotate(380deg); }
+        }
+        @keyframes goyang {
+            0% { transform: translateX(0px) rotate(0deg); }
+            30% { transform: translateX(18px) rotate(5deg); }
+            70% { transform: translateX(-18px) rotate(-5deg); }
+            100% { transform: translateX(0px) rotate(0deg); }
+        }
+        .imlek-snowflake:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 30px gold);
+            scale: 1.4;
+            z-index: 10001;
+            transition: 0.15s;
         }
 
-        @media (max-width: 992px) {
-            .entries-container {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .cta {
-                padding: 40px 30px;
-            }
-            
-            .controls {
-                justify-content: center;
-            }
-            
-            .sort-select {
-                margin-top: 10px;
-            }
+        @media (max-width: 600px) {
+            .buttons-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+            .game-btn { font-size: 0.75rem; padding: 0.7rem 0; }
+            .panel-header h2 { font-size: 1.5rem; }
         }
-
-        @media (max-width: 768px) {
-            .header-container, .running-bar-container, 
-            .controls-container, .content, .cta-section {
-                padding: 0 15px;
-            }
-            
-            .entries-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .logo-stats {
-                gap: 10px;
-            }
-            
-            .stat-item {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .marquee-item {
-                padding: 6px 15px;
-                margin: 0 5px;
-            }
-            
-            .filter-buttons {
-                justify-content: center;
-            }
-            
-            .cta {
-                padding: 30px 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-links h4::after, .footer-contact h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .footer-links a:hover {
-                transform: none;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .zoom-controls {
-                bottom: 20px;
-                padding: 10px 20px;
-            }
-            
-            .zoom-btn-modal {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-            
-            .close-modal {
-                top: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.5rem;
-            }
-            
-            .zoom-info {
-                bottom: 90px;
-                font-size: 0.8rem;
-                padding: 10px 20px;
-            }
+        @media (max-width: 420px) {
+            .buttons-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
-        @media (max-width: 576px) {
-            .logo-badge {
-                padding: 12px 25px;
-            }
-            
-            .stat-card {
-                min-width: 120px;
-                padding: 15px;
-            }
-            
-            .stat-card h3 {
-                font-size: 1.3rem;
-            }
-            
-            .entry-img-container {
-                height: 200px;
-            }
-            
-            .entry-content {
-                padding: 20px;
-            }
-            
-            .win-amount {
-                font-size: 1.2rem;
-            }
-            
-            .page-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-            
-            .zoom-controls {
-                flex-wrap: wrap;
-                justify-content: center;
-                width: 90%;
-                border-radius: 25px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .logo-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .stat-card {
-                width: 100%;
-                max-width: 200px;
-            }
-            
-            .entry-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .entry-footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .entry:hover {
-                transform: none;
-            }
-            
-            .img-overlay {
-                opacity: 1;
-                background: rgba(0, 0, 0, 0.3);
-            }
-            
-            .zoom-btn {
-                transform: scale(1);
-            }
-            
-            .filter-btn:hover, .page-btn:hover, .cta-btn:hover, 
-            .zoom-btn-modal:hover, .close-modal:hover, .social-icon:hover {
-                transform: none;
-            }
-            
-            .modal-content {
-                cursor: default;
-            }
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-light);
-        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #16352d; }
+        ::-webkit-scrollbar-thumb { background: #23b38f; border-radius: 15px; }
     </style>
-<!-- Background Elements -->
-<div class="background-elements">
-<div class="bg-pattern"></div>
-<div class="floating-element"></div>
-<div class="floating-element"></div>
+<div class="glow-sphere sphere1"></div>
+<div class="glow-sphere sphere2"></div>
+<div class="modern-container">
+<div class="hero">
+<h1><i class="fas fa-dice-d6"></i> PANDUAN TOGEL <i class="fas fa-dice-d6"></i></h1>
+<div class="subtitle">18 JENIS PERMAINAN &bull; LENGKAP DENGAN CONTOH &amp; TABEL</div>
+<div class="hero-underline"></div>
 </div>
-<div class="header-container">
-<div class="logo-container">
-<div class="logo-stats">
-<div class="stat-item"><i class="fas fa-check-circle"></i> <span>100% Dibayar</span></div>
-<div class="stat-item"><i class="fas fa-shield-alt"></i> <span>Terpercaya</span></div>
-<div class="stat-item"><i class="fas fa-headset"></i> <span>24/7 Support</span></div>
-<div class="stat-item"><i class="fas fa-trophy"></i> <span>Jutaan Pemenang</span></div>
+<!-- tombol grid akan diisi JS -->
+<div class="buttons-grid" id="buttonsContainer"></div>
+<!-- panel info akan diisi JS -->
+<div id="infoPanels"></div>
+<div class="footer-modern"><span><i class="fa-regular fa-copyright"></i> 2026 Panduan Togel Indonesia</span> <span><i class="fa-regular fa-compass"></i> semua panduan asli &amp; lengkap</span></div>
 </div>
-</div>
-</div>
-<!-- Running Text -->
-<div class="running-bar">
-  <div class="marquee-container">
-    <div class="marquee">
-      <div class="marquee-item">
-        <i class="fas fa-trophy"></i>
-        <span>SELAMAT DATANG DI TOPWD</span>
-      </div>
-
-      <div class="marquee-item">
-        <i class="fas fa-check-circle"></i>
-        <span>MENANG BERAPAPUN PASTI DIBAYAR</span>
-      </div>
-
-      <div class="marquee-item">
-        <i class="fas fa-star"></i>
-        <span>BANDAR TERPERCAYA INDONESIA</span>
-      </div>
-
-      <div class="marquee-item">
-        <i class="fas fa-lock"></i>
-        <span>TRANSAKSI AMAN & TERJAMIN</span>
-      </div>
-
-      <div class="marquee-item">
-        <i class="fas fa-users"></i>
-        <span>RIBUAN MEMBER BERGABUNG</span>
-      </div>
-
-      <!-- Duplikasi otomatis untuk efek loop -->
-      <div class="marquee-duplicate">
-        <div class="marquee-item">
-          <i class="fas fa-trophy"></i>
-          <span>SELAMAT DATANG DI TOPWD</span>
-        </div>
-        <div class="marquee-item">
-          <i class="fas fa-check-circle"></i>
-          <span>MENANG BERAPAPUN PASTI DIBAYAR</span>
-        </div>
-        <div class="marquee-item">
-          <i class="fas fa-star"></i>
-          <span>BANDAR TERPERCAYA INDONESIA</span>
-        </div>
-        <div class="marquee-item">
-          <i class="fas fa-lock"></i>
-          <span>TRANSAKSI AMAN & TERJAMIN</span>
-        </div>
-        <div class="marquee-item">
-          <i class="fas fa-users"></i>
-          <span>RIBUAN MEMBER BERGABUNG</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Filter & Sort Controls -->
-<div class="controls-container">
-<div class="controls">
-<div class="filter-buttons"><button class="filter-btn active" data-filter="all">Semua</button> <button class="filter-btn" data-filter="slot">Slot</button> <button class="filter-btn" data-filter="baccarat">Baccarat</button> <button class="filter-btn" data-filter="live">Live Game</button> <button class="filter-btn" data-filter="togel">Togel</button></div>
-<select class="sort-select" id="sort-select">
-<option value="newest">Terbaru</option>
-<option value="oldest">Terlama</option>
-<option value="highest">Kemenangan Tertinggi</option>
-<option value="lowest">Kemenangan Terendah</option>
-</select></div>
-</div>
-<div class="content"><!-- Entries Container -->
-<div class="entries-container" id="entries-container"><!-- Entries akan dimasukkan melalui JavaScript --></div>
-<!-- Pagination -->
-<div class="pagination"><button class="page-btn prev-btn disabled"><i class="fas fa-chevron-left"></i></button> <button class="page-btn active">1</button> <button class="page-btn">2</button> <button class="page-btn">3</button> <button class="page-btn">4</button> <button class="page-btn next-btn"><i class="fas fa-chevron-right"><br /></i></button></div>
-</div>
-<!-- Modal for Zoomable Image -->
-<div class="modal" id="imageModal"><span class="close-modal">&times;</span>
-<div class="modal-content-container"><img class="modal-content" id="modalImage" alt="Zoomed Image" /></div>
-<div class="zoom-info" id="zoomInfo">Gunakan scroll mouse, pinch gesture, atau tombol zoom</div>
-<div class="zoom-controls"><button class="zoom-btn-modal" id="zoomIn"><i class="fas fa-search-plus"></i></button> <button class="zoom-btn-modal" id="zoomOut"><i class="fas fa-search-minus"></i></button> <button class="zoom-btn-modal" id="zoomReset"><i class="fas fa-sync-alt"></i></button></div>
-</div>
+<!-- **********  SCRIPT DENGAN KONTEN LENGKAP (TIDAK ADA YANG HILANG)  ********** -->
 <script>
-        // Data bukti kemenangan
-        const entriesData = [
+        (function() {
+            // Animasi hujan imlek (18 elemen)
+    // Gambar-gambar Imlek
+            const images = [
+                { src: 'https://photoku.io/images/2026/02/19/ICON-5.png', alt: 'Kuda', sizes: [50, 45] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-6.png', alt: 'Ingot Emas', sizes: [40, 35] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-7.png', alt: 'Angpao', sizes: [40, 35] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-2.png', alt: 'Uang', sizes: [40, 35] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-3.png', alt: 'Jeruk', sizes: [50, 45] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-4.png', alt: 'Lampion', sizes: [40, 35] },
+                { src: 'https://photoku.io/images/2026/02/19/ICON-1.png', alt: 'Kipas', sizes: [50, 45] }
+            ];
+            
+            for (let i = 0; i < 21; i++) {
+                let div = document.createElement('div');
+                div.className = 'imlek-snowflake';
+                let img = document.createElement('img');
+                img.src = pic.src;
+                img.alt = pic.alt;
+                let s = 18 + Math.floor(Math.random() * 35);
+                img.width = s; img.height = s;
+                div.appendChild(img);
+                div.style.left = Math.random() * 100 + '%';
+                div.style.animationDelay = (Math.random() * -10) + 's, ' + (Math.random() * 3) + 's';
+                div.style.opacity = 0.5 + Math.random() * 0.4;
+                div.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    this.style.transform = 'scale(2)';
+                    this.style.filter = 'drop-shadow(0 0 30px #ffd966)';
+                    setTimeout(() => { this.style.transform = ''; this.style.filter = ''; }, 300);
+                });
+                document.body.appendChild(div);
+            }
+        })();
+    </script>
+<script>
+        // ======================== DATA 18 GAME DENGAN KONTEN LENGKAP (ASLI DARI USER) ========================
+        const games = [
             {
-                id: 1,
-                userId: "fa**wd ",
-                game: "SA-Baccarat D03",
-                amount: "100,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/02/02/20260202/bf13662bad81e41035125424cb501872/blo1.jpg",
-                date: "02 Febuary	 2026",
-                category: "BACCARAT"
+                id: 'noKeluarInfo',
+                title: 'No. Keluar',
+                icon: 'fas fa-list-ol',
+                content: `
+                    <h2>Nomor Keluar</h2>
+                    <p>Nomor pengeluaran adalah berdasarkan <strong>1st prize</strong> nomor yang dihasilkan oleh <strong>4D Singapore</strong>. Untuk melihat hasil nomor tersebut, Anda dapat mengunjungi <a href="https://www.singaporepools.com.sg" target="_blank" rel="noopener">Singapore Pools</a>.</p>
+                    
+                    <h3>Contoh Nomor Bola Angka:</h3>
+                    <ul>
+                        <li>Bola 1 = 7</li>
+                        <li>Bola 2 = 21</li>
+                        <li>Bola 3 = 29</li>
+                        <li>Bola 4 = 32</li>
+                        <li>Bola 5 = 36</li>
+                        <li>Bola 6 = 38</li>
+                        <li>Additional Number = 04</li>
+                    </ul>
+                    <p><strong>Nomor Buka:</strong> 0885</p>
+                    
+                    <h3>Cara Perhitungan:</h3>
+                    <ol>
+                        <li>Urutkan bola dari yang terkecil sampai yang terbesar.</li>
+                        <li>Jumlahkan bola ke 1 sampai bola ke 6: <strong>7 + 21 + 29 + 32 + 36 + 38 = 163</strong></li>
+                        <li>Kali dengan 2: <strong>163 × 2 = 326</strong></li>
+                        <li>Kurangkan dengan bola ke 1 (7) dan bola ke 6 (38): <strong>326 – 7 – 38 = 281</strong></li>
+                        <li>Tambahkan dengan additional number (04): <strong>281 + 04 = 285</strong></li>
+                        <li>Dari hasil 285, ambil angka puluhan 85.</li>
+                    </ol>
+                    
+                    <h3>Hasil Perhitungan:</h3>
+                    <ul>
+                        <li>Ribuan = 0</li>
+                        <li>Ratusan = 8</li>
+                        <li>Puluhan = 85</li>
+                    </ul>
+                    <p><strong>Hasilnya:</strong> Buka 0885</p>
+                    
+                    <h3>Jenis Permainan</h3>
+                    <p>Jenis permainan togel yang tersedia adalah:</p>
+                    <ul>
+                        <li>4D, 3D dan 2D</li>
+                        <li>Colok Bebas</li>
+                        <li>Colok Bebas 2D</li>
+                        <li>Colok Jitu</li>
+                        <li>Colok Naga</li>
+                        <li>50-50 (Besar-Kecil-Ganjil-Genap)</li>
+                        <li>Shio</li>
+                        <li>Kembang Kempis</li>
+                        <li>Silang Homo</li>
+                        <li>Tengah Tepi</li>
+                        <li>Dasar (Besar-Kecil-Ganjil-Genap)</li>
+                        <li>2 Kombinasi</li>
+                    </ul>
+                    
+                    <h3>Struktur Nomor Keluar:</h3>
+                    <p>Struktur nomor keluar dapat dinyatakan sebagai:</p>
+                    <ul>
+                        <li>A = AS</li>
+                        <li>B = KOP</li>
+                        <li>C = KEPALA</li>
+                        <li>D = EKOR</li>
+                    </ul>
+                `
             },
             {
-                id: 2,
-                userId: "txxxxxxxxx9",
-                game: "PP-Gates of Olympus Super Scatter",
-                amount: "122,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/02/01/20260201/e7fb5559e3a4751342d33fd2df8bffd8/blognet.png",
-                date: "02 Febuary	 2026",
-                category: "SLOT"
+                id: 'fourDInfo',
+                title: '4D/3D/2D',
+                icon: 'fas fa-dice-four',
+                content: `
+                    <h2>4D/3D/2D</h2>
+                    <p>Menebak 4 angka, 3 angka dan 2 angka.</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    <p>Misalnya keluar: <strong>4321</strong></p>
+                    <ul>
+                        <li>4D = 4321</li>
+                        <li>3D = 321</li>
+                        <li>2D = 21</li>
+                    </ul>
+                    
+                    <h3>Aturan Permainan:</h3>
+                    <ul>
+                        <li>Jika anda membeli diluar dari nomor yang dikeluarkan, berarti anda kalah dan uang tidak dikembalikan sama sekali.</li>
+                        <li>Jika anda membeli masing-masing 100rb untuk angka:
+                            <ul>
+                                <li>4D = 4321</li>
+                                <li>3D = 321</li>
+                                <li>2D = 21</li>
+                            </ul>
+                            (Khusus untuk 4D, 3D dan 2D diberikan diskon tambahan. Diskon akan makin besar jika nilai akumulasi betting dalam satu periode makin besar).</li>
+                        <li>Berarti kemenangan anda adalah:
+                            <ul>
+                                <li>4D = 100rb x [Indeks kemenangan untuk 4D]</li>
+                                <li>3D = 100rb x [Indeks kemenangan untuk 3D]</li>
+                                <li>2D = 100rb x [Indeks kemenangan untuk 2D]</li>
+                            </ul>
+                            (Catatan: nilai bet 100rb tidak dikembalikan ke member).</li>
+                    </ul>
+                    
+                    <h3>2D Posisi</h3>
+                    <p>Struktur: ABCD</p>
+                    <p>Misalnya keluar nomor: <strong>1234</strong></p>
+                    <ul>
+                        <li>2D Depan = 12</li>
+                        <li>2D Tengah = 23</li>
+                        <li>2D Belakang = 34</li>
+                    </ul>
+                `
             },
             {
-                id: 3,
-                userId: "fan***wd",
-                game: "SA-Baccarat D06",
-                amount: "125,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/29/20260129/a5bf855147770bf9f39931b624b9ff24/blog12.png",
-                date: "29 Jan 2026",
-                category: "baccarat"
+                id: 'colokBebasInfo',
+                title: 'Colok Bebas',
+                icon: 'fas fa-bullseye',
+                content: `
+                    <h2>Colok Bebas</h2>
+                    <p>Menebak satu angka dari 4D. Posisi angka bisa dimana saja.</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>3</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok bebas]</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>4331</strong></p>
+                    <p>Misalnya dibeli angka <strong>3</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + ([Indeks kemenangan untuk colok bebas] x 2)</strong></p>
+                    <p>Dan seterusnya untuk setiap kembaran yang berhasil ditebak, otomatis mendapat kelipatan <strong>[Indeks kemenangan untuk colok bebas]</strong>.</p>
+                `
             },
             {
-                id: 4,
-                userId: "ka**85",
-                game: "PP-Gates of Olympus Super Scatter",
-                amount: "100,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/26/20260126/52a807c2c71028b9970e63cf5b2aa633/rv1.png",
-                date: "26 Jan 2026",
-                category: "slot"
+                id: 'colokBebas2DInfo',
+                title: 'Colok Bebas 2D',
+                icon: 'fas fa-bullseye',
+                content: `
+                    <h2>Colok Bebas 2D</h2>
+                    <p>Cara kerja seperti colok bebas tapi mesti menebak 2 angka dari 4D.</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> dan <strong>2</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok bebas 2D, kategori: 2 digit]</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> dan <strong>6</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti KALAH dan nilai betting tidak dikembalikan.</p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Keluar: <strong>4331</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> dan <strong>3</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok bebas 2D, kategori: 3 digit]</strong></p>
+                    
+                    <h4>Analisis IV:</h4>
+                    <p>Keluar: <strong>4334</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> dan <strong>3</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok bebas 2D, kategori: 4 digit]</strong></p>
+                `
             },
             {
-                id: 5,
-                userId: "tulak***77",
-                game: "PP-Gates of Olympus Super Scatter",
-                amount: "162,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/23/20260123/5767102615c6671dfb011b371e80dee0/benar.png",
-                date: "23 Jan 2026",
-                category: "slot"
+                id: 'colokNagaInfo',
+                title: 'Colok Naga',
+                icon: 'fas fa-dragon',
+                content: `
+                    <h2>Colok Naga</h2>
+                    <p>Cara kerja seperti colok bebas 2D tapi mesti menebak 3 angka dari 4D.</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong>, <strong>2</strong>, dan <strong>3</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti MENANG: <strong>100rb + [Indeks kemenangan untuk colok naga, kategori: 3 digit]</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong>, <strong>2</strong>, dan <strong>6</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti KALAH: <strong>Nilai betting tidak dikembalikan</strong>, karena keluar hanya 2 digit, angka 4 dan 2.</p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong>, <strong>3</strong>, dan <strong>1</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti MENANG: <strong>100rb + [Indeks kemenangan untuk colok naga, kategori: 3 digit]</strong></p>
+                    
+                    <h4>Analisis IV:</h4>
+                    <p>Keluar: <strong>4324</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong>, <strong>3</strong>, dan <strong>2</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti MENANG: <strong>100rb + [Indeks kemenangan untuk colok naga, kategori: 4 digit]</strong></p>
+                `
             },
             {
-                id: 6,
-                userId: "dhxxxxxxx2",
-                game: "Pragmatic LIVE-Sweet Bonanza CandyLand",
-                amount: "100,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/23/20260123/ec0d844b49deaa527d6e2e89ed63db34/603bc45e-a9a6-4a59-9cc7-91b6dd778644.jpg",
-                date: "23 Jan 2026",
-                category: "live"
+                id: 'colokJituInfo',
+                title: 'Colok Jitu',
+                icon: 'fas fa-crosshairs',
+                content: `
+                    <h2>Colok Jitu</h2>
+                    <p>Menebak satu angka pada posisi tertentu dari 4D.</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> pada posisi <strong>AS</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok jitu]</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>4331</strong></p>
+                    <p>Misalnya dibeli angka <strong>3</strong> pada posisi <strong>KOP</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk colok jitu]</strong>. Hasilnya sama dengan analisis I karena hanya memperhatikan posisi yang dipasang.</p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Keluar: <strong>4331</strong></p>
+                    <p>Misalnya dibeli angka <strong>4</strong> pada posisi <strong>EKOR</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti KALAH: Meskipun nilai <strong>4</strong> keluar pada posisi <strong>AS</strong>, ini tidak akan mempengaruhi pemilihan di posisi <strong>EKOR</strong>.</p>
+                `
             },
             {
-                id: 7,
-                userId: "fa****wd",
-                game: "SA-Baccarat D03",
-                amount: "112,700,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/22/20260122/c88996f748cc634c57e1134664742b9e/blog1.png",
-                date: "22 Jan 2026",
-                category: "baccarat"
+                id: 'tengahTepiInfo',
+                title: 'Tengah Tepi',
+                icon: 'fas fa-exchange-alt',
+                content: `
+                    <h2>Tengah Tepi</h2>
+                    <p>Menebak tengah/tepi dari posisi 2D.</p>
+                    <p><strong>Tengah</strong> = Di antara 25 sampai 74</p>
+                    <p><strong>Tepi</strong> = Di antara 00 sampai 24 dan 75 sampai 99</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Permainan ini hanya memperhatikan posisi 2D, berarti yang dipedomani = <strong>21</strong></p>
+                    <p><strong>21</strong> = TEPI</p>
+                    <p>Misalnya dibeli posisi <strong>TEPI</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk tepi-tengah] + Kei</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>4356</strong></p>
+                    <p>Permainan ini hanya memperhatikan posisi 2D, berarti yang dipedomani = <strong>56</strong></p>
+                    <p><strong>56</strong> = TENGAH</p>
+                    <p>Misalnya dibeli posisi <strong>TENGAH</strong> dengan nilai <strong>100rb</strong>.</p>
+                    <p>Berarti menang: <strong>100rb + [Indeks kemenangan untuk tepi-tengah] + Kei</strong></p>
+                `
             },
             {
-                id: 8,
-                userId: "fa****wd",
-                game: "SA-Baccarat D01",
-                amount: "120,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/18/20260118/6996f94e56a80895c37c1c117bcdc13c/kemenangan1.png",
-                date: "18 Jan 2026",
-                category: "baccarat"
+                id: 'kombinasiInfo',
+                title: 'Kombinasi',
+                icon: 'fas fa-link',
+                content: `
+                    <h2>KOMBINASI</h2>
+                    <p>Struktur: ABCD</p>
+                    <ul>
+                        <li>A = AS</li>
+                        <li>B = KOP</li>
+                        <li>C = KEPALA</li>
+                        <li>D = EKOR</li>
+                    </ul>
+                    <p><strong>Besar/Kecil:</strong> 0-4 = Kecil, 5-9 = Besar</p>
+                    <p><strong>Ganjil/Genap:</strong> 1 = Ganjil, 2 = Genap, dan seterusnya</p>
+                    <p>Anda dapat menebak Genap/Ganjil, Besar/Kecil dari 2 kombinasi antara AS, KOP, KEPALA, EKOR.</p>
+                    
+                    <h3>Analisis:</h3>
+                    <p>Keluar: <strong>1845</strong></p>
+                    <p>Berarti pemenang untuk:</p>
+                    <ul>
+                        <li>AS Kecil/Ganjil dan KOP Besar/Genap</li>
+                        <li>KEPALA Kecil/Genap dan EKOR Besar/Ganjil</li>
+                        <li>AS Kecil/Ganjil dan KEPALA Kecil/Genap</li>
+                        <li>AS Kecil/Ganjil dan EKOR Besar/Ganjil</li>
+                        <li>KOP Besar/Genap dan KEPALA Kecil/Genap</li>
+                        <li>KOP Besar/Genap dan EKOR Besar/Ganjil</li>
+                    </ul>
+                    <p>Misalnya anda membeli:</p>
+                    <p>– AS Kecil dan KOP Genap seharga <strong>100rb</strong>, maka menang = <strong>100rb + [indeks kemenangan untuk kombinasi 2]</strong></p>
+                    <p>– KOP Genap dan KEPALA Genap seharga <strong>100rb</strong>, maka menang = <strong>100rb + [indeks kemenangan untuk kombinasi 2]</strong></p>
+                    <p>– KEPALA Kecil dan EKOR Genap seharga <strong>100rb</strong>, berarti KALAH (Anda harus menebak keduanya dengan benar agar menang).</p>
+                `
             },
             {
-                id: 9,
-                userId: "fa****wd",
-                game: "SA-Baccarat D02",
-                amount: "80,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/14/20260114/11b93e49d8321d3ef3981eebacfe6da3/blog1.png",
-                date: "14 Jan 2026",
-                category: "baccarat"
+                id: 'dasarInfo',
+                title: 'Dasar',
+                icon: 'fas fa-layer-group',
+                content: `
+                    <h2>DASAR</h2>
+                    <p>Menebak ganjil/genap dan besar/kecil dari penjumlahan angka-angka 2D.</p>
+                    <p><strong>Struktur:</strong> CD (2 angka terakhir)</p>
+                    <p><strong>Kecil:</strong> angka 0-4</p>
+                    <p><strong>Besar:</strong> angka 5-9</p>
+                    <p><strong>Ganjil:</strong> 1, 3, 5, 7, 9</p>
+                    <p><strong>Genap:</strong> 0, 2, 4, 6, 8</p>
+                    
+                    <h3>Analisis:</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>1234</strong>,</p>
+                    <p>3 + 4 = <strong>7</strong></p>
+                    <p>Berarti keluar: <strong>Ganjil dan Besar</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>5678</strong>,</p>
+                    <p>7 + 8 = <strong>15</strong></p>
+                    <p>Karena angka 15 lebih besar dari 9, kembali dihitung 1 + 5 = <strong>6</strong></p>
+                    <p>Berarti keluar: <strong>Genap dan Besar</strong></p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Keluar: <strong>1204</strong>,</p>
+                    <p>0 + 4 = <strong>4</strong></p>
+                    <p>Berarti keluar: <strong>Genap dan Kecil</strong></p>
+                    <p>Misal anda membeli dengan Rp.100rb untuk Genap, menang = <strong>100rb + [indeks menang untuk Dasar]</strong></p>
+                `
             },
             {
-                id: 10,
-                userId: "fa****wd",
-                game: "SA-Baccarat D01",
-                amount: "80,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/14/20260114/95f10b4b5be5f61083f7aaa934e742c2/blog2.png",
-                date: "14 Jan 2026",
-                category: "baccarat"
+                id: 'limaPuluhInfo',
+                title: '50 – 50',
+                icon: 'fas fa-balance-scale',
+                content: `
+                    <h2>50 – 50</h2>
+                    <p>Menebak ganjil/genap, besar/kecil. Permainan ini sangat menarik karena pasarannya naik turun sesuai keinginan market pada waktu tersebut. Dengan demikian, nilai pembelian dipengaruhi kei (pasaran).</p>
+                    
+                    <h3>Struktur: ABCD</h3>
+                    <ul>
+                        <li>A = AS</li>
+                        <li>B = KOP</li>
+                        <li>C = KEPALA</li>
+                        <li>D = EKOR</li>
+                    </ul>
+                    <p><strong>Besar/Kecil:</strong> 0-4 = Kecil, 5-9 = Besar</p>
+                    <p><strong>Ganjil/Genap:</strong> 1 = Ganjil, 2 = Genap, dan seterusnya</p>
+                    
+                    <h3>Analisis:</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4327</strong></p>
+                    <p>Berarti pemenang adalah yang memilih:</p>
+                    <ul>
+                        <li>AS Genap/Kecil</li>
+                        <li>KOP Ganjil/Kecil</li>
+                        <li>KEPALA Genap/Kecil</li>
+                        <li>EKOR Ganjil/Besar</li>
+                    </ul>
+                    <p>Misal anda membeli dengan dana Rp.<strong>100rb</strong> untuk AS Genap, maka menang = <strong>100rb + [indeks pasaran AS Genap 50-50]</strong></p>
+                    <p>Atau:</p>
+                    <p>Jika membeli dengan dana Rp.<strong>100rb</strong> untuk EKOR Ganjil, maka menang = <strong>100rb + [indeks pasaran EKOR Ganjil 50-50]</strong></p>
+                    <p>Atau:</p>
+                    <p>Jika membeli dengan dana Rp.<strong>100rb</strong> untuk AS Ganjil, maka kalah = <strong>100rb + [indeks pasaran AS Ganjil 50-50]</strong></p>
+                `
             },
             {
-                id: 11,
-                userId: "kar***no",
-                game: "PG-Cocktail Nights",
-                amount: "100,000,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/05/20260105/7bd5f335f1bde0d408502f3944062e2f/menang-1.png",
-                date: "5 Jan 2026",
-                category: "slot"
+                id: 'shioInfo',
+                title: 'Shio',
+                icon: 'fas fa-paw',
+                content: `
+                    <h2>SHIO</h2>
+                    <p>Menebak SHIO dari posisi 2D. SHIO merupakan 12 lambang kelahiran dalam penanggalan China. Dalam permainan ini, setiap lambang diwakili dengan satu nomor.</p>
+                    
+                    <h3>Daftar Shio:</h3>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Nama Shio</th>
+                                <th>Nomor Terkait</th>
+                            </tr>
+                            <tr>
+                                <td>Kuda</td>
+                                <td>01, 13, 25, 37, 49, 61, 73, 85, 97</td>
+                            </tr>
+                            <tr>
+                                <td>Ular</td>
+                                <td>02, 14, 26, 38, 50, 62, 74, 86, 98</td>
+                            </tr>
+                            <tr>
+                                <td>Naga</td>
+                                <td>03, 15, 27, 39, 51, 63, 75, 87, 99</td>
+                            </tr>
+                            <tr>
+                                <td>Kelinci</td>
+                                <td>04, 16, 28, 40, 52, 64, 76, 88, 00</td>
+                            </tr>
+                            <tr>
+                                <td>Harimau</td>
+                                <td>05, 17, 29, 41, 53, 65, 77, 89</td>
+                            </tr>
+                            <tr>
+                                <td>Kerbau</td>
+                                <td>06, 18, 30, 42, 54, 66, 78, 90</td>
+                            </tr>
+                            <tr>
+                                <td>Tikus</td>
+                                <td>07, 19, 31, 43, 55, 67, 79, 91</td>
+                            </tr>
+                            <tr>
+                                <td>Babi</td>
+                                <td>08, 20, 32, 44, 56, 68, 80, 92</td>
+                            </tr>
+                            <tr>
+                                <td>Anjing</td>
+                                <td>09, 21, 33, 45, 57, 69, 81, 93</td>
+                            </tr>
+                            <tr>
+                                <td>Ayam</td>
+                                <td>10, 22, 34, 46, 58, 70, 82, 94</td>
+                            </tr>
+                            <tr>
+                                <td>Monyet</td>
+                                <td>11, 23, 35, 47, 59, 71, 83, 95</td>
+                            </tr>
+                            <tr>
+                                <td>Kambing</td>
+                                <td>12, 24, 36, 48, 60, 72, 84, 96</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Analisis:</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Permainan ini hanya memperhatikan posisi 2D, berarti yang dipedomani = <strong>21</strong></p>
+                    <p>Hasil = <strong>21 – 12 = 9</strong> (shio disesuaikan dengan tabel di atas)</p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Keluar: <strong>6543</strong></p>
+                    <p>Permainan ini hanya memperhatikan posisi 2D, berarti yang dipedomani = <strong>43</strong></p>
+                    <p>Hasil = <strong>43 – 36 = 7</strong> (shio disesuaikan dengan tabel di atas)</p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Keluar: <strong>1389</strong></p>
+                    <p>Permainan ini hanya memperhatikan posisi 2D, berarti yang dipedomani = <strong>89</strong></p>
+                    <p>Hasil = <strong>89 – 84 = 5</strong> (shio disesuaikan dengan tabel di atas)</p>
+                    <p><strong>Catatan:</strong> Nilai yang dikurangi merupakan kelipatan 12.</p>
+                    <p>Jika dilakukan pembelian dengan Rp.<strong>100rb</strong> dan menang maka:</p>
+                    <p>Menang = <strong>100rb + [Indeks kemenangan untuk SHIO]</strong></p>
+                `
             },
             {
-                id: 12,
-                userId: "fan***awd",
-                game: "SA-Baccarat D02",
-                amount: "50,500,000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2026/01/06/20260106/c707a6b580f37b4b331b4acdc7b021ef/asdasdasd.jpg",
-                date: "6 Jan 2026",
-                category: "baccarat"
+                id: 'silangInfo',
+                title: 'Silang',
+                icon: 'fas fa-times',
+                content: `
+                    <h2>SILANG</h2>
+                    <p>Permainan ini kadang disebut suami istri. Menebak dari posisi Depan, Tengah, Belakang.</p>
+                    
+                    <h3>Contoh:</h3>
+                    <p>No: <strong>1234</strong></p>
+                    <ul>
+                        <li><strong>Posisi Depan:</strong> 2 no terdepan yaitu <strong>12</strong></li>
+                        <li><strong>Posisi Tengah:</strong> 2 no di tengah yaitu <strong>23</strong></li>
+                        <li><strong>Posisi Belakang:</strong> 2 no terbelakang yaitu <strong>34</strong></li>
+                    </ul>
+                    
+                    <h3>Kategori:</h3>
+                    <p><strong>SILANG:</strong> Terdapat Ganjil dan Genap.</p>
+                    <p><strong>HOMO:</strong> Terdapat 1 pasang Ganjil atau 1 pasang Genap.</p>
+                    
+                    <h3>Analisis:</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Beli Posisi Depan.</p>
+                    <p>Keluar: <strong>1234</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Depan, berarti <strong>12</strong></p>
+                    <p><strong>12</strong> =&gt; 1 (ganjil) dan 2 (genap), berarti hasil = <strong>SILANG</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Beli Posisi Tengah.</p>
+                    <p>Keluar: <strong>4326</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Tengah, berarti <strong>32</strong></p>
+                    <p><strong>32</strong> =&gt; 3 (ganjil) dan 2 (genap), berarti hasil = <strong>SILANG</strong></p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Beli Posisi Belakang.</p>
+                    <p>Keluar: <strong>4533</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Belakang, berarti <strong>33</strong></p>
+                    <p><strong>33</strong> =&gt; 3 (ganjil) dan 3 (ganjil), berarti hasil = <strong>HOMO</strong></p>
+                    <p>Jika dilakukan pembelian dengan Rp.<strong>100rb</strong> dan menang maka:</p>
+                    <p>Menang = <strong>100rb + [Indeks kemenangan untuk Silang-Homo]</strong></p>
+                `
             },
             {
-                id: 13,
-                userId: "pxxxxxxxxxd",
-                game: "TG-LiveGame",
-                amount: "89.250.000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2025/11/05/20251105/7891f203c1278dd10a57990952f667b7/c3a7bb13-6e22-40eb-8c71-b9248b1e39e6.jpeg",
-                date: "5 Nov 2025",
-                category: "live"
+                id: 'kembangKempisInfo',
+                title: 'Kembang Kempis',
+                icon: 'fas fa-expand-alt',
+                content: `
+                    <h2>KEMBANG KEMPIS</h2>
+                    <p>Struktur: ABCD</p>
+                    <p>Jika Menebak posisi:</p>
+                    <ul>
+                        <li><strong>Depan:</strong> Fokus pada <strong>AB</strong></li>
+                        <li><strong>Tengah:</strong> Fokus pada <strong>BC</strong></li>
+                        <li><strong>Belakang:</strong> Fokus pada <strong>CD</strong></li>
+                    </ul>
+                    
+                    <h3>Kategori:</h3>
+                    <p><strong>KEMBANG:</strong> Jika A &lt; B atau B &lt; C atau C &lt; D</p>
+                    <p><strong>KEMPIS:</strong> Jika A &gt; B atau B &gt; C atau C &gt; D</p>
+                    <p><strong>KEMBAR:</strong> Jika A = B atau B = C atau C = D</p>
+                    
+                    <h3>Analisis:</h3>
+                    
+                    <h4>Analisis I:</h4>
+                    <p>Beli Posisi Depan.</p>
+                    <p>Keluar: <strong>4321</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Depan, berarti <strong>43</strong></p>
+                    <p><strong>43</strong> =&gt; 4 &gt; 3, hasil = <strong>KEMPIS</strong></p>
+                    
+                    <h4>Analisis II:</h4>
+                    <p>Beli Posisi Tengah.</p>
+                    <p>Keluar: <strong>4236</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Tengah, berarti <strong>23</strong></p>
+                    <p><strong>23</strong> =&gt; 2 &lt; 3, hasil = <strong>KEMBANG</strong></p>
+                    
+                    <h4>Analisis III:</h4>
+                    <p>Beli Posisi Belakang.</p>
+                    <p>Keluar: <strong>4099</strong></p>
+                    <p>Yang menjadi pedoman adalah posisi Belakang, berarti <strong>99</strong></p>
+                    <p><strong>99</strong> =&gt; Hasil = <strong>KEMBAR</strong></p>
+                    <p>Jika dilakukan pembelian dengan Rp.<strong>100rb</strong> dan menang maka:</p>
+                    <p>Menang = <strong>100rb + [Indeks kemenangan untuk KEMBANG-KEMPIS]</strong></p>
+                `
             },
             {
-                id: 14,
-                userId: "gho2**15",
-                game: "PG Soft Wild Bandito",
-                amount: "100.000.000",
-                image: "https://cdn.areabermain.club/assets/cdn/azdev/2025/09/24/20250924/f54e8d7f905534aaeb81dd6b09c6a3e8/image-3.png",
-                date: "24 Sep 2025",
-                category: "slot"
+                id: 'mistikLamaInfo',
+                title: 'Mistik Lama',
+                icon: 'fas fa-magic',
+                content: `
+                    <h2>MISTIK LAMA</h2>
+                    <p>Mistik Lama adalah generator untuk membantu pemain dalam melakukan bettingan, sehingga nomor yang dibeli sudah termasuk perubahan nomor mistik di dalamnya.</p>
+                    
+                    <h3>Perubahan Nomor dalam Mistik Lama:</h3>
+                    <ul>
+                        <li>0 = 1</li>
+                        <li>2 = 5</li>
+                        <li>3 = 8</li>
+                        <li>4 = 7</li>
+                        <li>6 = 9</li>
+                    </ul>
+                    
+                    <h3>Jenis Mistik:</h3>
+                    
+                    <h4>Mistik 1:</h4>
+                    <p>Terdapat 1 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1234</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>0234 (Digit I)</li>
+                        <li>1534 (Digit II)</li>
+                        <li>1284 (Digit III)</li>
+                        <li>1237 (Digit IV)</li>
+                    </ul>
+                    
+                    <h4>Mistik 2:</h4>
+                    <p>Terdapat 2 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1234</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>0534</li>
+                        <li>1584</li>
+                        <li>1287</li>
+                        <li>0284</li>
+                        <li>1537</li>
+                        <li>0237</li>
+                    </ul>
+                    
+                    <h4>Mistik 3:</h4>
+                    <p>Terdapat 3 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1234</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>0584</li>
+                        <li>1587</li>
+                        <li>0287</li>
+                        <li>0537</li>
+                    </ul>
+                    
+                    <h4>Mistik 4:</h4>
+                    <p>Terdapat 4 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1234</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>0587</li>
+                    </ul>
+                    
+                    <h3>Informasi Tambahan:</h3>
+                    <ul>
+                        <li>Nomor origin tetap akan terbeli dalam panel bettingan mistik lama.</li>
+                        <li>Anda dapat memilih 3D atau 2D. Jika membeli 3D, mistik 1, 2, dan 3 dapat dipilih; jika 2D, hanya mistik 1 dan 2.</li>
+                        <li>Pilihan pembelian tersedia untuk nomor 4D, 3D, dan 2D sesuai nominal yang diinginkan.</li>
+                        <li>Pada pilihan "Nomor Duplicate / Angka yang sama", jika memilih "YA", semua nomor akan ditampilkan; jika "TIDAK", semua nomor duplicate akan dihilangkan.</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'indexInfo',
+                title: 'Index',
+                icon: 'fas fa-sort-numeric-up',
+                content: `
+                    <h2>INDEX</h2>
+                    <p>INDEX adalah generator untuk memudahkan pemain dalam melakukan bettingan, sehingga nomor yang dibeli sudah termasuk perubahan nomor index kecil dan besar di dalamnya.</p>
+                    
+                    <h3>Perubahan Nomor dalam INDEX:</h3>
+                    <ul>
+                        <li>0 = 5</li>
+                        <li>1 = 6</li>
+                        <li>2 = 7</li>
+                        <li>3 = 8</li>
+                        <li>4 = 9</li>
+                    </ul>
+                    
+                    <h3>Jenis INDEX:</h3>
+                    
+                    <h4>INDEX 1:</h4>
+                    <p>Terdapat 1 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1239</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>6239 = Digit I (1–&gt;6)</li>
+                        <li>1739 = Digit II (2–&gt;7)</li>
+                        <li>1289 = Digit III (3–&gt;8)</li>
+                        <li>1234 = Digit IV (9–&gt;4)</li>
+                    </ul>
+                    
+                    <h4>INDEX 2:</h4>
+                    <p>Terdapat 2 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1239</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>6739 = Digit I (1–&gt;6), Digit II (2–&gt;7)</li>
+                        <li>1789 = Digit II (2–&gt;7), Digit III (3–&gt;8)</li>
+                        <li>1284 = Digit III (3–&gt;8), Digit IV (9–&gt;4)</li>
+                        <li>6289 = Digit I (1–&gt;6), Digit III (3–&gt;8)</li>
+                        <li>1734 = Digit II (2–&gt;7), Digit IV (9–&gt;4)</li>
+                        <li>6234 = Digit I (1–&gt;6), Digit IV (9–&gt;4)</li>
+                    </ul>
+                    
+                    <h4>INDEX 3:</h4>
+                    <p>Terdapat 3 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1239</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>6789 = Digit I (1–&gt;6), Digit II (2–&gt;7), Digit III (3–&gt;8)</li>
+                        <li>1784 = Digit II (2–&gt;7), Digit III (3–&gt;8), Digit IV (9–&gt;4)</li>
+                        <li>6284 = Digit I (1–&gt;6), Digit III (3–&gt;8), Digit IV (9–&gt;4)</li>
+                        <li>6734 = Digit I (1–&gt;6), Digit II (2–&gt;7), Digit IV (9–&gt;4)</li>
+                    </ul>
+                    
+                    <h4>INDEX 4:</h4>
+                    <p>Terdapat 4 nomor dalam setiap posisi mengalami perubahan.</p>
+                    <p><strong>Contoh:</strong> Jika Anda membeli angka <strong>1239</strong>, nomor yang muncul:</p>
+                    <ul>
+                        <li>6784 = Digit I (1–&gt;6), Digit II (2–&gt;7), Digit III (3–&gt;8), Digit IV (9–&gt;4)</li>
+                    </ul>
+                    
+                    <h3>Informasi Tambahan:</h3>
+                    <ul>
+                        <li>Nomor origin tetap akan terbeli dalam panel bettingan INDEX.</li>
+                        <li>Anda dapat memilih 3D atau 2D. Jika membeli 3D, INDEX 1, 2, dan 3 dapat dipilih; jika 2D, hanya INDEX 1 dan 2.</li>
+                        <li>Pilihan pembelian tersedia untuk nomor 4D, 3D, dan 2D sesuai nominal yang diinginkan.</li>
+                        <li>Pada pilihan "Nomor Duplicate / Angka yang sama", jika memilih "YA", semua nomor akan ditampilkan; jika "TIDAK", semua nomor duplicate akan dihilangkan.</li>
+                    </ul>
+                `
+            },
+            {
+                id: 'macauShioInfo',
+                title: 'Macau Shio',
+                icon: 'fas fa-star',
+                content: `
+                    <h2>MACAU SHIO</h2>
+                    <p>Macau Shio adalah bettingan di mana Anda membeli kombinasi 2 shio dalam sekali betting. Anda dapat membeli shio yang sama untuk shio pertama dan shio kedua.</p>
+                    
+                    <h3>Aturan Permainan:</h3>
+                    <ol>
+                        <li>Hasil dari shio pertama berdasarkan hasil dari As (angka pertama) + Kop (angka kedua).</li>
+                        <li>Hasil dari shio kedua berdasarkan hasil dari Kepala (angka ketiga) + Ekor (angka keempat).</li>
+                        <li>Hasil keluaran harus tepat berurutan seperti yang dibeli. Jika Anda membeli "HARIMAU &amp; KUDA" dan hasil keluaran adalah "KUDA – HARIMAU", maka Anda dinyatakan kalah.</li>
+                        <li>Hasil keluaran Macau Shio dapat dilihat di menu history nomor dan klik nomor keluaran di periode yang ingin Anda lihat.</li>
+                        <li>Perkalian pembayaran adalah 110x dari nilai bettingan Anda, dengan diskon pembelian 10% dan referral untuk atasan adalah 1% dari bettingan.</li>
+                    </ol>
+                    
+                    <h3>Contoh Hasil:</h3>
+                    <p><strong>Contoh Keluaran:</strong> 4321</p>
+                    <p>Permainan ini membeli 2 Kombinasi Shio yang tepat: AS, KOP &amp; KEPALA, EKOR</p>
+                    <ul>
+                        <li><strong>Shio Pertama:</strong><br>As = 4<br>Kop = 3</li>
+                        <li><strong>Shio Kedua:</strong><br>Kepala = 2<br>Ekor = 1</li>
+                    </ul>
+                    <p>Hasil shio Pertama = 43 – 36 = 7 (shio disesuaikan dengan tabel shio)<br>Hasil shio Kedua = 21 – 12 = 9 (shio disesuaikan dengan tabel shio)</p>
+                    <p><em>*Catatan: nilai yang dikurangi merupakan kelipatan 12.</em></p>
+                `
+            },
+            {
+                id: 'taysenInfo',
+                title: 'Taysen',
+                icon: 'fas fa-cogs',
+                content: `
+                    <h2>TAYSEN</h2>
+                    <p>Taysen merupakan generator nomor yang berfungsi untuk menampilkan nomor taysen dari nomor-nomor yang kita beli. Setiap nomor memiliki angka taysenya masing-masing sesuai dengan jenis bettingnya: 4D, 3D, ataupun 2D.</p>
+                    <p>Angka Taysenan per masing-masing nomor bisa dilihat di buku mimpi sebagai referensi.</p>
+                    
+                    <h3>Jenis Bettingan:</h3>
+                    <ul>
+                        <li><strong>4D:</strong> Terdapat 1 nomor Taysenanya.</li>
+                        <li><strong>3D:</strong> Terdapat 1 nomor Taysenanya.</li>
+                        <li><strong>2D:</strong> Terdapat 4 nomor Taysenanya.</li>
+                    </ul>
+                    
+                    <h3>Panduan Betting:</h3>
+                    <ol>
+                        <li>Dalam generator Taysen, terdapat 3 pilihan yang dapat dicentang untuk betting, yaitu Taysen 4D, Taysen 3D, atau Taysen 2D.</li>
+                        <li>Jika Anda mengisi 2 angka di kolom nomor, hanya Taysen 2D yang dapat dicentang.</li>
+                        <li>Jika Anda mengisi 3 angka, maka Taysen 3D dan 2D dapat dicentang.</li>
+                        <li>Jika Anda mengisi 4 angka, maka Taysen 2D, 3D, dan 4D dapat dicentang.</li>
+                        <li>Anda dapat memilih jenis bettingan apa saja yang ingin ditaysen dengan mencentang kolom checkbox untuk menampilkan taysenanya di hasil generate bettingan.</li>
+                    </ol>
+                    
+                    <h3>Fitur Tambahan:</h3>
+                    <ul>
+                        <li>Di kolom bettingan terdapat opsi BB. Jika Anda mencentang kolom BB, nomor-nomor yang sudah di-generate (nomor utama dan nomor taysenanya) akan di BB-in.</li>
+                        <li>Di panel bet juga terdapat kolom untuk mengisi nominal, yang dapat diisi dengan nominal berbeda untuk jenis bettingan 4D, 3D, dan 2D. Jika tidak diisi, jenis bettingan tersebut tidak akan tergenerate.</li>
+                        <li>Nomor utama juga akan ikut terbeli di dalam menu taysen.</li>
+                        <li>Dalam menu taysen, Anda tidak memiliki pilihan untuk membuang bettingan; artinya, Anda tidak dapat menghilangkan bettingan yang sama atau duplicate jika terdapat angka yang sama.</li>
+                    </ul>
+                `
             }
         ];
 
-        // DOM Elements
-        const entriesContainer = document.getElementById('entries-container');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const sortSelect = document.getElementById('sort-select');
-        const paginationButtons = document.querySelectorAll('.page-btn');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModalBtn = document.querySelector('.close-modal');
-        const zoomInBtn = document.getElementById('zoomIn');
-        const zoomOutBtn = document.getElementById('zoomOut');
-        const zoomResetBtn = document.getElementById('zoomReset');
-        const zoomInfo = document.getElementById('zoomInfo');
+        // RENDER TOMBOL & PANEL
+        function renderGameButtons() {
+            const container = document.getElementById('buttonsContainer');
+            container.innerHTML = '';
+            games.forEach(g => {
+                const btn = document.createElement('button');
+                btn.className = 'game-btn';
+                btn.id = `btn-${g.id}`;
+                btn.innerHTML = `<i class="${g.icon}"></i><span>${g.title}</span>`;
+                btn.onclick = () => showPanel(g.id);
+                container.appendChild(btn);
+            });
+        }
 
-        // Pagination variables
-        let currentPage = 1;
-        const entriesPerPage = 6;
-        let filteredEntries = [...entriesData];
-        let currentFilter = 'all';
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            renderEntries();
-            setupEventListeners();
-        });
-
-        // Render entries based on current filter and page
-        function renderEntries() {
-            entriesContainer.innerHTML = '';
-            
-            // Calculate start and end index for current page
-            const startIndex = (currentPage - 1) * entriesPerPage;
-            const endIndex = startIndex + entriesPerPage;
-            const entriesToShow = filteredEntries.slice(startIndex, endIndex);
-            
-            // Create entry elements
-            entriesToShow.forEach(entry => {
-                const entryElement = document.createElement('div');
-                entryElement.className = 'entry';
-                const category = entry.category.toLowerCase();
-                entryElement.dataset.category = category;
-
-                
-                // Determine badge color based on category
-                let badgeText = '';
-                let badgeClass = '';
-                switch(category) {
-                    case 'slot':
-                        badgeText = 'SLOT';
-                        badgeClass = 'slot-badge';
-                        break;
-                    case 'baccarat':
-                        badgeText = 'BACCARAT';
-                        badgeClass = 'baccarat-badge';
-                        break;
-                    case 'live':
-                        badgeText = 'LIVE GAME';
-                        badgeClass = 'live-badge';
-                        break;
-                    case 'togel':
-                        badgeText = 'TOGEL';
-                        badgeClass = 'togel-badge';
-                        break;
-                    }
-
-                
-                entryElement.innerHTML = `
-                    <div class="entry-badge ${badgeClass}">${badgeText}</div>
-                    <div class="entry-img-container">
-                        <img src="${entry.image}" alt="Bukti Kemenangan" class="entry-img">
-                        <div class="img-overlay">
-                            <div class="zoom-btn">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
+        function renderInfoPanels() {
+            const panelsDiv = document.getElementById('infoPanels');
+            panelsDiv.innerHTML = '';
+            games.forEach(g => {
+                const panel = document.createElement('div');
+                panel.className = 'info-panel';
+                panel.id = `panel-${g.id}`;
+                panel.innerHTML = `
+                    <div class="panel-header">
+                        <h2><i class="${g.icon}"></i> ${g.title}</h2>
+                        <div class="close-btn" onclick="hidePanel('${g.id}')"><i class="fas fa-times"></i></div>
                     </div>
-                    <div class="entry-content">
-                        <div class="entry-header">
-                            <div class="winner-id">${entry.userId}</div>
-                            <div class="game-type">${entry.category.toUpperCase()}</div>
-                        </div>
-                        <div class="game-info">${entry.game}</div>
-                        <div class="win-amount">
-                            <i class="fas fa-coins"></i> Rp ${entry.amount}
-                        </div>
-                        <div class="withdraw-info">
-                            <em>Withdraw sebesar <b>Rp ${entry.amount}</b> telah <b>100% LUNAS</b> dibayarkan tanpa hambatan ✅</em>
-                        </div>
-                        <div class="entry-footer">
-                            <div class="entry-date">
-                                <i class="far fa-calendar"></i> ${entry.date}
-                            </div>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i> TERVERIFIKASI
-                            </div>
-                        </div>
+                    <div class="panel-content">
+                        ${g.content}
+                        <div class="back-to-menu" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i> Kembali ke menu</div>
                     </div>
                 `;
-                
-                entriesContainer.appendChild(entryElement);
-            });
-            
-            // Update pagination buttons
-            updatePagination();
-            
-            // Add click event to image containers
-            document.querySelectorAll('.entry-img-container').forEach(container => {
-                container.addEventListener('click', function() {
-                    const imgSrc = this.querySelector('.entry-img').src;
-                    openModal(imgSrc);
-                });
+                panelsDiv.appendChild(panel);
             });
         }
 
-        // Setup event listeners
-        function setupEventListeners() {
-            // Filter buttons
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update current filter
-                    currentFilter = this.dataset.filter;
-                    
-                    // Filter entries
-                    if (currentFilter === 'all') {
-                        filteredEntries = [...entriesData];
-                    } else {
-                        filteredEntries = entriesData.filter(entry => entry.category === currentFilter);
-                    }
-                    
-                    // Reset to page 1
-                    currentPage = 1;
-                    
-                    // Sort entries
-                    sortEntries();
-                    
-                    // Render entries
-                    renderEntries();
-                });
-            });
-            
-            // Sort select
-            sortSelect.addEventListener('change', sortEntries);
-            
-            // Pagination buttons
-            paginationButtons.forEach(button => {
-                if (!button.classList.contains('prev-btn') && !button.classList.contains('next-btn')) {
-                    button.addEventListener('click', function() {
-                        if (!this.classList.contains('active')) {
-                            currentPage = parseInt(this.textContent);
-                            renderEntries();
-                        }
-                    });
-                }
-            });
-            
-            // Previous button
-            prevBtn.addEventListener('click', function() {
-                if (!this.classList.contains('disabled')) {
-                    currentPage--;
-                    renderEntries();
-                }
-            });
-            
-            // Next button
-            nextBtn.addEventListener('click', function() {
-                if (!this.classList.contains('disabled')) {
-                    currentPage++;
-                    renderEntries();
-                }
-            });
-            
-            // Modal events
-            closeModalBtn.addEventListener('click', closeModal);
-            zoomInBtn.addEventListener('click', zoomIn);
-            zoomOutBtn.addEventListener('click', zoomOut);
-            zoomResetBtn.addEventListener('click', zoomReset);
-            
-            // Close modal when clicking outside image
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            // Keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                if (modal.classList.contains('active')) {
-                    switch(e.key) {
-                        case 'Escape':
-                            closeModal();
-                            break;
-                        case '+':
-                        case '=':
-                            e.preventDefault();
-                            zoomIn();
-                            break;
-                        case '-':
-                            e.preventDefault();
-                            zoomOut();
-                            break;
-                        case '0':
-                            e.preventDefault();
-                            zoomReset();
-                            break;
-                    }
-                }
-            });
-        }
+        window.showPanel = function(id) {
+            document.querySelectorAll('.info-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
+            const panel = document.getElementById('panel-'+id);
+            if (panel) panel.classList.add('active');
+            const btn = document.getElementById('btn-'+id);
+            if (btn) btn.classList.add('active');
+            if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
 
-        // Sort entries based on selected option
-        function sortEntries() {
-            const sortValue = sortSelect.value;
-            
-            switch(sortValue) {
-                case 'newest':
-                    filteredEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    break;
-                case 'oldest':
-                    filteredEntries.sort((a, b) => new Date(a.date) - new Date(b.date));
-                    break;
-                case 'highest':
-                    filteredEntries.sort((a, b) => {
-                        const amountA = parseInt(a.amount.replace(/[.,]/g, ''));
-                        const amountB = parseInt(b.amount.replace(/[.,]/g, ''));
-                        return amountB - amountA;
-                    });
-                    break;
-                case 'lowest':
-                    filteredEntries.sort((a, b) => {
-                        const amountA = parseInt(a.amount.replace(/[.,]/g, ''));
-                        const amountB = parseInt(b.amount.replace(/[.,]/g, ''));
-                        return amountA - amountB;
-                    });
-                    break;
-            }
-            
-            renderEntries();
-        }
+        window.hidePanel = function(id) {
+            document.getElementById('panel-'+id)?.classList.remove('active');
+            document.getElementById('btn-'+id)?.classList.remove('active');
+        };
 
-        // Update pagination buttons
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredEntries.length / entriesPerPage);
-            
-            // Update page buttons
-            const pageButtons = document.querySelectorAll('.page-btn:not(.prev-btn):not(.next-btn)');
-            
-            // Clear existing page numbers (except first)
-            for (let i = 1; i < pageButtons.length; i++) {
-                pageButtons[i].style.display = 'none';
-            }
-            
-            // Show appropriate page numbers
-            let startPage = Math.max(1, currentPage - 1);
-            let endPage = Math.min(totalPages, startPage + 2);
-            
-            // Adjust start page if we're near the end
-            if (endPage - startPage < 2 && startPage > 1) {
-                startPage = Math.max(1, endPage - 2);
-            }
-            
-            for (let i = 0; i < pageButtons.length; i++) {
-                const pageNum = startPage + i;
-                
-                if (pageNum <= endPage) {
-                    pageButtons[i].style.display = 'flex';
-                    pageButtons[i].textContent = pageNum;
-                    pageButtons[i].classList.toggle('active', pageNum === currentPage);
-                } else {
-                    pageButtons[i].style.display = 'none';
-                }
-            }
-            
-            // Update prev/next buttons
-            prevBtn.classList.toggle('disabled', currentPage === 1);
-            nextBtn.classList.toggle('disabled', currentPage === totalPages);
-        }
+        window.scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Modal functionality
-        let currentScale = 1;
-        const zoomStep = 0.2;
-        const maxScale = 5;
-        const minScale = 0.5;
-        let isDragging = false;
-        let startX, startY, translateX = 0, translateY = 0;
-
-        function openModal(imgSrc) {
-            modal.classList.add('active');
-            modalImage.src = imgSrc;
-            resetZoomAndPosition();
-            document.body.style.overflow = 'hidden';
-            showZoomInfo();
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            resetZoomAndPosition();
-        }
-
-        function zoomIn() {
-            if (currentScale < maxScale) {
-                currentScale += zoomStep;
-                currentScale = Math.min(currentScale, maxScale);
-                updateImageTransform();
-            }
-        }
-
-        function zoomOut() {
-            if (currentScale > minScale) {
-                currentScale -= zoomStep;
-                currentScale = Math.max(currentScale, minScale);
-                updateImageTransform();
-                
-                if (currentScale <= 1) {
-                    if (currentScale === 1) {
-                        translateX = 0;
-                        translateY = 0;
-                        updateImageTransform();
-                    }
-                }
-            }
-        }
-
-        function zoomReset() {
-            currentScale = 1;
-            translateX = 0;
-            translateY = 0;
-            updateImageTransform();
-        }
-
-        function updateImageTransform() {
-            modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
-        }
-
-        function resetZoomAndPosition() {
-            currentScale = 1;
-            translateX = 0;
-            translateY = 0;
-            updateImageTransform();
-        }
-
-        function showZoomInfo() {
-            zoomInfo.style.display = 'block';
-            setTimeout(() => {
-                zoomInfo.style.display = 'none';
-            }, 3000);
-        }
-
-        // Mouse drag functionality for modal image
-        modalImage.addEventListener('mousedown', (e) => {
-            if (currentScale > 1) {
-                isDragging = true;
-                startX = e.clientX - translateX;
-                startY = e.clientY - translateY;
-                modalImage.style.cursor = 'grabbing';
-            }
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            translateX = e.clientX - startX;
-            translateY = e.clientY - startY;
-            updateImageTransform();
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            if (currentScale > 1) {
-                modalImage.style.cursor = 'grab';
-            }
-        });
-
-        // Mouse wheel zoom for modal
-        modalImage.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (e.deltaY < 0) {
-                zoomIn();
-            } else {
-                zoomOut();
-            }
-        });
-
-        // Double click to zoom in/out
-        modalImage.addEventListener('dblclick', (e) => {
-            e.stopPropagation();
-            if (currentScale < 2) {
-                currentScale = 2;
-            } else {
-                currentScale = 1;
-                translateX = 0;
-                translateY = 0;
-            }
-            updateImageTransform();
-        });
-
-        // Touch events for modal on mobile
-        let touchStartDistance = 0;
-        let initialTouches = [];
-
-        modalImage.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1 && currentScale > 1) {
-                const touch = e.touches[0];
-                startX = touch.clientX - translateX;
-                startY = touch.clientY - translateY;
-            } else if (e.touches.length === 2) {
-                initialTouches = [e.touches[0], e.touches[1]];
-                touchStartDistance = Math.hypot(
-                    initialTouches[0].clientX - initialTouches[1].clientX,
-                    initialTouches[0].clientY - initialTouches[1].clientY
-                );
-            }
-        });
-
-        modalImage.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            
-            if (e.touches.length === 1 && currentScale > 1) {
-                const touch = e.touches[0];
-                translateX = touch.clientX - startX;
-                translateY = touch.clientY - startY;
-                updateImageTransform();
-            } else if (e.touches.length === 2) {
-                const currentDistance = Math.hypot(
-                    e.touches[0].clientX - e.touches[1].clientX,
-                    e.touches[0].clientY - e.touches[1].clientY
-                );
-                
-                if (touchStartDistance > 0) {
-                    const scaleChange = (currentDistance - touchStartDistance) * 0.01;
-                    const newScale = Math.max(minScale, Math.min(maxScale, currentScale + scaleChange));
-                    
-                    if (newScale !== currentScale) {
-                        currentScale = newScale;
-                        updateImageTransform();
-                    }
-                    
-                    touchStartDistance = currentDistance;
-                }
-            }
-        });
-
-        modalImage.addEventListener('touchend', () => {
-            touchStartDistance = 0;
-            initialTouches = [];
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGameButtons();
+            renderInfoPanels();
+            if (games.length) showPanel(games[0].id);
         });
     </script>

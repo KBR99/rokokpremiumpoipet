@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>TOPWD - Event & Promo Terbaru 2025</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary-dark: #1a3f2c;
+            --primary-medium: #2d5a3c;
+            --primary-light: #4CAF50;
+            --accent-green: #81C784;
+            --text-light: #E8F5E9;
+            --text-white: #ffffff;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.2);
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+            --warning-orange: #FF9800;
+            --prediction-gold: #FFD700;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
+            color: var(--text-white);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--primary-light); }
+            50% { box-shadow: 0 0 20px var(--primary-light), 0 0 30px var(--primary-light); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(26, 63, 44, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-light);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            animation: pulse 3s infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 40px 0;
+            min-height: auto;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: slideIn 0.8s ease;
+        }
+
+        .hero-badge {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary-light);
+            font-size: 14px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--accent-green);
+        }
+
+        .hero-text p {
+            font-size: clamp(14px, 4vw, 18px);
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(14px, 4vw, 16px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-light), var(--accent-green));
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-light);
+            color: var(--text-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-warning {
+            background: linear-gradient(45deg, var(--warning-orange), #FFB74D);
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-slider {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-item {
+            min-width: 100%;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--primary-light);
+            transform: scale(1.3);
+        }
+
+        /* Search & Filter */
+        .search-section {
+            padding: 20px 0;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-light);
+            font-size: 18px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            border-radius: 50px;
+            border: 2px solid var(--primary-light);
+            background: rgba(255,255,255,0.1);
+            color: var(--text-white);
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--primary-light);
+            background: transparent;
+            color: var(--text-white);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Prediction Banner NEW */
+        .prediction-banner {
+            background: linear-gradient(145deg, #2a4a2a, #1f3a1f);
+            border: 2px solid var(--prediction-gold);
+            border-radius: 30px;
+            padding: 25px 30px;
+            margin: 30px 0 20px;
+            box-shadow: var(--shadow-lg), 0 0 15px rgba(255,215,0,0.3);
+            animation: glow 3s infinite;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .prediction-text {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .prediction-text h3 {
+            font-size: clamp(20px, 4vw, 28px);
+            color: var(--prediction-gold);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prediction-text p {
+            font-size: 16px;
+            color: #f0f0c0;
+            margin-bottom: 8px;
+        }
+
+        .prediction-text i {
+            color: #FFD700;
+            margin-right: 5px;
+        }
+
+        .prediction-contacts {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .prediction-wa {
+            background: rgba(37, 211, 102, 0.2);
+            border: 2px solid #25D366;
+            border-radius: 50px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .prediction-wa:hover {
+            background: #25D366;
+            transform: translateX(5px);
+            color: #1a3f2c;
+        }
+
+        .prediction-wa i {
+            font-size: 22px;
+        }
+
+        /* Promo Cards */
+        .promo-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(24px, 6vw, 36px);
+            margin-bottom: 40px;
+            color: var(--accent-green);
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .promo-card {
+            background: rgba(46, 125, 50, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            animation: fadeInUp 1s ease;
+            animation-fill-mode: both;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .promo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .promo-card:hover .promo-image img {
+            transform: scale(1.1);
+        }
+
+        .promo-content {
+            padding: 20px;
+        }
+
+        .promo-content h3 {
+            font-size: clamp(18px, 5vw, 22px);
+            margin-bottom: 10px;
+            color: var(--accent-green);
+        }
+
+        .promo-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .promo-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .promo-card.expanded .promo-details {
+            max-height: 2000px;
+            padding: 20px;
+        }
+
+        .promo-details h4 {
+            color: var(--primary-light);
+            margin: 15px 0 10px;
+            font-size: 16px;
+        }
+
+        .promo-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .promo-details li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .promo-details li:before {
+            content: '•';
+            color: var(--primary-light);
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+
+        .bet-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .bet-category {
+            grid-column: 1 / -1;
+            background: rgba(76, 175, 80, 0.3);
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .bet-item {
+            padding: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 40px 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-white);
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(76, 175, 80, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        .contact-card i {
+            font-size: 40px;
+            color: #25D366; 
+            margin-bottom: 10px;
+        }
+
+        .contact-card.livechat i {
+            color: #0088cc; 
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--accent-green);
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1f12;
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary-light);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--text-white);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--accent-green);
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .filter-buttons {
+                width: 100%;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .promo-details {
+                font-size: 13px;
+            }
+            
+            .prediction-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .prediction-wa {
+                justify-content: center;
+            }
+        }
+
+        /* Tablet Optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .promo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://demigod-assets.sgp1.cdn.digitaloceanspaces.com/gifs/Glitch-gif/topwd.webp" alt="TOPWD Logo" loading="lazy">
+                </div>
+                <nav class="nav-menu">
+                    <a href="#home">Home</a>
+                    <a href="#promo">Promo</a>
+                    <a href="#prediksi">Prediksi</a>
+                    <a href="#contact">Kontak</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <span class="hero-badge">
+                        <i class="fas fa-shield-alt"></i> SITUS TERPERCAYA
+                    </span>
+                    <h1>EVENT SCATTER MAHJONG 1 & 2</h1>
+                    <p>BONUS SALDO TURNOVER BULANAN<br>SYARAT DAN KETENTUAN BERLAKU</p>
+                    <div class="hero-buttons">
+                        <a href="https://topwd37278.com/?referralid=briowd" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-rocket"></i> LOGIN TOPWD
+                        </a>
+                        <a href="https://wa.me/6287879223077" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-headset"></i> ADMIN
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-slider" id="heroSlider">
+                    <div class="slider-container">
+                        <div class="slider-item">
+                            <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/07/08/20250708/5c2db5781379c3be3c1fc104157769aa/slider-gif-rtp-2.gif" alt="Promo 1" loading="lazy">
+                        </div>
+                        <div class="slider-item">
+                            <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/07/08/20250708/928087d30987a9d00548bf323918f1f7/slider-gif-rtp-3.gif" alt="Promo 2" loading="lazy">
+                        </div>
+                        <div class="slider-item">
+                            <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/07/08/20250708/d509f37498818dfc6defca55456c4713/slider-gif-rtp-4.gif" alt="Promo 3" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREDIKSI BANNER - NEW (sesuai permintaan: info prediksi bola togel slot) -->
+    <div class="container" id="prediksi">
+        <div class="prediction-banner">
+            <div class="prediction-text">
+                <h3><i class="fas fa-chart-line"></i> PREDIKSI BOLA, TOGEL & SLOT JP</h3>
+                <p><i class="fas fa-check-circle" style="color:#FFD700;"></i> Dapatkan racikan angka akurat, bocoran slot gacor, dan prediksi skor bola langsung dari sumber terpercaya.</p>
+                <p><i class="fas fa-users"></i> Segera hubungi kontak perwakilan kami di bawah untuk konsultasi dan info JP terbaru. DIJAMIN PASTI JP!</p>
+                <p style="color: var(--prediction-gold); margin-top: 8px;"><i class="fas fa-star"></i> *GRATIS untuk member aktif*</p>
+            </div>
+            <div class="prediction-contacts">
+                <!-- Perwakilan 1 (WA) -->
+                <a href="https://wa.me/6281224943088?text=Halo%20saya%20minta%20prediksi%20togel%20dan%20slot%20JP" class="prediction-wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Perwakilan 1 (Togel/Slot)
+                </a>
+                <!-- Perwakilan 2 (WA) -->
+                <a href="https://wa.me/6282275261644?text=Halo%20saya%20minta%20info%20prediksi%20bola%20dan%20slot%20gacor" class="prediction-wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Perwakilan 2 (Bola/Slot)
+                </a>
+                <!-- Perwakilan 3 (WA) dengan nama tambahan -->
+                <a href="https://wa.me/855966211030?text=Halo%20saya%20mau%20prediksi%20jp%20slot%20dan%20togel" class="prediction-wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Perwakilan 3 (Hotline JP)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search & Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari promo atau event...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="slot">Slot</button>
+                    <button class="filter-btn" data-filter="event">Event</button>
+                    <button class="filter-btn" data-filter="bonus">Bonus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Cards Section -->
+    <section class="promo-section" id="promo">
+        <div class="container">
+            <h2 class="section-title">🔥 PROMO & EVENT SPESIAL</h2>
+            <div class="promo-grid" id="promoGrid">
+                <!-- Promo 1 - Gates of Olympus -->
+                <div class="promo-card" data-category="slot event">
+                    <div class="promo-image">
+                        <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/08/17/20250817/82a4caa0942af6dedf4e89afa1f15f78/promosi-olympus-655x250-1-0.jpg" alt="Gates of Olympus" loading="lazy">
+                    </div>
+                    <div class="promo-content">
+                        <h3>🎰 GATES OF OLYMPUS SUPER SCATTER</h3>
+                        <p><i class="fas fa-clock"></i> Setiap Hari (00.00-23.59 WIB)</p>
+                        <div class="promo-details">
+                            <h4>🎯 HADIAH SUPER SCATTER:</h4>
+                            
+                            <div class="bet-category">BET 800 – 1,600</div>
+                            <div class="bet-item">1 Scatter: Rp 50,000</div>
+                            <div class="bet-item">2 Scatter: Rp 100,000</div>
+                            <div class="bet-item">3 Scatter: Rp 150,000</div>
+                            <div class="bet-item">4 Scatter: Rp 250,000</div>
+                            
+                            <div class="bet-category">BET 2,000 – 4,000</div>
+                            <div class="bet-item">1 Scatter: Rp 100,000</div>
+                            <div class="bet-item">2 Scatter: Rp 200,000</div>
+                            <div class="bet-item">3 Scatter: Rp 300,000</div>
+                            <div class="bet-item">4 Scatter: Rp 500,000</div>
+                            
+                            <div class="bet-category">BET 5,000 – 7,000</div>
+                            <div class="bet-item">1 Scatter: Rp 250,000</div>
+                            <div class="bet-item">2 Scatter: Rp 500,000</div>
+                            <div class="bet-item">3 Scatter: Rp 750,000</div>
+                            <div class="bet-item">4 Scatter: Rp 1,000,000</div>
+                            
+                            <h4>📋 SYARAT & KETENTUAN:</h4>
+                            <ul>
+                                <li>Wajib membeli FreeSpin di GATES OF OLYMPUS</li>
+                                <li>Berlaku untuk semua member TOPWD</li>
+                                <li>Max Rp 1.000.000 per hari</li>
+                                <li>Max claim 3x per ID per hari</li>
+                                <li>Wajib share di Grup Facebook</li>
+                                <li>Claim via livechat</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 2 - Mahjong Ways -->
+                <div class="promo-card" data-category="slot event">
+                    <div class="promo-image">
+                        <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/12/02/20251202/b847c82eae152112dbefd30f5435b377/topwd-promo-mahongways.jpg" alt="Mahjong Ways" loading="lazy">
+                    </div>
+                    <div class="promo-content">
+                        <h3>🀄 MAHJONG WAYS 1 & 2</h3>
+                        <p><i class="fas fa-gamepad"></i> PG SOFT</p>
+                        <div class="promo-details">
+                            <h4>🎯 HADIAH SCATTER:</h4>
+                            
+                            <div class="bet-category">BET 1,600 – 2,000</div>
+                            <div class="bet-item">3 Scatter: Rp 15,000</div>
+                            <div class="bet-item">4 Scatter: Rp 30,000</div>
+                            <div class="bet-item">5 Scatter: Rp 75,000</div>
+                            
+                            <div class="bet-category">BET 4,000 – 8,000</div>
+                            <div class="bet-item">3 Scatter: Rp 35,000</div>
+                            <div class="bet-item">4 Scatter: Rp 70,000</div>
+                            <div class="bet-item">5 Scatter: Rp 140,000</div>
+                            
+                            <div class="bet-category">BET 10,000 – 18,000</div>
+                            <div class="bet-item">3 Scatter: Rp 50,000</div>
+                            <div class="bet-item">4 Scatter: Rp 100,000</div>
+                            <div class="bet-item">5 Scatter: Rp 200,000</div>
+                            
+                            <div class="bet-category">BET 20,000+</div>
+                            <div class="bet-item">3 Scatter: Rp 100,000</div>
+                            <div class="bet-item">4 Scatter: Rp 200,000</div>
+                            <div class="bet-item">5 Scatter: Rp 400,000</div>
+                            
+                            <h4>📋 SYARAT KLAIM:</h4>
+                            <ul>
+                                <li>SS Scatter + Kemenangan + History</li>
+                                <li>Claim via LIVECHAT</li>
+                                <li>Max 2x claim per hari</li>
+                                <li>Rekening harus valid</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 3 - Extra Bonus -->
+                <div class="promo-card" data-category="bonus event">
+                    <div class="promo-image">
+                        <img src="https://cdn.areabermain.club/assets/cdn/az2/2025/07/14/20250714/ebb501292eca1e48fa0e24bfcb8e75ef/promo-event-spesial-topwd.jpg" alt="Extra Bonus" loading="lazy">
+                    </div>
+                    <div class="promo-content">
+                        <h3>🎁 EXTRA BONUS 20% & 25%</h3>
+                        <p><i class="fas fa-star"></i> Freespin & Buyspin</p>
+                        <div class="promo-details">
+                            <h4>🎯 RINCIAN BONUS:</h4>
+                            <ul>
+                                <li>Min Kemenangan: Rp 450,000</li>
+                                <li>Freespin: 20%</li>
+                                <li>Buyspin: 25%</li>
+                            </ul>
+                            
+                            <h4>📊 CONTOH:</h4>
+                            <p><strong>Buyspin 25%:</strong><br>
+                            Beli Rp 200,000 - Menang Rp 1,000,000<br>
+                            Bonus = (1,000,000 - 200,000) x 25% = Rp 200,000</p>
+                            
+                            <p><strong>Freespin 20%:</strong><br>
+                            Menang Rp 1,000,000 x 20% = Rp 200,000</p>
+                            
+                            <h4>📋 KETENTUAN:</h4>
+                            <ul>
+                                <li>Max 1x claim per ID per hari</li>
+                                <li>Max bonus Rp 400,000/hari</li>
+                                <li>Wajib screenshot kemenangan</li>
+                                <li>Berhenti bermain saat klaim</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - ALL WA LANGSUNG KLIK -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📞 HUBUNGI KAMI</h2>
+            <div class="contact-grid">
+                <a href="https://wa.me/6281224943088" class="contact-card" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Customer Service 1</h3>
+                    <p>Klik untuk chat WhatsApp</p>
+                </a>
+                
+                <a href="https://wa.me/6282275261644" class="contact-card" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Customer Service 2</h3>
+                    <p>Klik untuk chat WhatsApp</p>
+                </a>
+                
+                <a href="https://wa.me/855966211030" class="contact-card" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Hotline</h3>
+                    <p>Klik untuk chat WhatsApp</p>
+                </a>
+                
+                <a href="https://direct.lc.chat/19129567" class="contact-card livechat" target="_blank">
+                    <i class="fas fa-comment-dots"></i>
+                    <h3>Livechat 24/7</h3>
+                    <p>Klik untuk livechat</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://demigod-assets.sgp1.cdn.digitaloceanspaces.com/gifs/Glitch-gif/topwd.webp" alt="TOPWD" loading="lazy">
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#promo">Promo</a>
+                    <a href="#prediksi">Prediksi</a>
+                    <a href="#contact">Kontak</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p class="copyright">© 2025 TOPWD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Image Slider
+        class Slider {
+            constructor(element) {
+                this.slider = element;
+                this.container = element.querySelector('.slider-container');
+                this.dots = element.querySelectorAll('.dot');
+                this.currentSlide = 0;
+                this.totalSlides = this.container.children.length;
+                
+                setInterval(() => this.nextSlide(), 5000);
+                
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+            }
+            
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateSlider();
+            }
+            
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.updateSlider();
+            }
+            
+            updateSlider() {
+                this.container.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+        }
+
+        // Promo Cards
+        function initPromoCards() {
+            const cards = document.querySelectorAll('.promo-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.promo-details')) {
+                        this.classList.toggle('expanded');
+                        
+                        cards.forEach(otherCard => {
+                            if (otherCard !== this && otherCard.classList.contains('expanded')) {
+                                otherCard.classList.remove('expanded');
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // Search and Filter
+        function initSearchAndFilter() {
+            const searchInput = document.getElementById('searchInput');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.promo-card');
+            
+            function filterCards() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const category = card.dataset.category;
+                    const matchesSearch = title.includes(searchTerm);
+                    const matchesFilter = activeFilter === 'all' || category.includes(activeFilter);
+                    
+                    card.style.display = matchesSearch && matchesFilter ? 'block' : 'none';
+                });
+            }
+            
+            searchInput.addEventListener('input', filterCards);
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterCards();
+                });
+            });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize
+        window.onload = () => {
+            const heroSlider = document.getElementById('heroSlider');
+            if (heroSlider) {
+                new Slider(heroSlider);
+            }
+            initPromoCards();
+            initSearchAndFilter();
+        };
+    </script>
+</body>
+</html>
